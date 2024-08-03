@@ -1,4 +1,4 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 import org.junit.Test
 
