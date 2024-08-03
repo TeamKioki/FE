@@ -1,4 +1,4 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
