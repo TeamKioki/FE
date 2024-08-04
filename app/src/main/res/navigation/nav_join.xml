@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_join"
+    app:startDestination="@id/inputMemberInfoFragment">
+
+    <fragment
+        android:id="@+id/selectProfileImageFragment"
+        android:name="com.umc6th.kioki.join.SelectProfileImageFragment"
+        android:label="fragment_select_profile_image"
+        tools:layout="@layout/fragment_select_profile_image" >
+        <action
+            android:id="@+id/action_selectProfileImageFragment_to_inputMemberIntroduceFragment"
+            app:destination="@id/inputMemberIntroduceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputMemberInfoFragment"
+        android:name="com.umc6th.kioki.join.InputMemberInfoFragment"
+        android:label="fragment_input_member_info"
+        tools:layout="@layout/fragment_input_member_info" >
+        <action
+            android:id="@+id/action_inputMemberInfoFragment_to_selectProfileImageFragment"
+            app:destination="@id/selectProfileImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputMemberIntroduceFragment"
+        android:name="com.umc6th.kioki.join.InputMemberIntroduceFragment"
+        android:label="fragment_input_member_introduce"
+        tools:layout="@layout/fragment_input_member_introduce" >
+        <action
+            android:id="@+id/action_inputMemberIntroduceFragment_to_selectKioskIssueFragment"
+            app:destination="@id/selectKioskIssueFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectKioskIssueFragment"
+        android:name="com.umc6th.kioki.join.SelectKioskIssueFragment"
+        android:label="SelectKioskIssueFragment" >
+        <action
+            android:id="@+id/action_selectKioskIssueFragment_to_requirePermissionFragment"
+            app:destination="@id/requirePermissionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requirePermissionFragment"
+        android:name="com.umc6th.kioki.join.RequirePermissionFragment"
+        android:label="RequirePermissionFragment" />
+</navigation>
