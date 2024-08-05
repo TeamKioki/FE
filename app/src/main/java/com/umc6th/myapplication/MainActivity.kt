@@ -16,5 +16,15 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setStartFragment()
+
     }
+    // 처음 시작하는 프래그먼트 설정하는 함수
+    private fun setStartFragment() {
+        val homeFragment = HomeFragment() // 홈 프래그먼트 생성
+        supportFragmentManager.beginTransaction()
+            .add(R.id.frame_layout, homeFragment).commit()
+
+    }
+
 }
