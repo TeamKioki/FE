@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFF1E9" /> <!-- 배경색 지정 -->
+            <corners android:radius="5dp" /> <!-- 모서리를 둥글게 설정 -->
+        </shape>
+    </item>
+
+    <!-- Border -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:width="2dp" android:color="#FF5722" /> <!-- 테두리 색과 두께 설정 -->
+            <corners android:radius="5dp" /> <!-- 모서리를 둥글게 설정 -->
+        </shape>
+    </item>
+
+    <!-- Check icon in the top right corner -->
+    <item
+        android:top="4dp"
+        android:right="4dp"
+        android:gravity="top|end">
+        <bitmap
+            android:src="@drawable/ic_home_check"
+            android:gravity="top|end"/>
+    </item>
+</layer-list>
