@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/border_lightgray"
+    android:layout_marginBottom="15dp">
+
+    <ImageView
+        android:id="@+id/item_bg_iv"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic_backgroundbrand"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/item_brandlogo_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_burgerking"
+        app:layout_constraintStart_toStartOf="@id/item_bg_iv"
+        app:layout_constraintEnd_toEndOf="@id/item_bg_iv"
+        app:layout_constraintTop_toTopOf="@id/item_bg_iv"
+        app:layout_constraintBottom_toBottomOf="@id/item_bg_iv" />
+
+    <TextView
+        android:id="@+id/item_brandname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="브랜드 이름"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toEndOf="@id/item_bg_iv"
+        app:layout_constraintTop_toTopOf="@id/item_bg_iv" />
+
+    <TextView
+        android:id="@+id/item_brandspec_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="햄버거 · 패스트푸드점"
+        android:textSize="12sp"
+        android:textColor="#808080"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintStart_toEndOf="@id/item_bg_iv"
+        app:layout_constraintTop_toBottomOf="@id/item_brandname_tv" />
+
+    <LinearLayout
+        android:id="@+id/item_position_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="3dp"
+        app:layout_constraintStart_toEndOf="@id/item_bg_iv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/background_lightgray_5dp">
+
+        <ImageView
+            android:id="@+id/item_pin_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pin"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/item_pinnum_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="106"
+            android:textSize="11sp"
+            android:layout_marginStart="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/item_nobookmark_btn"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_nobookmark"
+        android:background="@android:color/transparent"
+        android:layout_marginStart="201dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toEndOf="@id/item_bg_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_bg_iv" />
+
+    <ImageButton
+        android:id="@+id/item_bookmark_btn"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_bookmark"
+        android:background="@android:color/transparent"
+        android:layout_marginStart="201dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toEndOf="@id/item_bg_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_bg_iv"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/item_distfix_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 이내"
+        android:textSize="11sp"
+        android:textColor="#3A4D54"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/item_dist_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="300 m"
+        android:textSize="11sp"
+        android:textColor="#3A4D54"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintEnd_toStartOf="@id/item_distfix_tv"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

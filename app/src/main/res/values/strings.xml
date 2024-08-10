@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Kioki</string>
+    <string-array name="sort_array">
+        <item>거리순</item>
+        <item>난이도 높은 순</item>
+        <item>난이도 낮은 순</item>
+    </string-array>
 </resources>
