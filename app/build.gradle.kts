@@ -41,6 +41,8 @@ android {
 
 dependencies {
 
+    //circle imageView
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
     // flexbox
     implementation ("com.google.android.flexbox:flexbox:3.0.0")
     // navigation
