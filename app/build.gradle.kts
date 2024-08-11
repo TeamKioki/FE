@@ -7,6 +7,10 @@ android {
     namespace = "com.umc6th.myapplication"
     compileSdk = 34
 
+    viewBinding{
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "com.umc6th.myapplication"
         minSdk = 24

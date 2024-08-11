@@ -67,26 +67,81 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/kiohome_brandlist_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="9dp"
-        app:layoutManager="GridLayoutManager"
-        app:spanCount="3"
-        tools:listitem="@layout/item_kioskbrand"
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/kiohome_brandlist_rv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:layout_marginTop="9dp"-->
+<!--        app:layoutManager="GridLayoutManager"-->
+<!--        app:spanCount="3"-->
+<!--        tools:listitem="@layout/item_kioskbrand"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/kiohome_search_cl"/>-->
+
+
+    <ImageView
+        android:id="@+id/lotteria"
+        android:layout_width="85dp"
+        android:layout_height="110dp"
+        android:src="@drawable/iv_lotte"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kiohome_search_cl"/>
+        app:layout_constraintTop_toBottomOf="@id/kiohome_search_cl" />
+
+    <ImageView
+        android:id="@+id/burgerking"
+        android:layout_width="85dp"
+        android:layout_height="110dp"
+        android:src="@drawable/iv_burgerking"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toEndOf="@id/lotteria"
+        app:layout_constraintTop_toBottomOf="@id/kiohome_search_cl" />
+    <ImageView
+        android:id="@+id/macdonald"
+        android:layout_width="85dp"
+        android:layout_height="110dp"
+        android:src="@drawable/iv_mac"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toEndOf="@id/burgerking"
+        app:layout_constraintTop_toBottomOf="@id/kiohome_search_cl" />
+
+    <ImageView
+        android:id="@+id/mega"
+        android:layout_width="85dp"
+        android:layout_height="110dp"
+        android:src="@drawable/iv_mega"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lotteria" />
+
+    <ImageView
+        android:id="@+id/subway"
+        android:layout_width="85dp"
+        android:layout_height="110dp"
+        android:src="@drawable/iv_subway"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toEndOf="@id/mega"
+        app:layout_constraintTop_toBottomOf="@id/lotteria" />
 
     <ImageView
         android:id="@+id/kiohome_plus_btn"
-        android:layout_width="81dp"
-        android:layout_height="81dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:src="@drawable/btn_plus"
-        app:layout_constraintStart_toStartOf="@id/kiohome_brandlist_rv"
-        app:layout_constraintTop_toBottomOf="@id/kiohome_brandlist_rv"/>
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toEndOf="@id/subway"
+        app:layout_constraintTop_toBottomOf="@id/lotteria" />
+<!--        app:layout_constraintStart_toStartOf="@id/kiohome_brandlist_rv"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/kiohome_brandlist_rv"-->
+
 
     <ImageButton
         android:id="@+id/kiohome_edit_btn"
