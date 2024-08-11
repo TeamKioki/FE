@@ -43,5 +43,13 @@
     <fragment
         android:id="@+id/requirePermissionFragment"
         android:name="com.umc6th.kioki.join.RequirePermissionFragment"
-        android:label="RequirePermissionFragment" />
+        android:label="RequirePermissionFragment" >
+        <action
+            android:id="@+id/action_requirePermissionFragment_to_showLoginFragment"
+            app:destination="@id/showLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showLoginFragment"
+        android:name="com.umc6th.kioki.join.ShowLoginFragment"
+        android:label="ShowLoginFragment" />
 </navigation>
