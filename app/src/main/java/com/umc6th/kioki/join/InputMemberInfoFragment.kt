@@ -7,8 +7,11 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.umc6th.myapplication.R
 import com.umc6th.myapplication.databinding.FragmentInputMemberInfoBinding
@@ -30,6 +33,37 @@ class InputMemberInfoFragment : Fragment() {
         binding.apply {
             inputName.addTextChangedListener(nameTextWatcher)
             inputIdentifyNumber.addTextChangedListener(identityNumberTextWatcher)
+        }
+
+        binding.selectTelecomButton.setOnClickListener { view ->
+            // Create and show the PopupMenu
+            val popupMenu = PopupMenu(requireContext(), view)
+            popupMenu.menuInflater.inflate(R.menu.menu_carrrier, popupMenu.menu)
+
+            // Handle item selection
+            popupMenu.setOnMenuItemClickListener { item: MenuItem ->
+                when (item.itemId) {
+                    R.id.skt -> {
+                        binding.selectedTelecom.text = "SKT"
+                        binding.selectedTelecom.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        true
+                    }
+                    R.id.kt -> {
+                        binding.selectedTelecom.text  = "KT"
+                        binding.selectedTelecom.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+
+                        true
+                    }
+                    R.id.lg_uplus -> {
+                        binding.selectedTelecom.text  = "LG U+"
+                        binding.selectedTelecom.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        true
+                    }
+                    else -> false
+                }
+            }
+
+            popupMenu.show()
         }
 
         binding.nextButton.setOnClickListener {
