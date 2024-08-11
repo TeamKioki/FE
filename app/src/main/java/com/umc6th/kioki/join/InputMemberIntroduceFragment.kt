@@ -27,7 +27,7 @@ class InputMemberIntroduceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.nextButton.rootView.setOnClickListener {
+        binding.nextButton.setOnClickListener {
             findNavController().navigate(R.id.action_inputMemberIntroduceFragment_to_selectKioskIssueFragment)
         }
     }

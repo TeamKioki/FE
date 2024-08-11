@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -53,6 +54,10 @@ class SelectKioskIssueFragment : Fragment() {
         binding.issueRecyclerView.apply {
             adapter = kioskIssueAdapter
             layoutManager = flexboxLayoutManager
+        }
+
+        binding.nextButton.setOnClickListener {
+            findNavController().navigate(R.id.action_selectKioskIssueFragment_to_requirePermissionFragment)
         }
     }
 
