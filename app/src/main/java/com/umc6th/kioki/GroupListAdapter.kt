@@ -9,15 +9,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.umc6th.myapplication.Group
-import com.umc6th.myapplication.R
 
 class GroupListAdapter(var groupList: List<Group>): RecyclerView.Adapter<GroupListAdapter.ViewHolder>() {
+    var showDeleteButton: Boolean = false
     // 추가
     private val differCallback = object : DiffUtil.ItemCallback<Group>() {
         override fun areItemsTheSame(oldItem: Group, newItem: Group): Boolean {
             // User의 id를 비교해서 같으면 areContentsTheSame으로 이동(id 대신 data 클래스에 식별할 수 있는 변수 사용)
             //return oldItem.id == newItem.id
+            return false
         }
 
         override fun areContentsTheSame(oldItem: Group, newItem: Group): Boolean {
@@ -57,11 +57,14 @@ class GroupListAdapter(var groupList: List<Group>): RecyclerView.Adapter<GroupLi
         // val group: Group = groupList[position]
         val group : Group = differ.currentList[position]
 
-        //holder.group_item_img_iv
+        holder.group_item_img_iv.setImageResource(group.groupImg!!)
         holder.group_item_name_tv.text = group.groupName
         holder.group_item_description1_tv.text = group.groupDescription1
         holder.group_item_description2_tv.text = group.groupDescription2
 
     }
+    // 삭제 편집 버튼을 클릭하면 모든 그룹 아이템들의 삭제 아이콘이 뜨도록
+    fun toggleDeleteButtonVisibility() {
 
+    }
 }

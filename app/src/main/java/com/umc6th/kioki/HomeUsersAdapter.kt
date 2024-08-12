@@ -1,9 +1,9 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.umc6th.myapplication.databinding.UserItemBinding
+import com.umc6th.kioki.databinding.UserItemBinding
 
 class HomeUsersAdapter(private val userList : List<Group>) : RecyclerView.Adapter<HomeUsersAdapter.UserViewHolder>(){
     inner class UserViewHolder(private val binding: UserItemBinding): RecyclerView.ViewHolder(binding.root){

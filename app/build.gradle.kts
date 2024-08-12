@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.umc6th.myapplication"
+    namespace = "com.umc6th.kioki"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.umc6th.myapplication"
+        applicationId = "com.umc6th.kioki"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

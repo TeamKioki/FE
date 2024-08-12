@@ -1,4 +1,4 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.umc6th.myapplication.databinding.FragmentHomeBinding
-import com.umc6th.myapplication.databinding.FragmentHomeUsersBinding
+import com.umc6th.kioki.databinding.FragmentHomeUsersBinding
 
 class HomeUsersFragment : Fragment() {
     private lateinit var binding : FragmentHomeUsersBinding

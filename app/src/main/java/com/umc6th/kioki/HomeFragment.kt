@@ -1,13 +1,13 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.umc6th.kioki.HomeGroupFragment
-import com.umc6th.myapplication.databinding.FragmentHomeBinding
+import com.umc6th.kioki.databinding.FragmentHomeBinding
 
 class HomeFragment:Fragment() {
     private lateinit var binding : FragmentHomeBinding // 뷰 바인딩
@@ -26,10 +26,10 @@ class HomeFragment:Fragment() {
 
         // '자세히 보기' 누르면 HomeGroupfragment로 넘어가도록 설정
         binding.homeMoreBtnTv.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, HomeGroupFragment())
-                .addToBackStack(null) // 뒤로 가기 시 이전 프래그먼트로 돌아오기 위해 백스택에 추가
-                .commit()
+//            val intent = Intent(this, )
+//            startActivity(intent)
+
+
         }
 
         return binding.root
