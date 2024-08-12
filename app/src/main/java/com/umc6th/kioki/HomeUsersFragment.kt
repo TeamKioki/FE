@@ -11,7 +11,7 @@ import com.umc6th.myapplication.databinding.FragmentHomeUsersBinding
 
 class HomeUsersFragment : Fragment() {
     private lateinit var binding : FragmentHomeUsersBinding
-    private lateinit var users: List<User>
+    private lateinit var groups: List<Group>
 
 
     override fun onCreateView(
@@ -30,9 +30,9 @@ class HomeUsersFragment : Fragment() {
         recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         choice?.let {
             when(choice){
-                0 -> recyclerview.adapter = HomeUsersAdapter(UserLists.users)
-                1 -> recyclerview.adapter = HomeUsersAdapter(UserLists.users)
-                else -> recyclerview.adapter = HomeUsersAdapter(UserLists.users)
+                0 -> recyclerview.adapter = HomeUsersAdapter(GroupLists.groups)
+                1 -> recyclerview.adapter = HomeUsersAdapter(GroupLists.groups)
+                else -> recyclerview.adapter = HomeUsersAdapter(GroupLists.groups)
 
 
             }

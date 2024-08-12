@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="UserName"
+                android:text="키오키"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="UserTel" />
+                android:text="010-1234-1234" />
         </LinearLayout>
 
         <ImageView
