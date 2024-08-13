@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class GroupListAdapter(var groupList: List<Group>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GroupListAdapter(
+    var groupList: List<Group>,
+    private val listener: OnItemClickListener
+    ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     var showDeleteButton: Boolean = false
 
     companion object { // 아이템 추가 버튼을 추가하기 위해 나눔
@@ -42,6 +46,15 @@ class GroupListAdapter(var groupList: List<Group>): RecyclerView.Adapter<Recycle
         val group_item_description1_tv: TextView = itemView.findViewById(R.id.group_item_description1_tv)
         val group_item_description2_tv: TextView = itemView.findViewById(R.id.group_item_description2_tv)
         val group_item_delete_btn_iv: ImageView = itemView.findViewById(R.id.group_item_delete_btn_iv)
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(groupList[position])
+                }
+            }
+        }
     }
 
     inner class AddButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

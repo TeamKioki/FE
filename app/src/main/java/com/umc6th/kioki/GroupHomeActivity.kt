@@ -3,11 +3,12 @@ package com.umc6th.kioki
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umc6th.kioki.databinding.ActivityGroupHomeBinding
 
 
-class GroupHomeActivity: Activity() {
+class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
     private lateinit var binding: ActivityGroupHomeBinding
     private lateinit var groupList: List<Group>
     private lateinit var groupListAdapter: GroupListAdapter
@@ -24,7 +25,7 @@ class GroupHomeActivity: Activity() {
 
         // rv에 어댑터 연결
         groupList = GroupLists.groups
-        groupListAdapter = GroupListAdapter(groupList)
+        groupListAdapter = GroupListAdapter(groupList, this)
         rv.adapter = groupListAdapter
 
         // DiffUtil 적용 후 데이터 추가
@@ -35,5 +36,13 @@ class GroupHomeActivity: Activity() {
             groupListAdapter.toggleDeleteButtonVisibility()
         }
     }
+
+    // 아이템 클릭시
+    override fun onItemClick(group: Group) {
+        val dialog = GroupHomeEditFragmentDialog().show(
+            supportFragmentManager, "GroupHomeEditFragmentDialog"
+        )
+    }
+
 
 }
