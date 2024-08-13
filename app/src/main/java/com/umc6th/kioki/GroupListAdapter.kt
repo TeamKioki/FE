@@ -110,9 +110,7 @@ class GroupListAdapter(
     }
     // 추가 버튼
     private fun addItem() {
-        val mutableList = differ.currentList.toMutableList()
-//        mutableList.add(Group(groupImg = R.drawable.ic_new_group, groupName = "New Group"))
-//        differ.submitList(mutableList)
+        listener.onAddButtonClick()
     }
     // 아이템 삭제 메서드
     private fun removeItem(position: Int) {

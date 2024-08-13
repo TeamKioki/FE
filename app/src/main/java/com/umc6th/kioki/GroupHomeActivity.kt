@@ -1,6 +1,7 @@
 package com.umc6th.kioki
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +43,12 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         val dialog = GroupHomeEditFragmentDialog().show(
             supportFragmentManager, "GroupHomeEditFragmentDialog"
         )
+    }
+
+    override fun onAddButtonClick() {
+        val intent = Intent(this, GroupHomeMoreActivity::class.java)
+        startActivity(intent)
+
     }
 
 
