@@ -275,6 +275,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/authButton"
             android:layout_width="77dp"
             android:layout_height="25dp"
             android:background="@drawable/round_button_primary_color"
