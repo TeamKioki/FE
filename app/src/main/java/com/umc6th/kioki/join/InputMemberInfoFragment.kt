@@ -11,13 +11,20 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.umc6th.myapplication.R
 import com.umc6th.myapplication.databinding.FragmentInputMemberInfoBinding
+import kotlinx.coroutines.launch
 
 class InputMemberInfoFragment : Fragment() {
     private lateinit var binding: FragmentInputMemberInfoBinding
+    private val viewModel: JoinViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,20 +52,38 @@ class InputMemberInfoFragment : Fragment() {
                 when (item.itemId) {
                     R.id.skt -> {
                         binding.selectedTelecom.text = "SKT"
-                        binding.selectedTelecom.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        binding.selectedTelecom.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.black
+                            )
+                        )
                         true
                     }
+
                     R.id.kt -> {
-                        binding.selectedTelecom.text  = "KT"
-                        binding.selectedTelecom.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        binding.selectedTelecom.text = "KT"
+                        binding.selectedTelecom.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.black
+                            )
+                        )
 
                         true
                     }
+
                     R.id.lg_uplus -> {
-                        binding.selectedTelecom.text  = "LG U+"
-                        binding.selectedTelecom.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        binding.selectedTelecom.text = "LG U+"
+                        binding.selectedTelecom.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.black
+                            )
+                        )
                         true
                     }
+
                     else -> false
                 }
             }
@@ -66,8 +91,37 @@ class InputMemberInfoFragment : Fragment() {
             popupMenu.show()
         }
 
+        binding.authButton.setOnClickListener {
+            viewModel.requestAuthCode(binding.inputPhoneNumber.text.toString())
+        }
+
+        binding.inputAuthCode.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s.toString().length == 8) {
+                    viewModel.verifyAuthCode(binding.inputPhoneNumber.text.toString(), s.toString())
+                }
+            }
+        })
+
         binding.nextButton.setOnClickListener {
+            if (!validateInput()) {
+                return@setOnClickListener
+            }
+
+//            if (viewModel.isAuthCodeVerified.value != VerifyAuthCodeResult.Success) {
+//                Toast.makeText(requireContext(), "인증번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
+
+//            if (validateInput() && viewModel.isAuthCodeVerified.value == VerifyAuthCodeResult.Success) {
             if (validateInput()) {
+                viewModel.setUserInfo(
+                    binding.inputName.text.toString(),
+                    binding.inputBirthDay.text.toString(),
+                    binding.inputPhoneNumber.text.toString()
+                )
                 findNavController().navigate(R.id.action_inputMemberInfoFragment_to_selectProfileImageFragment)
             }
         }

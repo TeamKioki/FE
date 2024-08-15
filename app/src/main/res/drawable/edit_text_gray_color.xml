@@ -1,0 +1,10 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Bottom Line -->
+    <item android:bottom="2dp"> <!-- Adjust the distance between the text and underline -->
+        <shape
+            android:shape="rectangle">
+            <solid
+                android:color="#FFF6F6F6"/> <!-- Default underline color -->
+        </shape>
+    </item>
+</layer-list>
