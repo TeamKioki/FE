@@ -10,8 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.umc6th.kioki.join.JoinActivity
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.ActivityLoginBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

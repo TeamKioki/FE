@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.join.KioskIssue
-import com.umc6th.myapplication.databinding.KioskIssueRowItemBinding
+import com.umc6th.kioki.databinding.KioskIssueRowItemBinding
 
 class KioskIssueAdapter(private val onIssueClick: (KioskIssue) -> Unit) :
     ListAdapter<KioskIssue, KioskIssueAdapter.KioskIssueViewHolder>(DiffUtilCallback()) {

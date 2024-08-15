@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.FragmentSelectProfileImageBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.FragmentSelectProfileImageBinding
 
 class SelectProfileImageFragment : Fragment() {
 

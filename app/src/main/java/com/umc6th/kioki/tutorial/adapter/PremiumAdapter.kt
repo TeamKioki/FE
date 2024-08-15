@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.tutorial.MenuItem
-import com.umc6th.myapplication.databinding.KioskIssueRowItemBinding
-import com.umc6th.myapplication.databinding.PremiumRowItemBinding
+import com.umc6th.kioki.databinding.KioskIssueRowItemBinding
+import com.umc6th.kioki.databinding.PremiumRowItemBinding
 
 class PremiumAdapter(private val onClickListener: (MenuItem) -> Unit) : RecyclerView.Adapter<PremiumAdapter.ViewHolder>() {
 

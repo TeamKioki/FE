@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class GroupMoreRvAdapter (
-    var groupList: List<GroupMembersResult>,
+class GroupMoreRvAdapter(
+    var groupList: MutableList<MemberEntity>,
     private val listener: OnItemClickListener
     ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

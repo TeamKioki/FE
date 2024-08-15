@@ -32,6 +32,3 @@ data class GroupMembersProfilePicture (
     @SerializedName("color") val color:String,
     @SerializedName("fontSize") val fontSize: String
 )
-
-
-

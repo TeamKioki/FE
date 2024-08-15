@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import com.umc6th.kioki.MainActivity
 import com.umc6th.kioki.join.JoinActivity
 import com.umc6th.kioki.login.LoginActivity
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.FragmentLastBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.FragmentLastBinding
 
 class LastFragment : Fragment() {
     private lateinit var binding: FragmentLastBinding

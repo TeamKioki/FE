@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.join.PermissionItem
-import com.umc6th.myapplication.databinding.PermissionRowItemBinding
+import com.umc6th.kioki.databinding.PermissionRowItemBinding
 
 class PermissionAdapter :  RecyclerView.Adapter<PermissionAdapter.ViewHolder>() {
     private val permissionItems = mutableListOf<PermissionItem>()

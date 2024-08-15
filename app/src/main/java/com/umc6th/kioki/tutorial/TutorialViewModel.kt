@@ -3,7 +3,7 @@ package com.umc6th.kioki.tutorial
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.umc6th.myapplication.R
+import com.umc6th.kioki.R
 
 class TutorialViewModel : ViewModel() {
     private val sideMenuItems = listOf(

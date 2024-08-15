@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umc6th.kioki.join.adapter.PermissionAdapter
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.FragmentRequirePermissionBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.FragmentRequirePermissionBinding
 
 class RequirePermissionFragment : Fragment() {
 

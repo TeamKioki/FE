@@ -15,8 +15,8 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.umc6th.kioki.join.adapter.KioskIssueAdapter
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.FragmentSelectKioskIssueBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.FragmentSelectKioskIssueBinding
 import kotlinx.coroutines.launch
 
 class SelectKioskIssueFragment : Fragment() {
