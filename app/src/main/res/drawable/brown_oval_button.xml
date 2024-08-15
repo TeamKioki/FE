@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFB9AF9B"/> <!-- 버튼 배경색 (빨간색) -->
+    <corners android:radius="999dp"/> <!-- 타원형 모서리 반경 -->
+</shape>

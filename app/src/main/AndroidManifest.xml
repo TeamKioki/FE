@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.umc6th.kioki">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,15 +16,29 @@
         android:theme="@style/Theme.Kioki"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.umc6th.kioki.tutorial.tabMenus.dialog.SelectDrinkDialogActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.umc6th.kioki.onboarding.OnboardingActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
+            android:name="com.umc6th.kioki.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.umc6th.kioki.MainActivity"
+            android:exported="true" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        <activity
+            android:name="com.umc6th.kioki.join.JoinActivity"
+            android:exported="true">
+        </activity>
+        <activity
+                 
             android:name=".GroupHomeActivity"
             android:exported="true">
 
@@ -32,7 +48,6 @@
             android:exported="true">
 
         </activity>
-
     </application>
 
 </manifest>
