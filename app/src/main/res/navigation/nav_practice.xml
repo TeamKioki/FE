@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_practice"
+    app:startDestination="@id/menuSelectFragment">
+
+    <fragment
+        android:id="@+id/menuSelectFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.MenuSelectFragment"
+        android:label="fragment_menu_select"
+        tools:layout="@layout/fragment_menu_select" />
+</navigation>
