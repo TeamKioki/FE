@@ -4,4 +4,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lightgray">#F6F6F6</color>
+    <color name="red">#FFFF0000</color>
+    <color name="hint">#FFE0E0E0</color>
+    <color name="gray800">#FF808080</color>
+    <color name="tab_color">#FF2F0904</color>
+    <color name="tab_selected_color">#FFF40000</color>
 </resources>

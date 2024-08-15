@@ -12,8 +12,8 @@ import com.umc6th.kioki.tutorial.MenuItem
 import com.umc6th.kioki.tutorial.TutorialViewModel
 import com.umc6th.kioki.tutorial.adapter.PremiumAdapter
 import com.umc6th.kioki.tutorial.tabMenus.dialog.SelectOptionDialog
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.FragmentPremiumBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.FragmentPremiumBinding
 
 class PremiumFragment : Fragment() {
     private lateinit var binding: FragmentPremiumBinding

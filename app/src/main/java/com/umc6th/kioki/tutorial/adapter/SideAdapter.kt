@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.tutorial.SideMenu
-import com.umc6th.myapplication.databinding.SideRowItemBinding
+import com.umc6th.kioki.databinding.SideRowItemBinding
 
 class SideAdapter(private val onClickListener: (Int) -> Unit) : RecyclerView.Adapter<SideAdapter.ViewHolder>() {
 

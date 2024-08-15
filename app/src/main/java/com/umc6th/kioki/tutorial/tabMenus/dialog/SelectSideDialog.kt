@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.umc6th.kioki.tutorial.TutorialViewModel
 import com.umc6th.kioki.tutorial.adapter.SideAdapter
 import com.umc6th.kioki.utils.dialogFragmentResize
-import com.umc6th.myapplication.databinding.FragmentSelectSideDialogBinding
+import com.umc6th.kioki.databinding.FragmentSelectSideDialogBinding
 
 class SelectSideDialog : DialogFragment() {
     private lateinit var binding: FragmentSelectSideDialogBinding
@@ -46,7 +46,7 @@ class SelectSideDialog : DialogFragment() {
             dismiss()
         }
         binding.completeButton.setOnClickListener {
-            SelectDrinkDialog().show(parentFragmentManager, "SelectDrinkDialog")
+            SelectSideDialog().show(parentFragmentManager, "SelectDrinkDialog")
             dismiss()
         }
         binding.sideRv.apply {

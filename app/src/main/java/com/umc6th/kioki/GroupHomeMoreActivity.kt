@@ -35,16 +35,16 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnItemClickListener {
 
     }
 
-    override fun onItemClick(member: GroupMembersResult) {
+    override fun onItemClick(member: MemberEntity) {
 //        val dialog = GroupHomeMoreAddFragmentDialog().show(
 //            supportFragmentManager, "GroupHomeMoreAddFragmentDialog"
 //        )
         val dialog = GroupHomeMoreAddFragmentDialog()
         var bundle = Bundle() // 다이얼로그에 전달할 Bundle 생성
-        bundle.putInt("MemberImg", member.memberImg!!)
-        bundle.putString("MemberName", member.memberName)
-        bundle.putString("MemberNoteTitle", member.memberNoteTitle)
-        bundle.putString("MemberNoteText", member.memberNoteText)
+        //bundle.putInt("MemberImg", member.memberId!!)
+//        bundle.putString("MemberName", member.nickname)
+//        bundle.putString("MemberNoteTitle", member.noteTitle)
+//        bundle.putString("MemberNoteText", member.noteText)
         dialog.arguments = bundle
         dialog.show(supportFragmentManager, "GroupHomeMoreAddFragmentDialog")
 

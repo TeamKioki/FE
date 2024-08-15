@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.FragmentPermissionBottomSheetBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.FragmentPermissionBottomSheetBinding
 
 class PermissionBottomSheet : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentPermissionBottomSheetBinding
