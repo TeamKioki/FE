@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.umc6th.kioki.tutorial.MenuOption
 import com.umc6th.kioki.tutorial.TutorialViewModel
 import com.umc6th.kioki.utils.dialogFragmentResize
-import com.umc6th.myapplication.databinding.FragmentSelectOptionDialogBinding
+import com.umc6th.kioki.databinding.FragmentSelectOptionDialogBinding
 
 class SelectOptionDialog : DialogFragment() {
     private val viewModel: TutorialViewModel by activityViewModels()

@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 //            .replace(R.id.frame_layout, homeFragment)
 //            .commit()
 //    }
+
     private fun setStartActivity() {
         // ViewPager2에 어댑터 설정
         binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this)
@@ -62,10 +63,8 @@ class MainActivity : AppCompatActivity() {
             Log.d("클릭", "자세히 보기 클릭")
 
         }
-
-
-
     }
+
     private fun setExpandableList() {
         val parentList = mutableListOf("공지사항", "계정관리", "문의하기", "고객센터") // 부모 리스트
         val childList = mutableListOf(

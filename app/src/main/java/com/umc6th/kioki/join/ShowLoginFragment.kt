@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.umc6th.myapplication.R
+import com.umc6th.kioki.R
 
 class ShowLoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {

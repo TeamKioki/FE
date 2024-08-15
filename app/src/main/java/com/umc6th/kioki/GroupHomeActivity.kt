@@ -75,15 +75,14 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
     }
 
     // 아이템 클릭시
-    override fun onItemClick(member: GroupMembersResult) {
+    override fun onItemClick(member: MemberEntity) {
         val dialog = GroupHomeEditFragmentDialog()
         var bundle = Bundle() // 다이얼로그에 전달할 Bundle 생성
-        bundle.putString("MemberName", member.nickname)
-        bundle.putString("MemberNoteTitle", member.noteTitle)
-        bundle.putString("MemberNoteText", member.noteText)
+//        bundle.putString("MemberName", member.nickname)
+//        bundle.putString("MemberNoteTitle", member.noteTitle)
+//        bundle.putString("MemberNoteText", member.noteText)
         dialog.arguments = bundle
         dialog.show(supportFragmentManager, "GroupHomeEditFragmentDialog")
-
     }
 
     // 그룹추가 버튼 클릭 시 GroupHomeMoreActivity로 넘어가는 이벤트
@@ -92,6 +91,4 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         startActivity(intent)
 
     }
-
-
 }

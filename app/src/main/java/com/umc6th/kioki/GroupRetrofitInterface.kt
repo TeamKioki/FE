@@ -9,5 +9,6 @@ interface GroupRetrofitInterface {
     @GET("/groups/members")
     fun getMembers() : Call<GroupMembersResponse>
 
+    @GET("/groups/members/paged")
 
 }

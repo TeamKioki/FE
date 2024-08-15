@@ -49,7 +49,7 @@ class GroupRvAdapter(
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    listener.onItemClick(differ.currentList[position])
+                    //listener.onItemClick(differ.currentList[position])
                 }
             }
         }

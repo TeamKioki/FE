@@ -7,8 +7,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.umc6th.kioki.onboarding.adapter.OnboardingAdapter
-import com.umc6th.myapplication.R
-import com.umc6th.myapplication.databinding.ActivityOnboardingBinding
+import com.umc6th.kioki.R
+import com.umc6th.kioki.databinding.ActivityOnboardingBinding
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
