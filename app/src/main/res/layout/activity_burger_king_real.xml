@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="409dp"
-            android:layout_height="130dp"
+            android:layout_height="122dp"
             android:scaleType="centerCrop"
             android:src="@drawable/burgerkingback"
             app:layout_constraintEnd_toEndOf="parent"
