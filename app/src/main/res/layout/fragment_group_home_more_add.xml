@@ -8,17 +8,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="330dp"
-        android:layout_height="414dp"
+        android:layout_height="350dp"
         android:background="@color/white"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="20dp">
 
         <ImageView
-            android:id="@+id/edit_cancel_iv"
+            android:id="@+id/more_add_cancel_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_cancel" />
@@ -33,6 +31,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/more_add_member_img_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_add_img"
@@ -44,49 +43,47 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/edit_group_name_txt_tv"
+                    android:id="@+id/edit_member_name_txt_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="이름"
-                    android:textStyle="bold" />
-
-
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
-                    android:id="@+id/edit_text_size_txt_tv"
+                    android:id="@+id/more_add_member_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="GroupName"
-                    android:textStyle="bold" />
-
-
+                    android:text="MemberName"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
 
             </LinearLayout>
-
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
-            android:background="#FFF1E9"
+            android:background="@drawable/shape_main_rounded_corner_apricot"
             android:gravity="center_vertical"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <EditText
-                android:id="@+id/edit_input_title_et"
+                android:id="@+id/more_add_input_title_et"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="@android:color/transparent"
                 android:backgroundTint="@null"
-                android:hint="제목을 입력하세요" />
+                android:hint="제목을 입력하세요"
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
@@ -94,27 +91,29 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="87dp"
-            android:layout_marginTop="24dp"
-            android:background="#FFF1E9"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_main_rounded_corner_apricot"
+            android:paddingLeft="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <EditText
-                android:id="@+id/edit_input_content_et"
+                android:id="@+id/more_add_input_content_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@android:color/transparent"
                 android:backgroundTint="@null"
-                android:hint="내용을 입력하세요" />
+                android:hint="내용을 입력하세요"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/edit_add_btn"
+            android:id="@+id/more_add_group_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_group_edit_rounded_orange"
@@ -124,7 +123,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

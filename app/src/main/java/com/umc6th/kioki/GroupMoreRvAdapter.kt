@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class GroupMoreListAdapter (
-        var groupList: List<Group>,
-        private val listener: OnItemClickListener
+class GroupMoreRvAdapter (
+    var groupList: List<GroupMembersResult>,
+    private val listener: OnItemClickListener
     ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,14 +32,14 @@ class GroupMoreListAdapter (
         }
 
     // 추가
-    private val differCallback = object : DiffUtil.ItemCallback<Group>() {
-        override fun areItemsTheSame(oldItem: Group, newItem: Group): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<MemberEntity>() {
+        override fun areItemsTheSame(oldItem: MemberEntity, newItem: MemberEntity): Boolean {
             // User의 id를 비교해서 같으면 areContentsTheSame으로 이동(id 대신 data 클래스에 식별할 수 있는 변수 사용)
             //return oldItem.id == newItem.id
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Group, newItem: Group): Boolean {
+        override fun areContentsTheSame(oldItem: MemberEntity, newItem: MemberEntity): Boolean {
             // User의 내용을 비교해서 같으면 true -> UI 변경 없음
             // User의 내용을 비교해서 다르면 false -> UI 변경
             return oldItem == newItem
@@ -57,13 +57,13 @@ class GroupMoreListAdapter (
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            val group: Group = differ.currentList[position]
+            val member: MemberEntity = differ.currentList[position]
 
             if (holder is ViewHolder) {
-                holder.group_more_item_img_iv.setImageResource(group.groupImg!!)
-                holder.group_more_item_name_tv.text = group.groupName
-                holder.group_more_item_description1_tv.text = group.groupDescription1
-                holder.group_more_item_description2_tv.text = group.groupDescription2
+                holder.group_more_item_img_iv.setImageResource(member.memberImg!!)
+                holder.group_more_item_name_tv.text = member.memberName
+                holder.group_more_item_description1_tv.text = member.memberNoteTitle
+                holder.group_more_item_description2_tv.text = member.memberNoteText
             }
         }
 

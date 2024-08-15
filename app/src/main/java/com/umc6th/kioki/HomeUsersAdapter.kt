@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.databinding.UserItemBinding
 
-class HomeUsersAdapter(private val userList : List<Group>) : RecyclerView.Adapter<HomeUsersAdapter.UserViewHolder>(){
+class HomeUsersAdapter(private val userList : List<MemberEntity>) : RecyclerView.Adapter<HomeUsersAdapter.UserViewHolder>(){
     inner class UserViewHolder(private val binding: UserItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(user: Group){
-            user.groupImg?.let { binding.userImgIv.setImageResource(it) }
-            binding.userNameTv.text = user.groupName
-            binding.userDescriptionTv.text = user.groupDescription1
+        fun bind(user: MemberEntity){
+            user.memberImg?.let { binding.userImgIv.setImageResource(it) }
+            binding.userNameTv.text = user.memberName
+            binding.userDescriptionTv.text = user.memberNoteTitle
         }
     }
 

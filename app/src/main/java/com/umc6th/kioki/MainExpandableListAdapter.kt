@@ -1,10 +1,12 @@
 package com.umc6th.kioki
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
+import android.widget.ImageView
 import android.widget.TextView
 
 class MainExpandableListAdapter (
@@ -36,10 +38,21 @@ class MainExpandableListAdapter (
         parentview: ViewGroup
     ): View {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val parentView = inflater.inflate(R.layout.menu_parent_main, parentview, false)
-        parentView.findViewById<TextView>(R.id.main_nav_list_title_tv).text = parents[parent]
+        val parentView = convertView ?: inflater.inflate(R.layout.menu_parent_main, parentview, false)
+        val parentText = parentView.findViewById<TextView>(R.id.main_nav_list_title_tv)
+        parentText.text = parents[parent]
 
 //        setArrow(parent, parentView, isExpanded)
+        for(i in 0..3) {
+            Log.d("자식확인", getGroupId(i).toString())
+            if(getGroupId(i).toInt() == 2) {
+                parentview.findViewById<ImageView>(R.id.main_nav_drop_down_iv)?.visibility = View.VISIBLE
+            }
+        }
+
+
+
+        // 자식이 있는 부모 메뉴만 옆에 드롭다운 이미지가 보이도록 설정
 
         return parentView
     }

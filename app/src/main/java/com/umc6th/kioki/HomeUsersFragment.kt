@@ -10,7 +10,7 @@ import com.umc6th.kioki.databinding.FragmentHomeUsersBinding
 
 class HomeUsersFragment : Fragment() {
     private lateinit var binding : FragmentHomeUsersBinding
-    private lateinit var groups: List<Group>
+    private lateinit var groups: List<MemberEntity>
 
 
     override fun onCreateView(
@@ -29,10 +29,9 @@ class HomeUsersFragment : Fragment() {
         recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         choice?.let {
             when(choice){
-                0 -> recyclerview.adapter = HomeUsersAdapter(GroupLists.groups)
-                1 -> recyclerview.adapter = HomeUsersAdapter(GroupLists.groups)
-                else -> recyclerview.adapter = HomeUsersAdapter(GroupLists.groups)
-
+                0 -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
+                1 -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
+                else -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
 
             }
         }

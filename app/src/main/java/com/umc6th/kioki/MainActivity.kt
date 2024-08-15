@@ -8,6 +8,7 @@ import android.widget.ExpandableListView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.umc6th.kioki.databinding.ActivityMainBinding
@@ -33,7 +34,11 @@ class MainActivity : AppCompatActivity() {
         }
         //setStartFragment()
         setStartActivity()
-        setExpandableList() // drawerMenu 생성
+
+        binding.mainDrawerBtnIb.setOnClickListener {
+            setExpandableList() // drawerMenu 생성
+            binding.mainDrawerLayout.openDrawer(GravityCompat.END) // 드로어 열기
+        }
 
     }
     // 처음 시작하는 프래그먼트 설정하는 함수
@@ -70,7 +75,9 @@ class MainActivity : AppCompatActivity() {
             mutableListOf()
         )
         val expandableAdapter = MainExpandableListAdapter(this, parentList, childList)
-        findViewById<ExpandableListView>(R.id.main_menu_el).setAdapter(expandableAdapter)
+        val expandableList = findViewById<ExpandableListView>(R.id.main_menu_el)
+        expandableList.setAdapter(expandableAdapter)
+
 
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnGroupClickListener { parent, v, groupPosition, id ->
             /* todo : parent 클릭 이벤트 설정 */

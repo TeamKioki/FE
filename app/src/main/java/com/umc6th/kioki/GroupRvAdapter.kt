@@ -1,6 +1,5 @@
 package com.umc6th.kioki
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-class GroupListAdapter(
-    var groupList: List<Group>,
+class GroupRvAdapter(
+    var groupList: MutableList<MemberEntity>,
     private val listener: OnItemClickListener
     ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -23,20 +22,19 @@ class GroupListAdapter(
         private const val TYPE_ADD_BUTTON = 1
     }
 
-    // 추가
-    private val differCallback = object : DiffUtil.ItemCallback<Group>() {
-        override fun areItemsTheSame(oldItem: Group, newItem: Group): Boolean {
-            // User의 id를 비교해서 같으면 areContentsTheSame으로 이동(id 대신 data 클래스에 식별할 수 있는 변수 사용)
-            //return oldItem.id == newItem.id
-            return oldItem == newItem
+    // DiffUtil을 위한 콜백
+    private val differCallback = object : DiffUtil.ItemCallback<GroupMembersResult>() {
+        override fun areItemsTheSame(oldItem: GroupMembersResult, newItem: GroupMembersResult): Boolean {
+            // GroupMembersResult의 식별자를 비교
+            return oldItem.memberId == newItem.memberId
         }
 
-        override fun areContentsTheSame(oldItem: Group, newItem: Group): Boolean {
-            // User의 내용을 비교해서 같으면 true -> UI 변경 없음
-            // User의 내용을 비교해서 다르면 false -> UI 변경
+        override fun areContentsTheSame(oldItem: GroupMembersResult, newItem: GroupMembersResult): Boolean {
+            // GroupMembersResult의 내용을 비교
             return oldItem == newItem
         }
     }
+
     val differ = AsyncListDiffer(this, differCallback)
 
     // 각 xml 파일의 id 연결!!
@@ -51,7 +49,7 @@ class GroupListAdapter(
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    listener.onItemClick(groupList[position])
+                    listener.onItemClick(differ.currentList[position])
                 }
             }
         }
@@ -83,11 +81,11 @@ class GroupListAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         // val group: Group = groupList[position]
         if (holder is ViewHolder) {
-            val group: Group = differ.currentList[position]
-            holder.group_item_img_iv.setImageResource(group.groupImg!!)
-            holder.group_item_name_tv.text = group.groupName
-            holder.group_item_description1_tv.text = group.groupDescription1
-            holder.group_item_description2_tv.text = group.groupDescription2
+            val member: GroupMembersResult = differ.currentList[position]
+            //holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
+            holder.group_item_name_tv.text = member.nickname
+            holder.group_item_description1_tv.text = member.noteTitle
+            holder.group_item_description2_tv.text = member.noteText
 
             holder.group_item_delete_btn_iv.setImageResource(R.drawable.ic_group_subtract)
 
@@ -104,12 +102,12 @@ class GroupListAdapter(
             holder.add_button_iv.setImageResource(R.drawable.ic_group_plus)
 
             holder.add_button_iv.setOnClickListener {
-                addItem()
+                clickAddButton()
             }
         }
     }
-    // 추가 버튼
-    private fun addItem() {
+    // 추가 버튼 이벤트 -> 눌렀다고 신호 전달만
+    private fun clickAddButton() {
         listener.onAddButtonClick()
     }
     // 아이템 삭제 메서드
