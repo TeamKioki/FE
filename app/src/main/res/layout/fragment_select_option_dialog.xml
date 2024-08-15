@@ -1,0 +1,270 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FCF4E6"
+        tools:context="com.umc6th.kioki.tutorial.tabMenus.dialog.SelectOptionDialog">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/bmjua"
+            android:gravity="center"
+            android:text="원하시는 구성을 선택해주세요"
+            android:textColor="@color/tab_color"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/close"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/optionindicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="35dp"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/largeCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/checkbox_background"
+                        android:button="@null"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/largeTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="몬스터와퍼 라지세트"
+                        android:textColor="@color/tab_color"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/largeCheckBox"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/largeCheckBox"
+                        app:layout_constraintTop_toTopOf="@+id/largeCheckBox" />
+
+                    <TextView
+                        android:id="@+id/largeDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="세트메뉴"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="@+id/largeTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/largeTitle" />
+
+                    <TextView
+                        android:id="@+id/largePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="9,300원"
+                        android:textColor="@color/tab_selected_color"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="@+id/largeDescription"
+                        app:layout_constraintTop_toBottomOf="@+id/largeDescription" />
+
+                    <ImageView
+                        android:id="@+id/largeImage"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintBottom_toTopOf="@+id/largePrice"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/largeTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="42dp">
+
+                    <CheckBox
+                        android:id="@+id/normalCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/checkbox_background"
+                        android:button="@null"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/normalTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="몬스터와퍼 라지세트"
+                        android:textColor="@color/tab_color"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/normalCheckBox"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/normalCheckBox"
+                        app:layout_constraintTop_toTopOf="@+id/normalCheckBox" />
+
+                    <TextView
+                        android:id="@+id/normalDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="세트메뉴"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="@+id/normalTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/normalTitle" />
+
+                    <TextView
+                        android:id="@+id/normalPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="9,300원"
+                        android:textColor="@color/tab_selected_color"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="@+id/normalDescription"
+                        app:layout_constraintTop_toBottomOf="@+id/normalDescription" />
+
+                    <ImageView
+                        android:id="@+id/normalImage"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintBottom_toTopOf="@+id/normalPrice"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/normalTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="42dp">
+
+                    <CheckBox
+                        android:id="@+id/singleCheckBox"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/checkbox_background"
+                        android:button="@null"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/singleTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="몬스터와퍼 라지세트"
+                        android:textColor="@color/tab_color"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/singleCheckBox"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/singleCheckBox"
+                        app:layout_constraintTop_toTopOf="@+id/singleCheckBox" />
+
+                    <TextView
+                        android:id="@+id/singleDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="세트메뉴"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="@+id/singleTitle"
+                        app:layout_constraintTop_toBottomOf="@+id/singleTitle" />
+
+                    <TextView
+                        android:id="@+id/singlePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/bmjua"
+                        android:text="9,300원"
+                        android:textColor="@color/tab_selected_color"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="@+id/singleDescription"
+                        app:layout_constraintTop_toBottomOf="@+id/singleDescription" />
+
+                    <ImageView
+                        android:id="@+id/singleImage"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintBottom_toTopOf="@+id/singlePrice"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/singleTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/confirmButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/red_oval_button"
+                    android:fontFamily="@font/bmjua"
+                    android:text="확인"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

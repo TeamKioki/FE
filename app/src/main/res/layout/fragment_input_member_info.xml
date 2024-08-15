@@ -304,7 +304,6 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="인증 번호 입력"
-                android:inputType="numberDecimal"
                 android:textColorHint="@color/hint"
                 android:textSize="14sp" />
 

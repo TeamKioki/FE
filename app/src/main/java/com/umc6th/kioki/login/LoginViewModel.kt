@@ -12,6 +12,7 @@ class LoginViewModel(private val loginRepository: LoginRepository = LoginReposit
     private val _loginState = MutableLiveData<Boolean>(false)
     val loginState = _loginState
 
+
     fun executeLogin(phone: String, code: String) {
         viewModelScope.launch {
             val response = loginRepository.login(phone, code)

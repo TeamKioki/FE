@@ -49,7 +49,7 @@ class RequirePermissionFragment : Fragment() {
         setPermissions()
 
         binding.nextButton.setOnClickListener {
-            findNavController().navigate(R.id.action_requirePermissionFragment_to_showLoginFragment)
+            PermissionBottomSheet().show(parentFragmentManager, "PermissionBottomSheet")
         }
     }
 

@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -98,14 +99,29 @@ class InputMemberInfoFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                if (s.toString().length == 6) {
+                if (s.toString().length == 8) {
                     viewModel.verifyAuthCode(binding.inputPhoneNumber.text.toString(), s.toString())
                 }
             }
         })
 
         binding.nextButton.setOnClickListener {
-            if (validateInput() && viewModel.isAuthCodeVerified.value == VerifyAuthCodeResult.Success) {
+            if (!validateInput()) {
+                return@setOnClickListener
+            }
+
+//            if (viewModel.isAuthCodeVerified.value != VerifyAuthCodeResult.Success) {
+//                Toast.makeText(requireContext(), "인증번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
+
+//            if (validateInput() && viewModel.isAuthCodeVerified.value == VerifyAuthCodeResult.Success) {
+            if (validateInput()) {
+                viewModel.setUserInfo(
+                    binding.inputName.text.toString(),
+                    binding.inputBirthDay.text.toString(),
+                    binding.inputPhoneNumber.text.toString()
+                )
                 findNavController().navigate(R.id.action_inputMemberInfoFragment_to_selectProfileImageFragment)
             }
         }
