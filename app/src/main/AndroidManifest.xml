@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Kioki"
         tools:targetApi="31">
         <activity
+            android:name=".login.InputLoginCodeActivity"
+            android:exported="false" />
+        <activity
             android:name=".tutorial.practice.finish.PracticeFinishActivity"
             android:exported="false" />
         <activity
@@ -23,14 +26,13 @@
             android:exported="false" />
         <activity
             android:name=".onboarding.OnboardingActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".login.LoginActivity"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
         <activity
-            android:name="com.umc6th.kioki.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,22 +40,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-        android:name=".join.JoinActivity"
-            android:exported="true">
-
-        </activity>
+            android:name=".join.JoinActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".GroupHomeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".GroupHomeMoreActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".tutorial.practice.BurgerKingTutorialActivity"
             android:excludeFromRecents="true"
@@ -63,8 +58,7 @@
             android:theme="@style/TransparentActivityTheme" />
         <activity
             android:name=".tutorial.BurgerKingRealActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
