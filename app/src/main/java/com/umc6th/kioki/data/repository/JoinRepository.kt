@@ -4,11 +4,11 @@ import com.umc6th.kioki.data.network.client.RetrofitClient
 import com.umc6th.kioki.data.network.request.ExecuteJoinRequest
 import com.umc6th.kioki.data.network.request.RequestVerifyCode
 import com.umc6th.kioki.data.network.request.VerifyAuthCodeRequest
-import com.umc6th.kioki.data.service.JoinService
+import com.umc6th.kioki.data.service.AuthService
 
 class JoinRepository(
 ) {
-    private val joinService = RetrofitClient.create(JoinService::class.java)
+    private val joinService = RetrofitClient.create(AuthService::class.java)
 
     suspend fun requestPhoneNumber(phoneNumber: String) =
         joinService.requestAuthCode(RequestVerifyCode(phoneNumber))
