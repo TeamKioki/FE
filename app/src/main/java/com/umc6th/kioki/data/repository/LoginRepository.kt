@@ -1,6 +1,6 @@
 package com.umc6th.kioki.data.repository
 
-import com.umc6th.kioki.data.client.RetrofitClient
+import com.umc6th.kioki.data.network.client.RetrofitClient
 import com.umc6th.kioki.data.service.LoginService
 
 class LoginRepository {

@@ -21,6 +21,7 @@ import com.umc6th.kioki.tutorial.tabMenus.SpecialPackFragment
 import com.umc6th.kioki.tutorial.tabMenus.WhopperFragment
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityBurgerKingRealBinding
+import com.umc6th.kioki.tutorial.practice.BurgerKingTutorialActivity
 
 class BurgerKingRealActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBurgerKingRealBinding
@@ -58,7 +59,9 @@ class BurgerKingRealActivity : AppCompatActivity() {
             val initialIndicator: View = initialTab.findViewById(R.id.tabIndicator)
             selectTab(0, initialTitle, initialIndicator)
         }
-        startActivity(Intent(this, BurgerKingTutorialActivity::class.java))
+
+        val isPracticeMode = intent.getBooleanExtra("isPracticeMode", false)
+        if (isPracticeMode) startActivity(Intent(this, BurgerKingTutorialActivity::class.java))
     }
 
     private fun setUpTabs() {

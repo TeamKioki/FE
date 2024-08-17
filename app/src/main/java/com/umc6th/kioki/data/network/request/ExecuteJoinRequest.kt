@@ -1,4 +1,4 @@
-package com.umc6th.kioki.data.request
+package com.umc6th.kioki.data.network.request
 
 data class VerifyAuthCodeRequest(
     val phone: String,

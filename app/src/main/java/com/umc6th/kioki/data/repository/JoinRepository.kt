@@ -1,9 +1,9 @@
 package com.umc6th.kioki.data.repository
 
-import com.umc6th.kioki.data.client.RetrofitClient
-import com.umc6th.kioki.data.request.ExecuteJoinRequest
-import com.umc6th.kioki.data.request.RequestVerifyCode
-import com.umc6th.kioki.data.request.VerifyAuthCodeRequest
+import com.umc6th.kioki.data.network.client.RetrofitClient
+import com.umc6th.kioki.data.network.request.ExecuteJoinRequest
+import com.umc6th.kioki.data.network.request.RequestVerifyCode
+import com.umc6th.kioki.data.network.request.VerifyAuthCodeRequest
 import com.umc6th.kioki.data.service.JoinService
 
 class JoinRepository(
