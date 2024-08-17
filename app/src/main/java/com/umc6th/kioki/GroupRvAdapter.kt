@@ -26,7 +26,8 @@ class GroupRvAdapter(
     private val differCallback = object : DiffUtil.ItemCallback<GroupMembersResult>() {
         override fun areItemsTheSame(oldItem: GroupMembersResult, newItem: GroupMembersResult): Boolean {
             // GroupMembersResult의 식별자를 비교
-            return oldItem.memberId == newItem.memberId
+            //return oldItem.memberId == newItem.memberId
+            return true
         }
 
         override fun areContentsTheSame(oldItem: GroupMembersResult, newItem: GroupMembersResult): Boolean {
@@ -83,9 +84,9 @@ class GroupRvAdapter(
         if (holder is ViewHolder) {
             val member: GroupMembersResult = differ.currentList[position]
             //holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
-            holder.group_item_name_tv.text = member.nickname
-            holder.group_item_description1_tv.text = member.noteTitle
-            holder.group_item_description2_tv.text = member.noteText
+//            holder.group_item_name_tv.text = member.nickname
+//            holder.group_item_description1_tv.text = member.noteTitle
+//            holder.group_item_description2_tv.text = member.noteText
 
             holder.group_item_delete_btn_iv.setImageResource(R.drawable.ic_group_subtract)
 

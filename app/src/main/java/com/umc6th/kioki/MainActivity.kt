@@ -11,14 +11,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import androidx.room.RoomDatabase
+import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.ActivityMainBinding
-
-
-import java.util.zip.Inflater
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var apiService: GroupRetrofitInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // 연결할 api 설정
+        apiService = RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
+
+        // 서버에서 제공받은 Access Token
+        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
+        // API 호출
+        fetchMembersPaged(accessToken, 1)  // 첫 번째 페이지를 가져오기
+
+
         //setStartFragment()
         setStartActivity()
 
@@ -41,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
     // 처음 시작하는 프래그먼트 설정하는 함수
 //    private fun setStartFragment() {
 //        val homeFragment = HomeFragment() // 홈 프래그먼트 생성
@@ -48,6 +64,23 @@ class MainActivity : AppCompatActivity() {
 //            .replace(R.id.frame_layout, homeFragment)
 //            .commit()
 //    }
+    private fun fetchMembersPaged(token: String, page: Int) {
+        apiService.getMembersPaged("Bearer $token", page).enqueue(object : Callback<GroupMembersPagedResponse> {
+            override fun onResponse(call: Call<GroupMembersPagedResponse>, response: Response<GroupMembersPagedResponse>) {
+                if (response.isSuccessful && response.code() == 200) {
+                    val result = response.body()
+                    Log.d("통신", "Response: $result")
+                    // 결과 처리
+                } else {
+                    Log.e("통신", "Response 실패: ${response.code()} - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<GroupMembersPagedResponse>, t: Throwable) {
+                Log.e("통신", "통신 실패: ${t.message}", t)
+            }
+        })
+    }
 
     private fun setStartActivity() {
         // ViewPager2에 어댑터 설정

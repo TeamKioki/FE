@@ -7,13 +7,18 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.ActivityGroupHomeBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
     private lateinit var binding: ActivityGroupHomeBinding
     private var groupList: MutableList<MemberEntity> = MemberLists.groups
     private lateinit var groupListAdapter: GroupRvAdapter
+    private lateinit var apiService: GroupRetrofitInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +26,13 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         binding = ActivityGroupHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.d("그룹홈", "onCreate called")
+        // 연결할 api 설정
+        apiService = RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
+
+        // 서버에서 제공받은 Access Token
+        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
+        // API 호출
+        //fetchMembers(accessToken)  // 멤버 목록 가져오기
 
         // 뒤로가기 버튼 이벤트
         val backBtn = binding.groupHeaderNavBackIv
@@ -71,6 +83,32 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
 
             }
 
+        })
+    }
+
+    // API
+    private fun fetchMembers(token: String) {
+        apiService.getMembers("Bearer $token").enqueue(object :
+            Callback<GroupMembersResponse> {
+            override fun onResponse(call: Call<GroupMembersResponse>, response: Response<GroupMembersResponse>) {
+                if (response.isSuccessful && response.code() == 200) {
+                    val result = response.body()
+                    Log.d("통신", "GroupMembers Response: $result")
+                    // 결과 처리
+                    if (result != null && result.result.isNotEmpty()) {
+                        // 데이터가 성공적으로 반환된 경우
+                        Log.d("멤버통신", "Members: ${result.result}")
+                    } else {
+                        Log.d("멤버통신", "Result is empty or null")
+                    }
+                } else {
+                    Log.e("통신", "GroupMembers Response 실패: ${response.code()} - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<GroupMembersResponse>, t: Throwable) {
+                Log.e("통신", "통신 실패: ${t.message}", t)
+            }
         })
     }
 
