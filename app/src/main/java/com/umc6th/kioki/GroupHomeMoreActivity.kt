@@ -71,6 +71,8 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnItemClickListener {
                         groupList.clear()
                         groupList.addAll(groupMembers.map { member ->
                             MemberEntity(
+                                memberId = member.memberId,
+                                userId = member.userId,
                                 memberImg = R.drawable.ic_home_user_character1,
                                 memberName = member.nickname,
                                 memberNoteTitle = member.noteTitle,
@@ -99,6 +101,8 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnItemClickListener {
 //        )
         val dialog = GroupHomeMoreAddFragmentDialog()
         var bundle = Bundle() // 다이얼로그에 전달할 Bundle 생성
+        bundle.putInt("MemberId", member.memberId!!)
+        bundle.putInt("UserId", member.userId!!)
         bundle.putInt("MemberImg", member.memberImg!!)
         bundle.putString("MemberName", member.memberName)
         bundle.putString("MemberNoteTitle", member.memberNoteTitle)

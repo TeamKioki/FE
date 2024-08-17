@@ -16,7 +16,7 @@ import retrofit2.Response
 
 class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
     private lateinit var binding: ActivityGroupHomeBinding
-    private var groupList: MutableList<MemberEntity> = MemberLists.groups
+    private lateinit var groupList: MutableList<MemberEntity>
     private lateinit var groupListAdapter: GroupRvAdapter
     private lateinit var apiService: GroupRetrofitInterface
 
@@ -40,6 +40,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
             finish()
         }
 
+        groupList = mutableListOf()
         // 리싸이클러뷰
         val rv = binding.groupRecyclerview
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -69,13 +70,13 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
             override fun afterTextChanged(p0: Editable?) {
                 var searchText:String = binding.groupSearchEt.text.toString()
                 // 필터링된 리스트 생성
-                val filteredList = if (searchText.isEmpty()) {
-                    MemberLists.groups // 아무것도 입력되지 않을 때는 모든 데이터를 사용
-                } else {
-                    MemberLists.groups.filter {
-                        it.memberName!!.contains(searchText, ignoreCase = true)
-                    }
-                }
+//                val filteredList = if (searchText.isEmpty()) {
+//                    MemberLists.groups // 아무것도 입력되지 않을 때는 모든 데이터를 사용
+//                } else {
+//                    MemberLists.groups.filter {
+//                        it.memberName!!.contains(searchText, ignoreCase = true)
+//                    }
+//                }
 
                 // 필터링된 결과를 어댑터에 전달
                 //groupListAdapter.differ.submitList(filteredList)
@@ -95,7 +96,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
                     val result = response.body()
                     Log.d("통신", "GroupMembers Response: $result")
                     // 결과 처리
-                    if (result != null && result.result.isNotEmpty()) {
+                    if (result != null) {
                         // 데이터가 성공적으로 반환된 경우
                         Log.d("멤버통신", "Members: ${result.result}")
                     } else {

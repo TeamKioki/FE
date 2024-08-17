@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "MemberTable")
 data class MemberEntity(
+    var memberId: Int? = null,
+    var userId: Int? = null,
     var memberImg: Int? = R.drawable.ic_home_user_character1,
     var memberName: String? = null,
     var memberNoteTitle: String? = null,

@@ -23,6 +23,6 @@ interface GroupRetrofitInterface {
     @POST("/groups/members")
     fun postMembers(
         @Header("Authorization") token: String,
-        @Body groupMember: GroupMember
-    ) : Call<GroupMembersResponse>
+        @Body userIdRequest: UserIdRequest
+    ) : Call<GroupMemberResponse>
 }

@@ -2,6 +2,10 @@ package com.umc6th.kioki
 
 import com.google.gson.annotations.SerializedName
 
+data class UserIdRequest(
+    val userId: Int
+)
+
 data class GroupMembersPagedResponse (
     @SerializedName("isSuccess") val isSuccess: Boolean,
     @SerializedName("code") val code: String,
@@ -14,6 +18,14 @@ data class GroupMembersResponse (
     @SerializedName("code") val code: String,
     @SerializedName("message") val message: String,
     @SerializedName("result") val result: List<GroupMember>
+)
+// 하나의 그룹만 추가하고 싶은 경우의 DTO
+data class GroupMemberResponse (
+    @SerializedName("isSuccess") val isSuccess: Boolean,
+    @SerializedName("code") val code: String,
+    @SerializedName("message") val message: String,
+    @SerializedName("result") val result: GroupMembersProfilePicture
+
 )
 
 data class GroupMembersResult (
@@ -35,10 +47,6 @@ data class GroupMember(
 )
 
 data class GroupMembersProfilePicture (
-    @SerializedName("isSuccess") val isSuccess: Boolean,
-    @SerializedName("code") val code: String,
-    @SerializedName("message") val message: String,
-    @SerializedName("result") val result: List<MemberEntity>,
     @SerializedName("memberId") val memberId: Int,
     @SerializedName("userId") val userId:Int,
     @SerializedName("nickname") val nickname: String,

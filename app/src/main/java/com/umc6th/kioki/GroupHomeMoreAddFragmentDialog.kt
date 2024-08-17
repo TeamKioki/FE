@@ -19,6 +19,8 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
     var memberName:String = ""
     var memberNoteTitle:String = ""
     var memberNoteText:String = ""
+    var memberId : Int = 0
+    var userId : Int = 0
     private lateinit var apiService: GroupRetrofitInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +46,8 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
 
         // activity에서 전달해준 bundle 값 받기
         var bundle = arguments
+        memberId = bundle!!.getInt("MemberId")
+        userId = bundle!!.getInt("UserId")
         memberImg = bundle!!.getInt("MemberImg")
         memberName = bundle!!.getString("MemberName").toString()
         memberNoteTitle = bundle!!.getString("MemberNoteTitle").toString()
@@ -62,6 +66,7 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
         // 그룹 추가 버튼 클릭 이벤트
         binding.moreAddGroupBtn.setOnClickListener {
             addGroupMember()
+            binding.moreAddGroupBtn.text = "그룹 삭제"
         }
 
     }
@@ -69,23 +74,17 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
     fun addGroupMember() {
         // 서버에서 제공받은 Access Token
         val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
-        val groupMember = GroupMember (
-            memberId = 1,
-            userId = 3,
-            nickname = memberName,
-            profilePictureUrl = "",
-            noteTitle = memberNoteTitle,
-            noteText = memberNoteText,
-        )
+        val userIdRequest = UserIdRequest(userId)
+
         // API 호출
-        postMembers(accessToken, groupMember)  // 멤버 목록 가져오기
+        postMembers(accessToken, userIdRequest)  // 멤버 목록 가져오기
 
     }
     // API
-    private fun postMembers(token: String, groupMember: GroupMember) {
-        apiService.postMembers("Bearer $token", groupMember).enqueue(object :
-            Callback<GroupMembersResponse> {
-            override fun onResponse(call: Call<GroupMembersResponse>, response: Response<GroupMembersResponse>) {
+    private fun postMembers(token: String, userIdRequest: UserIdRequest) {
+        apiService.postMembers("Bearer $token", userIdRequest).enqueue(object :
+            Callback<GroupMemberResponse> {
+            override fun onResponse(call: Call<GroupMemberResponse>, response: Response<GroupMemberResponse>) {
                 if (response.isSuccessful && response.code() == 200) {
                     val result = response.body()
                     Log.d("통신", "GroupMembers Response: $result")
@@ -96,7 +95,7 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
                 }
             }
 
-            override fun onFailure(call: Call<GroupMembersResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GroupMemberResponse>, t: Throwable) {
                 Log.e("통신", "통신 실패: ${t.message}", t)
             }
         })

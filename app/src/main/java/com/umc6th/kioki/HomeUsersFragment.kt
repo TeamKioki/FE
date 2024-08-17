@@ -29,9 +29,9 @@ class HomeUsersFragment : Fragment() {
         recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         choice?.let {
             when(choice){
-                0 -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
-                1 -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
-                else -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
+//                0 -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
+//                1 -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
+//                else -> recyclerview.adapter = HomeUsersAdapter(MemberLists.groups)
 
             }
         }
