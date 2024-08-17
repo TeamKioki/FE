@@ -42,10 +42,12 @@ class LoginViewModel(private val loginRepository: LoginRepository = LoginReposit
         }
     }
 
-    fun verifyAuthCode(phone: String, code: String) {
+    fun login(phone: String, code: String) {
         viewModelScope.launch {
-            val response = loginRepository.verifyAuthCode(phone, code)
+            val response = loginRepository.login(phone, code)
             if (response.isSuccessful) {
+                KiokiApplication.tokenPrefs.setAccessToken(response.body()!!.data.accessToken)
+                KiokiApplication.tokenPrefs.setRefreshToken(response.body()!!.data.refreshToken)
                 _loginState.postValue(true)
             } else {
                 // handle error

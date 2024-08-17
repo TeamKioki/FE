@@ -27,7 +27,7 @@ class InputLoginCodeActivity : AppCompatActivity() {
         val phone = intent.getStringExtra("phone")!!
         viewModel.requestAuthCode(phone)
         binding.loginButton.setOnClickListener {
-            viewModel.verifyAuthCode(phone, binding.inputAuthCode.text.toString())
+            viewModel.login(phone, binding.inputAuthCode.text.toString())
         }
         viewModel.loginState.observe(this) {
             if (it) {
