@@ -48,9 +48,9 @@ class JoinViewModel(
         _kioskIssues.update { issues }
     }
 
-    fun selectKioskIssue(issue: KioskIssue) {
-        val updateIssues = _kioskIssues.value.map {
-            if (it == issue) {
+    fun selectKioskIssue(index: Int) {
+        val updateIssues = _kioskIssues.value.mapIndexed { idx, it ->
+            if (idx == index) {
                 it.copy(isSelected = !it.isSelected)
             } else {
                 it

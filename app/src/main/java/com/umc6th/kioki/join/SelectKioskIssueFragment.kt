@@ -25,8 +25,8 @@ class SelectKioskIssueFragment : Fragment() {
     private val viewModel by viewModels<JoinViewModel>()
 
     private val kioskIssueAdapter by lazy {
-        KioskIssueAdapter { issue ->
-            viewModel.selectKioskIssue(issue)
+        KioskIssueAdapter { _, index->
+            viewModel.selectKioskIssue(index)
         }
     }
 
