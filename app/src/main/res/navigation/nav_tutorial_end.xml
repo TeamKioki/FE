@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_tutorial_end"
+    app:startDestination="@id/retryFragment">
+
+    <fragment
+        android:id="@+id/retryFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.finish.RetryFragment"
+        android:label="fragment_retry"
+        tools:layout="@layout/fragment_retry" >
+        <action
+            android:id="@+id/action_retryFragment_to_evaluationFragment"
+            app:destination="@id/evaluationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishAndRetryFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.finish.FinishAndRetryFragment"
+        android:label="fragment_finish_and_retry"
+        tools:layout="@layout/fragment_finish_and_retry" />
+    <fragment
+        android:id="@+id/practiceIssueFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.finish.PracticeIssueFragment"
+        android:label="fragment_practice_issue"
+        tools:layout="@layout/fragment_practice_issue" >
+        <action
+            android:id="@+id/action_practiceIssueFragment_to_finishAndRetryFragment"
+            app:destination="@id/finishAndRetryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/evaluationFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.finish.EvaluationFragment"
+        android:label="fragment_evaluation"
+        tools:layout="@layout/fragment_evaluation" >
+        <action
+            android:id="@+id/action_evaluationFragment_to_practiceIssueFragment"
+            app:destination="@id/practiceIssueFragment" />
+    </fragment>
+</navigation>
