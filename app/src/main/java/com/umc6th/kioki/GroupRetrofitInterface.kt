@@ -2,10 +2,12 @@ package com.umc6th.kioki
 
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface GroupRetrofitInterface {
@@ -25,4 +27,10 @@ interface GroupRetrofitInterface {
         @Header("Authorization") token: String,
         @Body userIdRequest: UserIdRequest
     ) : Call<GroupMemberResponse>
+
+    @DELETE("/groups/members/{memberId}")
+    fun deleteMember(
+        @Header("Authorization") token: String,
+        @Path("memberId") memberId: Int
+        ) : Call<GroupMembersResponse>
 }

@@ -32,7 +32,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         // 서버에서 제공받은 Access Token
         val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
         // API 호출
-        //fetchMembers(accessToken)  // 멤버 목록 가져오기
+        fetchMembers(accessToken)  // 멤버 목록 가져오기
 
         // 뒤로가기 버튼 이벤트
         val backBtn = binding.groupHeaderNavBackIv
@@ -46,7 +46,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         // rv에 어댑터 연결
-        groupListAdapter = GroupRvAdapter(groupList, this)
+        groupListAdapter = GroupRvAdapter(groupList, this, apiService, accessToken)
         rv.adapter = groupListAdapter
 
         // DiffUtil 적용 후 데이터 추가
@@ -69,7 +69,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
 
             override fun afterTextChanged(p0: Editable?) {
                 var searchText:String = binding.groupSearchEt.text.toString()
-                // 필터링된 리스트 생성
+//                // 필터링된 리스트 생성
 //                val filteredList = if (searchText.isEmpty()) {
 //                    MemberLists.groups // 아무것도 입력되지 않을 때는 모든 데이터를 사용
 //                } else {
@@ -95,12 +95,24 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
                 if (response.isSuccessful && response.code() == 200) {
                     val result = response.body()
                     Log.d("통신", "GroupMembers Response: $result")
-                    // 결과 처리
-                    if (result != null) {
-                        // 데이터가 성공적으로 반환된 경우
-                        Log.d("멤버통신", "Members: ${result.result}")
-                    } else {
-                        Log.d("멤버통신", "Result is empty or null")
+                    // 멤버 목록 처리
+                    val groupMembers = result?.result
+                    if(groupMembers!=null && groupMembers.isNotEmpty()) {
+                        groupList.clear()
+                        groupList.addAll(groupMembers.map { member ->
+                            MemberEntity(
+                                memberId = member.memberId,
+                                userId = member.userId,
+                                memberImg = R.drawable.ic_home_user_character1,
+                                memberName = member.nickname,
+                                memberNoteTitle = member.noteTitle,
+                                memberNoteText = member.noteText,
+                            )
+                        })
+                        Log.d("멤버목록", groupList.toString())
+
+                        groupListAdapter.differ.submitList(groupList)
+
                     }
                 } else {
                     Log.e("통신", "GroupMembers Response 실패: ${response.code()} - ${response.message()}")

@@ -1,6 +1,7 @@
 package com.umc6th.kioki
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class UserIdRequest(
     val userId: Int
@@ -44,7 +45,7 @@ data class GroupMember(
     @SerializedName("profilePictureUrl") val profilePictureUrl: String,
     @SerializedName("noteTitle") val noteTitle: String,
     @SerializedName("noteText") val noteText: String
-)
+) : Serializable
 
 data class GroupMembersProfilePicture (
     @SerializedName("memberId") val memberId: Int,
