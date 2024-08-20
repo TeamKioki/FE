@@ -6,13 +6,6 @@
     tools:context="com.umc6th.kioki.onboarding.FirstFragment">
 
     <ImageView
-        android:layout_width="14dp"
-        android:layout_height="33dp"
-        android:src="@drawable/rightarrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
         android:layout_height="270dp"

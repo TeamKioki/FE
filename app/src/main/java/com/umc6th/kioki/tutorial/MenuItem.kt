@@ -4,6 +4,7 @@ data class MenuItem(
     val imageRes: Int,
     val name: String,
     val price: Int,
+    val count: Int = 1
 )
 
 enum class MenuOption(val price: Int) {

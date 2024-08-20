@@ -35,6 +35,9 @@ class TutorialViewModel : ViewModel() {
     )
 
 
+    private val _currentScreen = MutableLiveData<TutorialScreen>()
+    val currentScreen: LiveData<TutorialScreen> = _currentScreen
+
     private val _sideMenus = MutableLiveData<List<SideMenu>>(sideMenuItems)
     val sideMenus: LiveData<List<SideMenu>> = _sideMenus
 
@@ -53,11 +56,15 @@ class TutorialViewModel : ViewModel() {
     private val _selectedDrinkMenu = MutableLiveData<SideMenu>()
     val selectedDrinkMenu: LiveData<SideMenu> = _selectedDrinkMenu
 
-    private val _selectedTotalMenu = MutableLiveData<List<MenuItem>>()
+    private val _selectedTotalMenu = MutableLiveData<List<MenuItem>>(emptyList())
     val selectedTotalMenu: LiveData<List<MenuItem>> = _selectedTotalMenu
 
     private val _totalPrice = MutableLiveData<Int>()
     val totalPrice: LiveData<Int> = _totalPrice
+
+    fun setScreen(screen: TutorialScreen) {
+        _currentScreen.value = screen
+    }
 
     fun setMenuItem(menuItem: MenuItem) {
         _selectedMenu.value = menuItem
@@ -98,8 +105,22 @@ class TutorialViewModel : ViewModel() {
             MenuItem(
                 imageRes = _selectedMenu.value!!.imageRes,
                 name = _selectedMenu.value!!.name,
-                price = _totalPrice.value!!
+                price = _totalPrice.value!!,
+                count = 1
             )
         )
+        _totalPrice.value = 0
     }
+
+    fun removeSelectedMenu(index: Int) {
+        val currentList = _selectedTotalMenu.value?.toMutableList()
+        currentList?.removeAt(index)
+        _selectedTotalMenu.value = currentList?: emptyList()
+    }
+}
+
+sealed class TutorialScreen {
+    data object Main : TutorialScreen()
+    data object StepOne : TutorialScreen()
+    data object StepTwo : TutorialScreen()
 }

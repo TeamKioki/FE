@@ -1,5 +1,6 @@
 package com.umc6th.kioki.tutorial.tabMenus.dialog
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.umc6th.kioki.databinding.FragmentSelectDrinkDialogBinding
 import com.umc6th.kioki.tutorial.TutorialViewModel
 import com.umc6th.kioki.tutorial.adapter.SideAdapter
+import com.umc6th.kioki.tutorial.tutorial.DrinkTutorialActivity
 import com.umc6th.kioki.utils.dialogFragmentResize
 
 class SelectDrinkDialog : DialogFragment() {
@@ -28,7 +30,7 @@ class SelectDrinkDialog : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        context?.dialogFragmentResize(this, 0.95f, 0.65f)
+        context?.dialogFragmentResize(this, 0.95f, 0.8f)
     }
 
     override fun onCreateView(
@@ -44,9 +46,24 @@ class SelectDrinkDialog : DialogFragment() {
         observeDrinkMenus()
         observeTotalPrice()
 
+        binding.tutorialItem.setOnClickListener {
+            startActivity(Intent(requireContext(), DrinkTutorialActivity::class.java))
+        }
         binding.drinkRv.apply {
             adapter = sideAdapter
             layoutManager = GridLayoutManager(context, 4)
+        }
+        binding.completeButton.setOnClickListener {
+            viewModel.addTotalMenu()
+            dismiss()
+        }
+        binding.cancelButton.setOnClickListener {
+            dismiss()
+        }
+
+        binding.exitItem.setOnClickListener {
+            dismiss()
+            requireActivity().finish()
         }
     }
 

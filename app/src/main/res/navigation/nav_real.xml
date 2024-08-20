@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_real"
+    app:startDestination="@id/selectTabFragment">
+
+    <fragment
+        android:id="@+id/selectTabFragment"
+        android:name="com.umc6th.kioki.tutorial.SelectTabFragment"
+        android:label="SelectTabFragment" >
+        <action
+            android:id="@+id/action_selectTabFragment_to_stepOneFragment"
+            app:destination="@id/stepOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stepOneFragment"
+        android:name="com.umc6th.kioki.tutorial.StepOneFragment"
+        android:label="fragment_step_one"
+        tools:layout="@layout/fragment_step_one" >
+        <action
+            android:id="@+id/action_stepOneFragment_to_stepTwoFragment"
+            app:destination="@id/stepTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stepTwoFragment"
+        android:name="com.umc6th.kioki.tutorial.StepTwoFragment"
+        android:label="fragment_step_two"
+        tools:layout="@layout/fragment_step_two" />
+</navigation>

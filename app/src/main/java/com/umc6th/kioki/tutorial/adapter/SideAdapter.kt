@@ -18,10 +18,11 @@ class SideAdapter(private val onClickListener: (Int) -> Unit) : RecyclerView.Ada
         }
         fun bind(item: SideMenu) {
             if (item.isSelected) {
-                binding.sideName.text = "${item.name} 선택됨"
+                binding.checked.visibility = android.view.View.VISIBLE
             } else {
-                binding.sideName.text = item.name
+                binding.checked.visibility = android.view.View.GONE
             }
+            binding.sideName.text = item.name
             binding.sideImage.setImageResource(item.imageRes)
 //            binding.sideName.text = item.name
             binding.sidePrice.text = "+ ${item.price}원"
