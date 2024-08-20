@@ -14,6 +14,7 @@ import com.umc6th.kioki.tutorial.adapter.PremiumAdapter
 import com.umc6th.kioki.tutorial.tabMenus.dialog.SelectOptionDialog
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.FragmentPremiumBinding
+import com.umc6th.kioki.tutorial.TutorialScreen
 
 class PremiumFragment : Fragment() {
     private lateinit var binding: FragmentPremiumBinding
@@ -28,7 +29,7 @@ class PremiumFragment : Fragment() {
     private val premiumItems = listOf(
         MenuItem(
             R.drawable.blackbbqquttuor,
-            "블랙바비큐콰트로\n치즈와퍼",
+            "블랙바비큐콰트로치즈와퍼",
             9300,
         ),
         MenuItem(
@@ -67,7 +68,9 @@ class PremiumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.setScreen(
+            TutorialScreen.Main
+        )
         binding.premiumRv.apply {
             adapter = premiumAdapter
             layoutManager = GridLayoutManager(context, 3)

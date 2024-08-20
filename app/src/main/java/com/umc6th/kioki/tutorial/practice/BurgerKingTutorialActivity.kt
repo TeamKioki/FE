@@ -1,5 +1,6 @@
 package com.umc6th.kioki.tutorial.practice
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityBurgerKingTutorialBinding
 import com.umc6th.kioki.tutorial.adapter.PracticeAdapter
+import com.umc6th.kioki.tutorial.practice.finish.PracticeFinishActivity
 
 class BurgerKingTutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBurgerKingTutorialBinding
@@ -63,6 +65,11 @@ class BurgerKingTutorialActivity : AppCompatActivity() {
             if (nextItem < fragments.size) {
                 binding.fragmentContainerView2.currentItem = nextItem
             }
+
+            if (nextItem == fragments.size) {
+                startActivity(Intent(this, PracticeFinishActivity::class.java))
+                finish()
+            }
         }
 
         binding.previousButton.setOnClickListener {
@@ -76,6 +83,5 @@ class BurgerKingTutorialActivity : AppCompatActivity() {
 
     private fun updateButtonVisibility(position: Int) {
         binding.previousButton.visibility = if (position == 0) View.INVISIBLE else View.VISIBLE
-        binding.nextButton.visibility = if (position == fragments.size - 1) View.INVISIBLE else View.VISIBLE
     }
 }

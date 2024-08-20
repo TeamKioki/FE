@@ -31,7 +31,7 @@ class RetryFragment : Fragment() {
             startActivity(Intent(requireContext(), BurgerKingRealActivity::class.java).apply {
                 putExtra("isPracticeMode", true)
             })
-            requireActivity().finishAffinity()
+            requireActivity().finish()
         }
         binding.nextButton.setOnClickListener {
             findNavController().navigate(R.id.action_retryFragment_to_evaluationFragment)

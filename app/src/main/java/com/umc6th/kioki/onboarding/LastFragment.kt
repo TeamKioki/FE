@@ -30,9 +30,5 @@ class LastFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.startTextView.setOnClickListener {
-            startActivity(Intent(requireContext(), JoinActivity::class.java))
-            requireActivity().finish()
-        }
     }
 }

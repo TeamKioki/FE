@@ -71,6 +71,7 @@
             app:layout_constraintTop_toBottomOf="@+id/drinkRv" />
 
         <LinearLayout
+            android:id="@+id/linearLayout8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -110,6 +111,38 @@
 
         </LinearLayout>
 
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/actionMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="40dp"
+            app:menu_fab_size="mini"
+            app:menu_icon="@drawable/tutorialpng"
+            app:layout_constraintBottom_toBottomOf="@+id/drinkRv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView12"
+            app:layout_constraintVertical_bias="0.0"
+            app:menu_openDirection="down">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/exitItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/exit"
+                app:fab_label="연습 종료"
+                app:fab_size="mini" />
+
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/tutorialItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tutorialpng"
+                app:fab_label="튜토리얼 보기"
+                app:fab_size="mini" />
+
+        </com.github.clans.fab.FloatingActionMenu>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

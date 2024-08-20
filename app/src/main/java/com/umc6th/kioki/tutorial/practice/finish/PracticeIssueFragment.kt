@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -18,7 +19,7 @@ class PracticeIssueFragment : Fragment() {
     private lateinit var binding: FragmentPracticeIssueBinding
     private val issueAdapter: KioskIssueAdapter by lazy {
         KioskIssueAdapter { _, index ->
-            issues.mapIndexed {
+            val update = issues.mapIndexed {
                 i, kioskIssue ->
                 if (i == index) {
                     kioskIssue.copy(
@@ -28,7 +29,7 @@ class PracticeIssueFragment : Fragment() {
                     kioskIssue
                 }
             }
-            issueAdapter.submitList(issues)
+            issueAdapter.submitList(update)
         }
     }
 
@@ -58,6 +59,10 @@ class PracticeIssueFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.appCompatButton3.setOnClickListener {
+            findNavController().navigate(R.id.action_practiceIssueFragment_to_finishAndRetryFragment)
+        }
         val flexboxLayoutManager = FlexboxLayoutManager(requireContext()).apply {
             //줄바꿈 설정
             flexWrap = FlexWrap.WRAP

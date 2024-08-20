@@ -43,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="모든 과정이 끝났어요!\n 키오키와 함께\n키오스크를 배워봐요"
+            android:text="모든 과정이 끝났어요!\n키오키와 함께\n키오스크를 배워봐요"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
