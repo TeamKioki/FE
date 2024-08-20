@@ -33,4 +33,17 @@ interface GroupRetrofitInterface {
         @Header("Authorization") token: String,
         @Path("memberId") memberId: Int
         ) : Call<GroupMembersResponse>
+
+    @GET("/groups/members/search")
+    fun searchMembers(
+        @Header("Authorization") token: String,
+        @Query("nickname") nickname: String
+    ): Call<GroupMembersResponse>
+
+    @GET("/groups/search")
+    fun searchNotMembers(
+        @Header("Authorization") token: String,
+        @Query("query") nickname: String
+    ): Call<NotGroupMembersResponse>
+
 }

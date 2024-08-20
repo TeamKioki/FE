@@ -20,6 +20,14 @@ data class GroupMembersResponse (
     @SerializedName("message") val message: String,
     @SerializedName("result") val result: List<GroupMember>
 )
+
+data class NotGroupMembersResponse (
+    @SerializedName("isSuccess") val isSuccess: Boolean,
+    @SerializedName("code") val code: String,
+    @SerializedName("message") val message: String,
+    @SerializedName("result") val result: List<NotGroupMember>
+)
+
 // 하나의 그룹만 추가하고 싶은 경우의 DTO
 data class GroupMemberResponse (
     @SerializedName("isSuccess") val isSuccess: Boolean,
@@ -46,6 +54,16 @@ data class GroupMember(
     @SerializedName("noteTitle") val noteTitle: String,
     @SerializedName("noteText") val noteText: String
 ) : Serializable
+
+data class NotGroupMember(
+    @SerializedName("userId") val userId:Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("phone") val phone: String,
+    @SerializedName("introduction") val introduction: String,
+    @SerializedName("imageName") val imageName: String,
+    @SerializedName("isGroupMember") val isGroupMember: Boolean
+) : Serializable
+
 
 data class GroupMembersProfilePicture (
     @SerializedName("memberId") val memberId: Int,

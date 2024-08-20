@@ -96,10 +96,10 @@ class GroupRvAdapter(
         // val group: Group = groupList[position]
         if (holder is ViewHolder) {
             val member: MemberEntity = differ.currentList[position]
-            holder.group_item_img_iv.setImageResource(member.memberImg!!)
-            holder.group_item_name_tv.text = member.memberName
-            holder.group_item_description1_tv.text = member.memberNoteTitle
-            holder.group_item_description2_tv.text = member.memberNoteText
+            holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
+            holder.group_item_name_tv.text = member.nickname
+            holder.group_item_description1_tv.text = member.noteTitle
+            holder.group_item_description2_tv.text = member.noteText
 
             holder.group_item_delete_btn_iv.setImageResource(R.drawable.ic_group_subtract)
 
@@ -134,7 +134,7 @@ class GroupRvAdapter(
                 call: Call<GroupMembersResponse>,
                 response: Response<GroupMembersResponse>
             ) {
-                if (response.isSuccessful && response.code() == 200) {
+                if (response.isSuccessful && response.code() == 204) {
                     val result = response.body()
                     Log.d("통신", "GroupMember Delete Response: $result")
 

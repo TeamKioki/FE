@@ -2,6 +2,7 @@ package com.umc6th.kioki
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -27,10 +28,12 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         setContentView(binding.root)
         Log.d("그룹홈", "onCreate called")
         // 연결할 api 설정
-        apiService = RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
+        apiService =
+            RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
 
         // 서버에서 제공받은 Access Token
-        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
+        val accessToken =
+            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
         // API 호출
         fetchMembers(accessToken)  // 멤버 목록 가져오기
 
@@ -58,64 +61,92 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         }
 
         // 검색 기능
-        binding.groupSearchEt.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
+        binding.groupSearchIcon.setOnClickListener {
+            val groupNickname = binding.groupSearchEt.text.toString()
+            if (groupNickname.isEmpty()) {
+                fetchMembers(accessToken) // 검색어가 없으면 전체 목록을 다시 불러오기
+            } else {
+                searchMembers(accessToken, groupNickname)
             }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                var searchText:String = binding.groupSearchEt.text.toString()
-//                // 필터링된 리스트 생성
-//                val filteredList = if (searchText.isEmpty()) {
-//                    MemberLists.groups // 아무것도 입력되지 않을 때는 모든 데이터를 사용
-//                } else {
-//                    MemberLists.groups.filter {
-//                        it.memberName!!.contains(searchText, ignoreCase = true)
-//                    }
-//                }
-
-                // 필터링된 결과를 어댑터에 전달
-                //groupListAdapter.differ.submitList(filteredList)
+        }
 
 
-            }
-
-        })
     }
-
     // API
     private fun fetchMembers(token: String) {
         apiService.getMembers("Bearer $token").enqueue(object :
             Callback<GroupMembersResponse> {
-            override fun onResponse(call: Call<GroupMembersResponse>, response: Response<GroupMembersResponse>) {
+            override fun onResponse(
+                call: Call<GroupMembersResponse>,
+                response: Response<GroupMembersResponse>
+            ) {
                 if (response.isSuccessful && response.code() == 200) {
                     val result = response.body()
                     Log.d("통신", "GroupMembers Response: $result")
                     // 멤버 목록 처리
                     val groupMembers = result?.result
-                    if(groupMembers!=null && groupMembers.isNotEmpty()) {
+                    if (groupMembers != null && groupMembers.isNotEmpty()) {
                         groupList.clear()
                         groupList.addAll(groupMembers.map { member ->
                             MemberEntity(
                                 memberId = member.memberId,
                                 userId = member.userId,
-                                memberImg = R.drawable.ic_home_user_character1,
-                                memberName = member.nickname,
-                                memberNoteTitle = member.noteTitle,
-                                memberNoteText = member.noteText,
+                                profilePictureUrl = R.drawable.ic_home_user_character1,
+                                nickname = member.nickname,
+                                noteTitle = member.noteTitle,
+                                noteText = member.noteText,
                             )
                         })
                         Log.d("멤버목록", groupList.toString())
 
                         groupListAdapter.differ.submitList(groupList)
-
                     }
                 } else {
-                    Log.e("통신", "GroupMembers Response 실패: ${response.code()} - ${response.message()}")
+                    Log.e(
+                        "통신",
+                        "GroupMembers Response 실패: ${response.code()} - ${response.message()}"
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<GroupMembersResponse>, t: Throwable) {
+                Log.e("통신", "통신 실패: ${t.message}", t)
+            }
+        })
+    }
+    private fun searchMembers(token: String, nickname: String) {
+        apiService.searchMembers("Bearer $token", nickname).enqueue(object :
+            Callback<GroupMembersResponse> {
+            override fun onResponse(
+                call: Call<GroupMembersResponse>,
+                response: Response<GroupMembersResponse>
+            ) {
+                if (response.isSuccessful && response.code() == 200) {
+                    val result = response.body()
+                    Log.d("통신", "GroupMembers Response: $result")
+                    // 멤버 목록 처리
+                    val groupMembers = result?.result
+                    groupList.clear()
+                    if (groupMembers != null && groupMembers.isNotEmpty()) {
+                        groupList.addAll(groupMembers.map { member ->
+                            MemberEntity(
+                                memberId = member.memberId,
+                                userId = member.userId,
+                                profilePictureUrl = R.drawable.ic_home_user_character1,
+                                nickname = member.nickname,
+                                noteTitle = member.noteTitle,
+                                noteText = member.noteText,
+                            )
+                        })
+                    } else {
+                        Log.d("통신", "검색 결과가 없습니다.")
+                    }
+                    groupListAdapter.differ.submitList(groupList)
+                } else {
+                    Log.e(
+                        "통신",
+                        "GroupMembers Response 실패: ${response.code()} - ${response.message()}"
+                    )
                 }
             }
 
@@ -129,9 +160,9 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
     override fun onItemClick(member: MemberEntity) {
         val dialog = GroupHomeEditFragmentDialog()
         var bundle = Bundle() // 다이얼로그에 전달할 Bundle 생성
-//        bundle.putString("MemberName", member.nickname)
-//        bundle.putString("MemberNoteTitle", member.noteTitle)
-//        bundle.putString("MemberNoteText", member.noteText)
+        bundle.putString("MemberName", member.nickname)
+        bundle.putString("MemberNoteTitle", member.noteTitle)
+        bundle.putString("MemberNoteText", member.noteText)
         dialog.arguments = bundle
         dialog.show(supportFragmentManager, "GroupHomeEditFragmentDialog")
     }

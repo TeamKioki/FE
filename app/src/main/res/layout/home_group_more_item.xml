@@ -58,7 +58,16 @@
             android:layout_width="176dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_group_add_group" />
+            app:srcCompat="@drawable/ic_group_add_group"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/group_more_item_check_iv"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_check"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

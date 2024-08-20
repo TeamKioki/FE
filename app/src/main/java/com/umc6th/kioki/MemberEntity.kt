@@ -9,10 +9,23 @@ import androidx.room.PrimaryKey
 data class MemberEntity(
     var memberId: Int? = null,
     var userId: Int? = null,
-    var memberImg: Int? = R.drawable.ic_home_user_character1,
-    var memberName: String? = null,
-    var memberNoteTitle: String? = null,
-    var memberNoteText: String? = null
+    var profilePictureUrl: Int? = null,
+    var nickname: String? = null,
+    var noteTitle: String? = null,
+    var noteText: String? = null,
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
+
+@Entity(tableName = "NotMemberTable")
+data class NotMemberEntity(
+    var userId: Int? = null,
+    var name: String? = null,
+    var phone: String? = null,
+    var introduction: String? = null,
+    var imageName: String? = null,
+    var isGroupMember: Boolean? = null,
+) {
+    @PrimaryKey(autoGenerate = true) var id: Int = 0
+}
+

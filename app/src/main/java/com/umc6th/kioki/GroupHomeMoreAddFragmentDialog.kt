@@ -66,7 +66,19 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
         // 그룹 추가 버튼 클릭 이벤트
         binding.moreAddGroupBtn.setOnClickListener {
             addGroupMember()
-            binding.moreAddGroupBtn.text = "그룹 삭제"
+        }
+        // 어댑터에 변경된 데이터를 갱신
+        val activity = activity as GroupHomeMoreActivity
+        val member = activity.groupList.find { it.userId == userId }
+
+        member?.let {
+            val position = activity.groupList.indexOf(it)
+            activity.groupMoreRvAdapter.notifyItemChanged(position)
+
+            // UI 업데이트 (버튼 텍스트 변경)
+            if (it.isGroupMember == true) {
+                binding.moreAddGroupBtn.text = "그룹 삭제"
+            }
         }
 
     }
@@ -88,7 +100,10 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
                 if (response.isSuccessful && response.code() == 200) {
                     val result = response.body()
                     Log.d("통신", "GroupMembers Response: $result")
-                    // 결과 처리
+
+                    // 멤버의 isGroupMember 값을 true로 변경
+                    updateGroupMemberStatus(true)
+
 
                 } else {
                     Log.e("통신", "GroupMembers Response 실패: ${response.code()} - ${response.message()}")
@@ -99,6 +114,16 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
                 Log.e("통신", "통신 실패: ${t.message}", t)
             }
         })
+    }
+
+    private fun updateGroupMemberStatus(isGroupMember: Boolean) {
+        // 멤버가 그룹에 추가된 후 isGroupMember 값을 true로 변경
+        val activity = activity as GroupHomeMoreActivity
+        val member = activity.groupList.find { it.userId == userId }
+        member?.isGroupMember = isGroupMember
+
+
+        dismiss()
     }
 
 }
