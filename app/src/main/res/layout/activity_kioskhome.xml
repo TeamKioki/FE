@@ -80,17 +80,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/kiohome_search_cl"/>
 
-
-    <ImageView
-        android:id="@+id/kiohome_plus_btn"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:src="@drawable/btn_plus"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="31dp"
-        app:layout_constraintStart_toStartOf="@id/kiohome_brandlist_rv"
-        app:layout_constraintTop_toBottomOf="@id/kiohome_brandlist_rv" />
-
     <ImageButton
         android:id="@+id/kiohome_edit_btn"
         android:layout_width="wrap_content"
@@ -103,10 +92,10 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageButton
-        android:id="@+id/kiohome_map_btn"
+        android:id="@+id/kiohome_plus_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/btn_map"
+        android:src="@drawable/btn_plus"
         android:background="@android:color/transparent"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
