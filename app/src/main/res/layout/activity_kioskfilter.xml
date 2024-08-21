@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/filter_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="필터"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_semibold"
+        android:layout_marginTop="22.3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/filter_close_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_close"
+        android:background="@android:color/transparent"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/filter_title_tv"
+        app:layout_constraintBottom_toBottomOf="@id/filter_title_tv" />
+
+    <View
+        android:id="@+id/filter_under_vw"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="#EDEDED"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_close_btn" />
+
+    <TextView
+        android:id="@+id/filter_score_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="키오스크 난이도"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/pretendard_semibold"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_under_vw" />
+
+    <TextView
+        android:id="@+id/filter_easy_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="쉬움"
+        android:textSize="14dp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_score_tv" />
+
+    <TextView
+        android:id="@+id/filter_midscore_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="중간"
+        android:textSize="14sp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@id/filter_easy_tv"
+        app:layout_constraintTop_toBottomOf="@id/filter_score_tv" />
+
+    <TextView
+        android:id="@+id/filter_dif_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="어려움"
+        android:textSize="14sp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@id/filter_midscore_tv"
+        app:layout_constraintTop_toBottomOf="@id/filter_score_tv" />
+
+    <TextView
+        android:id="@+id/filter_kionum_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="매장 내 키오스크 개수"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/pretendard_semibold"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_easy_tv" />
+
+    <TextView
+        android:id="@+id/filter_one_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1개"
+        android:textSize="14dp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_kionum_tv" />
+
+    <TextView
+        android:id="@+id/filter_twomore_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2개 이상"
+        android:textSize="14sp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@id/filter_one_tv"
+        app:layout_constraintTop_toBottomOf="@id/filter_kionum_tv" />
+
+    <TextView
+        android:id="@+id/filter_dist_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="거리"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/pretendard_semibold"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_one_tv" />
+
+    <TextView
+        android:id="@+id/filter_short_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.5km 이내"
+        android:textSize="14dp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_dist_tv" />
+
+    <TextView
+        android:id="@+id/filter_middist_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.0km 이내"
+        android:textSize="14sp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@id/filter_short_tv"
+        app:layout_constraintTop_toBottomOf="@id/filter_dist_tv" />
+
+    <TextView
+        android:id="@+id/filter_long_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1.5km 이내"
+        android:textSize="14dp"
+        android:fontFamily="@font/pretendard_regular"
+        android:background="@drawable/background_lightgray_50dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_short_tv" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/filter_continue_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_orange"
+        android:layout_marginHorizontal="47dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/filter_check_iv"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_check"
+                android:background="@android:color/transparent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="적용하기"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/pretendard_medium"
+                android:layout_marginStart="7dp"
+                android:layout_marginVertical="13dp"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/filter_retry_btn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_retry"
+        android:background="@android:color/transparent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/filter_continue_cl" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
