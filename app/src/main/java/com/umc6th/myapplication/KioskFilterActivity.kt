@@ -51,28 +51,28 @@ class KioskFilterActivity : AppCompatActivity() {
     private fun applyFilters() {
         // 선택된 필터에 따라 필터링 로직을 구현하세요.
         // 예시: filterSelectedBrands 메서드에서 필터 조건에 맞는 브랜드 리스트를 필터링하여 리턴
-        val filteredBrands = filterSelectedBrands()
+        //val filteredBrands = filterSelectedBrands()
 
         // 필터링된 리스트를 리사이클러뷰에 적용
-        val adapter = KiohomeBrandlistRVAdapter(filteredBrands)
+        //val adapter = KiohomeBrandlistRVAdapter(filteredBrands)
         // RecyclerView 설정
         // 예시: recyclerView.adapter = adapter
     }
 
-    private fun filterSelectedBrands(): List<Brand> {
-        // 브랜드 리스트를 필터링하는 로직 구현
-        // 예를 들어, "쉬움" 필터가 선택되었을 때 쉬운 난이도의 브랜드만 필터링
-        val selectedFilters = mutableListOf<String>()
-
-        if (binding.filterEasyTv.background.constantState == ContextCompat.getDrawable(this, R.drawable.background_orange)?.constantState) {
-            selectedFilters.add("쉬움")
-        }
-        // 나머지 필터에 대해서도 동일하게 처리
-
-        // 필터 조건에 맞게 브랜드 리스트 필터링 (brandList는 전체 브랜드 리스트)
-        return brandList.filter { brand ->
-            // 필터 조건에 맞는지 검사 (예시)
-            selectedFilters.contains(brand.difficulty)
-        }
-    }
+//    private fun filterSelectedBrands(): List<Brand> {
+//        // 브랜드 리스트를 필터링하는 로직 구현
+//        // 예를 들어, "쉬움" 필터가 선택되었을 때 쉬운 난이도의 브랜드만 필터링
+//        val selectedFilters = mutableListOf<String>()
+//
+//        if (binding.filterEasyTv.background.constantState == ContextCompat.getDrawable(this, R.drawable.background_orange)?.constantState) {
+//            selectedFilters.add("쉬움")
+//        }
+//        // 나머지 필터에 대해서도 동일하게 처리
+//
+//        // 필터 조건에 맞게 브랜드 리스트 필터링 (brandList는 전체 브랜드 리스트)
+//        return brandList.filter { brand ->
+//            // 필터 조건에 맞는지 검사 (예시)
+//            selectedFilters.contains(brand.difficulty)
+//        }
+//    }
 }
