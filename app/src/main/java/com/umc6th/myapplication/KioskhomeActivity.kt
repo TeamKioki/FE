@@ -10,20 +10,19 @@ import com.umc6th.myapplication.databinding.ActivityKioskhomeBinding
 class KioskhomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityKioskhomeBinding
-    private lateinit var adapter: KiohomeBrandlistRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKioskhomeBinding.inflate(layoutInflater)
 
-        val brand1 = Brand("버거킹", R.drawable.logo_burgerking)
-        val brand2 = Brand("롯데리아", R.drawable.logo_lotteria)
-        val brand3 = Brand("맘스터치", R.drawable.logo_momstouch)
-        val brand4 = Brand("KFC", R.drawable.logo_kfc)
-        val brand5 = Brand("서브웨이", R.drawable.logo_subway)
-
-        val itemList = listOf(brand1, brand2, brand3, brand4, brand5)
-        //setupRecyclerView(itemList)
+        val brandList = listOf(
+            Brand("버거킹", "햄버거 · 패스트푸드점", R.drawable.logo_burgerking),
+            Brand("롯데리아", "햄버거 · 패스트푸드점", R.drawable.logo_lotteria),
+            Brand("맘스터치", "햄버거 · 패스트푸드점", R.drawable.logo_momstouch),
+            Brand("KFC", "햄버거 · 패스트푸드점", R.drawable.logo_kfc),
+            Brand("서브웨이", "샌드위치", R.drawable.logo_subway)
+        )
+        setupRecyclerView(brandList)
 
         goBack()
         plusBrand()
@@ -43,12 +42,14 @@ class KioskhomeActivity : AppCompatActivity() {
     }
 
 
-    private fun setupRecyclerView(itemList: List<String>) {
+    private fun setupRecyclerView(itemList: List<Brand>) {
         // RecyclerView의 레이아웃 매니저 설정
-        //binding.kiohomeBrandlistRv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.kiohomeBrandlistRv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         // RecyclerView의 어댑터 설정
         //adapter = KiohomeBrandlistRVAdapter(itemList)
         //binding.kiohomeBrandlistRv.adapter = adapter
+        val adapter = KiohomeBrandlistRVAdapter(itemList)
+        binding.kiohomeBrandlistRv.adapter = adapter
     }
 }

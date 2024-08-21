@@ -1,57 +1,52 @@
 package com.umc6th.myapplication
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.myapplication.databinding.ItemKioskbrandBinding
 
-class KiohomeBrandlistRVAdapter(private val brandList: ArrayList<Brand>): RecyclerView.Adapter<KiohomeBrandlistRVAdapter.ViewHolder>() {
+class KiohomeBrandlistRVAdapter(private val itemList: List<Brand>) : RecyclerView.Adapter<KiohomeBrandlistRVAdapter.ViewHolder>() {
 
-    interface MyItemClickListener {
-        fun onItemClick(album: Brand)
-//        fun onRemoveAlbum(position: Int)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_kioskbrand, parent, false)
+        return ViewHolder(view)
     }
 
-    private lateinit var mItemClickListener: MyItemClickListener
-    fun setMyItemClickListener(itemClickListener: MyItemClickListener) {
-        mItemClickListener = itemClickListener
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = itemList[position]
+        holder.bind(item)
     }
 
-    fun addItem(brand: Brand) {
-        brandList.add(brand)
-        notifyDataSetChanged()
+    override fun getItemCount(): Int {
+        return itemList.size
     }
 
-    fun removeItem(position: Int) {
-        brandList.removeAt(position)
-        notifyDataSetChanged()
-    }
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val brandname: TextView = itemView.findViewById(R.id.item_brandname_tv)
+        private val brandinfo: TextView = itemView.findViewById(R.id.dialog_brandinfo_tv)
+        private val brandlogo: ImageView = itemView.findViewById(R.id.item_brandlogo_iv)
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): KiohomeBrandlistRVAdapter.ViewHolder {  //ViewHolder 생성 시 호출되는 함수
-        val binding: ItemKioskbrandBinding = ItemKioskbrandBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        fun bind(item: Brand) {
+            brandname.text = item.name
+            brandlogo.setImageResource(item.logo)
 
-        return ViewHolder(binding)  //viewHolder의 아이템 객체를 리턴
-    }
+            // 아이템 클릭 이벤트 설정
+            itemView.setOnClickListener {
+                val context = itemView.context
 
-    override fun onBindViewHolder(holder: KiohomeBrandlistRVAdapter.ViewHolder, position: Int) {  //ViewHolder에 binding을 해줄 때마다 호출되는 함수, 사용자가 스크롤할 때마다 호출됨
-        holder.bind(brandList[position])
-
-        //클릭이벤트
-        holder.itemView.setOnClickListener { mItemClickListener.onItemClick(brandList[position]) }
-
-        //제거
-//        holder.binding.itemAlbumTitleTv.setOnClickListener { mItemClickListener.onRemoveAlbum(position) }
-    }
-
-    override fun getItemCount(): Int = brandList.size  //데이터셋의 크기를 알려주는 함수, 리사이클러뷰가 마지막이 언제인지를 알려줌
-
-    inner class ViewHolder(val binding: ItemKioskbrandBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(brand: Brand) {
-            binding.itemBrandnameTv.text = brand.name
-            binding.itemBrandlogoIv.setImageResource(brand.logo!!)
+                // dialog 보여주기
+                val dialog = BrandpracticeDialog(
+                    context,
+                    item.name,
+                    item.info,
+                    item.logo.toString()
+                )
+                dialog.show()
+            }
         }
     }
-
 }

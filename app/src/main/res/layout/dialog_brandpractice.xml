@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="15dp"
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/dialog_bgd_iv"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/iv_backgroundcircle"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/dialog_brandlogo_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/dialog_bgd_iv"
+        app:layout_constraintEnd_toEndOf="@id/dialog_bgd_iv"
+        app:layout_constraintTop_toTopOf="@id/dialog_bgd_iv"
+        app:layout_constraintBottom_toBottomOf="@id/dialog_bgd_iv" />
+
+    <TextView
+        android:id="@+id/dialog_brandname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="브랜드 이름"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/pretendard_semibold"
+        android:layout_marginTop="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_bgd_iv" />
+
+    <TextView
+        android:id="@+id/dialog_brandinfo_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="브랜드 설명"
+        android:textSize="14sp"
+        android:textColor="#808080"
+        android:fontFamily="@font/pretendard_regular"
+        android:layout_marginTop="11dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_brandname_tv" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dialog_practice_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="연습모드"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_medium"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/background_semiwhite_5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_brandinfo_tv" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/dialog_real_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="실전모드"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/pretendard_medium"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/background_orange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_practice_btn"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
