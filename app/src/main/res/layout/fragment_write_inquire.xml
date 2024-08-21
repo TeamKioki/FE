@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".inquire.WriteInquireFragment">
+
+    <!-- 문의 분류 TextView -->
+    <TextView
+        android:id="@+id/inquiryCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="문의 분류"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 드롭다운 메뉴 (스피너) -->
+    <Spinner
+        android:id="@+id/inquiryCategorySpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/dropdown_background"
+        android:entries="@array/inquiry_categories"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inquiryCategoryLabel" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/arrow_bottom_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/inquiryCategorySpinner"
+        app:layout_constraintEnd_toEndOf="@+id/inquiryCategorySpinner"
+        app:layout_constraintTop_toTopOf="@+id/inquiryCategorySpinner" />
+
+    <!-- 문의 제목 TextView -->
+    <TextView
+        android:id="@+id/inquiryTitleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="문의 제목"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inquiryCategorySpinner" />
+
+    <!-- 문의 제목 EditText -->
+    <EditText
+        android:id="@+id/inquiryTitleEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/dropdown_background"
+        android:textColorHint="#666666"
+        android:hint="제목을 입력해주세요 (20자 이내)"
+        android:inputType="text"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="12dp"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inquiryTitleLabel" />
+
+    <!-- 문의 내용 TextView -->
+    <TextView
+        android:id="@+id/inquiryContentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="문의 내용"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inquiryTitleEditText" />
+
+    <!-- 문의 내용 EditText -->
+    <EditText
+        android:id="@+id/inquiryContentEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/dropdown_background"
+        android:gravity="top|start"
+        android:textColorHint="#666666"
+        android:hint="아래 내용을 보내주시면 빠른 문의 답장에 도움이 됩니다.\n\n-전화번호 (010-0000-0000)\n-상세한 문의 내역"
+        android:inputType="textMultiLine"
+        android:minLines="6"
+        android:padding="12dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/addFIleLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inquiryContentLabel" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addFIleLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dropdown_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/plus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingVertical="12dp"
+            android:text="첨부파일 추가"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView25"
+            app:layout_constraintStart_toEndOf="@+id/imageView25"
+            app:layout_constraintTop_toTopOf="@+id/imageView25" />
+
+        <ImageView
+            android:id="@+id/imageView26"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@drawable/file"
+            android:layout_marginEnd="12dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_practice"
+    app:startDestination="@id/menuSelectFragment">
+
+    <fragment
+        android:id="@+id/menuSelectFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.MenuSelectFragment"
+        android:label="fragment_menu_select"
+        tools:layout="@layout/fragment_menu_select" >
+        <action
+            android:id="@+id/action_menuSelectFragment_to_optionSelectFragment"
+            app:destination="@id/optionSelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/drinkFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.DrinkFragment"
+        android:label="fragment_drink"
+        tools:layout="@layout/fragment_drink" >
+        <action
+            android:id="@+id/action_drinkFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeOutFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.TakeOutFragment"
+        android:label="fragment_take_out"
+        tools:layout="@layout/fragment_take_out" >
+        <action
+            android:id="@+id/action_takeOutFragment_to_payFragment"
+            app:destination="@id/payFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_takeOutFragment"
+            app:destination="@id/takeOutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.PayFragment"
+        android:label="fragment_pay"
+        tools:layout="@layout/fragment_pay" >
+        <action
+            android:id="@+id/action_payFragment_to_selectPayFragment"
+            app:destination="@id/selectPayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectPayFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.SelectPayFragment"
+        android:label="fragment_select_pay"
+        tools:layout="@layout/fragment_select_pay" />
+    <fragment
+        android:id="@+id/sidePracticeFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.SidePracticeFragment"
+        android:label="fragment_side_practice"
+        tools:layout="@layout/fragment_side_practice" >
+        <action
+            android:id="@+id/action_sidePracticeFragment_to_drinkFragment"
+            app:destination="@id/drinkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/optionSelectFragment"
+        android:name="com.umc6th.kioki.tutorial.practice.OptionSelectFragment"
+        android:label="fragment_option_select"
+        tools:layout="@layout/fragment_option_select" >
+        <action
+            android:id="@+id/action_optionSelectFragment_to_sidePracticeFragment"
+            app:destination="@id/sidePracticeFragment" />
+    </fragment>
+</navigation>

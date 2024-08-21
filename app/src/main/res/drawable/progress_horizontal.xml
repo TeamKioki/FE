@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:shape="rectangle">
+            <solid android:color="#F1F1F1"/> <!-- 배경색 (진행 바 배경색) -->
+        </shape>
+    </item>
+    <item>
+        <clip>
+            <shape
+                android:shape="rectangle">
+                <solid android:color="@color/primary"/> <!-- 진행 바 색상 -->
+                <corners android:radius="10dp"/> <!-- 모서리 둥글기 -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>

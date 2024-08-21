@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Kioki</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="input_member_info">원활한 이용을 위해\n정보를 입력해주세요</string>
+
+    <string-array name="inquiry_categories">
+        <item>계정 문의</item>
+        <item>키오스크 등록 문의</item>
+        <item>튜토리얼 문의</item>
+        <item>기타 문의</item>
+    </string-array>
+  
     <string-array name="sort_array">
         <item>거리순</item>
         <item>난이도 높은 순</item>
