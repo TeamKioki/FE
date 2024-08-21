@@ -1,5 +1,6 @@
 package com.umc6th.kioki.tutorial.tabMenus.dialog
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.umc6th.kioki.tutorial.TutorialViewModel
 import com.umc6th.kioki.tutorial.adapter.SideAdapter
 import com.umc6th.kioki.utils.dialogFragmentResize
 import com.umc6th.kioki.databinding.FragmentSelectSideDialogBinding
+import com.umc6th.kioki.tutorial.tutorial.DrinkTutorialActivity
+import com.umc6th.kioki.tutorial.tutorial.SideMenuTutorialActivity
 
 class SelectSideDialog : DialogFragment() {
     private lateinit var binding: FragmentSelectSideDialogBinding
@@ -27,7 +30,7 @@ class SelectSideDialog : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        context?.dialogFragmentResize(this, 0.95f, 0.65f)
+        context?.dialogFragmentResize(this, 0.95f, 0.8f)
     }
 
     override fun onCreateView(
@@ -42,16 +45,24 @@ class SelectSideDialog : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         observeSideMenus()
         observeTotalPrice()
+        binding.exitItem.setOnClickListener {
+            dismiss()
+            requireActivity().finish()
+        }
         binding.cancelButton.setOnClickListener {
             dismiss()
         }
         binding.completeButton.setOnClickListener {
-            SelectSideDialog().show(parentFragmentManager, "SelectDrinkDialog")
+            SelectDrinkDialog().show(parentFragmentManager, "SelectDrinkDialog")
             dismiss()
         }
         binding.sideRv.apply {
             adapter = sideAdapter
             layoutManager = GridLayoutManager(context, 4)
+        }
+
+        binding.tutorialItem.setOnClickListener {
+            startActivity(Intent(requireContext(), SideMenuTutorialActivity::class.java))
         }
     }
 

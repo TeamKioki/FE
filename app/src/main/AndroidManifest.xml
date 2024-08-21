@@ -15,18 +15,81 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kioki"
         tools:targetApi="31">
+
         <activity
-            android:name="com.umc6th.kioki.tutorial.tabMenus.dialog.SelectDrinkDialogActivity"
+            android:name=".inquire.InquireActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".tutorial.tutorial.StepTwoTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".tutorial.tutorial.StepOneTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".tutorial.tutorial.TakeInOrOutTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".tutorial.tutorial.SideMenuTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".tutorial.tutorial.DrinkTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".tutorial.tutorial.OptionTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".tutorial.tutorial.MainTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".login.InputLoginCodeActivity"
             android:exported="false" />
         <activity
-            android:name="com.umc6th.kioki.onboarding.OnboardingActivity"
+            android:name=".tutorial.practice.finish.PracticeFinishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".tutorial.tabMenus.dialog.SelectDrinkDialogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".onboarding.OnboardingActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".login.LoginActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name="com.umc6th.kioki.login.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.umc6th.kioki.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,21 +97,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.umc6th.kioki.join.JoinActivity"
-            android:exported="true">
-        </activity>
+            android:name=".join.JoinActivity"
+            android:exported="true" />
         <activity
-                 
             android:name=".GroupHomeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".GroupHomeMoreActivity"
+            android:exported="true" />
+        <activity
+            android:name=".tutorial.practice.BurgerKingTutorialActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@style/TransparentActivityTheme" />
+        <activity
+            android:name=".tutorial.BurgerKingRealActivity"
             android:exported="true">
-
         </activity>
     </application>
 

@@ -1,5 +1,6 @@
 package com.umc6th.kioki.login
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,4 +28,34 @@ class LoginViewModel(private val loginRepository: LoginRepository = LoginReposit
         }
     }
 
+    fun requestAuthCode(phone: String) {
+        viewModelScope.launch {
+            val response = loginRepository.requestAuthCode(phone)
+            if (response.isSuccessful) {
+
+                Log.d(TAG, "requestAuthCode: success")
+                // handle success
+            } else {
+                // handle error
+                Log.d(TAG, "requestAuthCode: ${response.message()} ${response.code()}")
+            }
+        }
+    }
+
+    fun login(phone: String, code: String) {
+        viewModelScope.launch {
+            val response = loginRepository.login(phone, code)
+            if (response.isSuccessful) {
+                KiokiApplication.tokenPrefs.setAccessToken(response.body()!!.data.accessToken)
+                KiokiApplication.tokenPrefs.setRefreshToken(response.body()!!.data.refreshToken)
+                _loginState.postValue(true)
+            } else {
+                // handle error
+            }
+        }
+    }
+
+    companion object {
+        private const val TAG = "LoginViewModel"
+    }
 }

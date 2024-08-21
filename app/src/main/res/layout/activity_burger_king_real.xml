@@ -12,283 +12,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.umc6th.kioki.tutorial.BurgerKingRealActivity">
+
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="409dp"
-            android:layout_height="122dp"
-            android:scaleType="centerCrop"
+            android:layout_width="0dp"
+            android:layout_height="115dp"
+            android:scaleType="fitXY"
             android:src="@drawable/burgerkingback"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <GridLayout
-            android:id="@+id/tabGridLayout"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_alignParentTop="true"
-            android:columnCount="4"
-            android:rowCount="2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-            <!-- Row 1 -->
-            <include
-                android:id="@+id/tab1"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="0"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <include
-                android:id="@+id/tab2"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="0"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <include
-                android:id="@+id/tab3"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="0"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <include
-                android:id="@+id/tab4"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="0"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Row 2 -->
-            <include
-                android:id="@+id/tab5"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <include
-                android:id="@+id/tab6"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <include
-                android:id="@+id/tab7"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <include
-                android:id="@+id/tab8"
-                layout="@layout/tutorial_tab_button"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_row="1"
-                android:layout_rowWeight="1"
-                android:layout_column="3"
-                android:layout_columnWeight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </GridLayout>
-
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/viewPager"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabGridLayout" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/burgerkingNavHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="#ECE4D3"
+            app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            app:layout_constraintVertical_bias="0.5">
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:navGraph="@navigation/nav_real" />
 
-            <TextView
-                android:id="@+id/textView14"
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/actionMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:menu_icon="@drawable/tutorialpng"
+            app:menu_showShadow="true"
+            app:menu_shadowColor="#CC000000"
+            android:layout_marginBottom="250dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/tutorialItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="20dp"
-                android:text="카트"
-                android:fontFamily="@font/bmjua"
-                android:textColor="@color/tab_color"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@drawable/tutorialpng"
+                app:fab_label="튜토리얼 보기"
+                app:fab_size="mini" />
 
-            <TextView
-                android:id="@+id/selectedMenuCount"
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/exitItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:background="@drawable/red_oval_button"
-                android:paddingHorizontal="10dp"
-                android:text="1"
-                android:textColor="@color/white"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView14"
-                app:layout_constraintStart_toEndOf="@+id/textView14"
-                app:layout_constraintTop_toTopOf="@+id/textView14" />
+                android:src="@drawable/exit"
+                app:fab_label="연습 종료"
+                app:fab_size="mini" />
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="총 주문금액"
-                android:fontFamily="@font/bmjua"
-                android:textColor="@color/tab_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/totalPrice"
-                app:layout_constraintEnd_toStartOf="@+id/totalPrice"
-                app:layout_constraintTop_toTopOf="@+id/totalPrice" />
 
-            <TextView
-                android:id="@+id/totalPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
-                android:text="10,800원"
-                android:textColor="#F40000"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/selectedMenuCount"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/selectedMenuCount" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/left_button"
-                android:background="#DBD0B8"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="#DBD0B8"
-                android:src="@drawable/right_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/cartRv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView6"
-                app:layout_constraintStart_toEndOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/selectedMenuCount" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cartRv">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/cancelButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/brown_oval_button"
-                    android:fontFamily="@font/bmjua"
-                    android:text="취소"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/payButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/bmjua"
-                    android:layout_weight="1"
-                    android:background="@drawable/red_oval_button"
-                    android:text="결제하기"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.github.clans.fab.FloatingActionMenu>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

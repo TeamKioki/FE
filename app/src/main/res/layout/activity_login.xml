@@ -47,10 +47,7 @@
             android:background="@drawable/edit_text_gray_color"
             android:hint="휴대폰 번호 입력 (- 제외 입력)"
             android:inputType="phone"
-            android:paddingStart="18dp"
-            android:paddingTop="15dp"
-            android:paddingEnd="18dp"
-            android:paddingBottom="15dp"
+            android:paddingStart="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />

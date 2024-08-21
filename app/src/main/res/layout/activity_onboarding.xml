@@ -29,6 +29,29 @@
             app:layout_constraintTop_toTopOf="parent"
             app:selectedDotColor="@color/primary" />
 
+
+        <ImageView
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rightarrow"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/onBoardingViewPager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dotsIndicator" />
+
+        <TextView
+            android:id="@+id/startTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="시작하기"
+            android:textColor="#474747"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/nextButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nextButton" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/onBoardingViewPager"
             android:layout_width="0dp"

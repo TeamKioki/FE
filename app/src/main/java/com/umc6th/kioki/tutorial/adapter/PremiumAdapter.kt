@@ -19,7 +19,11 @@ class PremiumAdapter(private val onClickListener: (MenuItem) -> Unit) : Recycler
         }
         fun bind(item: MenuItem) {
             binding.burgerImage.setImageResource(item.imageRes)
-            binding.burgerName.text = item.name
+            if (item.name.length > 10) {
+                binding.burgerName.text = "블랙바비큐콰트로\n치즈와퍼"
+            } else {
+                binding.burgerName.text = item.name
+            }
             binding.burgerPrice.text = item.price.toString()
         }
     }

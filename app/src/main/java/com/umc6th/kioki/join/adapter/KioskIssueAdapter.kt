@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.join.KioskIssue
 import com.umc6th.kioki.databinding.KioskIssueRowItemBinding
 
-class KioskIssueAdapter(private val onIssueClick: (KioskIssue) -> Unit) :
+class KioskIssueAdapter(private val onIssueClick: (KioskIssue, Int) -> Unit) :
     ListAdapter<KioskIssue, KioskIssueAdapter.KioskIssueViewHolder>(DiffUtilCallback()) {
 
     inner class KioskIssueViewHolder(
@@ -17,7 +17,7 @@ class KioskIssueAdapter(private val onIssueClick: (KioskIssue) -> Unit) :
 
         init {
             binding.root.setOnClickListener {
-                onIssueClick(getItem(adapterPosition))
+                onIssueClick(getItem(adapterPosition), adapterPosition)
             }
         }
 

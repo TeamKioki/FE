@@ -21,7 +21,6 @@ import com.umc6th.kioki.tutorial.tabMenus.SpecialPackFragment
 import com.umc6th.kioki.tutorial.tabMenus.WhopperFragment
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityBurgerKingRealBinding
-import com.umc6th.kioki.tutorial.practice.BurgerKingTutorialActivity
 
 class BurgerKingRealActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBurgerKingRealBinding

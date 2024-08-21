@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.umc6th.kioki.join.SelectKioskIssueFragment">
+        tools:context="com.umc6th.kioki.tutorial.practice.finish.PracticeIssueFragment">
 
         <ProgressBar
             android:id="@+id/joinProgressBar"

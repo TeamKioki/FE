@@ -5,19 +5,13 @@
     android:layout_height="match_parent"
     tools:context="com.umc6th.kioki.onboarding.ThirdFragment">
 
-    <ImageView
-        android:layout_width="14dp"
-        android:layout_height="33dp"
-        android:src="@drawable/rightarrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
         android:layout_height="270dp"
         android:layout_marginTop="105dp"
-        android:src="@drawable/on1"
+        android:src="@drawable/onboarding3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

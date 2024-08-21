@@ -1,4 +1,4 @@
-package com.umc6th.kioki.data.response
+package com.umc6th.kioki.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
