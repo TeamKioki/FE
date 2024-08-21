@@ -9,4 +9,12 @@
     <color name="gray800">#FF808080</color>
     <color name="tab_color">#FF2F0904</color>
     <color name="tab_selected_color">#FFF40000</color>
+
+    <color name="custom_black">#000000</color>
+    <color name="custom_red">#F44336</color>
+    <color name="custom_orange">#FF9800</color>
+    <color name="custom_green">#4CAF50</color>
+    <color name="custom_blue">#2196F3</color>
+    <color name="custom_purple">#9C27B0</color>
+
 </resources>

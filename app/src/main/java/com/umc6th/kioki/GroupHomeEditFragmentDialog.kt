@@ -31,6 +31,11 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     ): View? {
         binding = FragmentGroupHomeEditBinding.inflate(layoutInflater)
 
+        if (savedInstanceState == null) {
+            childFragmentManager.beginTransaction()
+                .add(R.id.edit_color_palette_fragmentContainer, GroupHomeColorPalette())
+                .commitNow()
+        }
 
         return binding.root
     }
@@ -61,28 +66,6 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             dismiss()
         }
 
-        binding.editAddColorBtnIv.setOnClickListener {
-            // 현재 DialogFragment 닫기
-            dismiss()
-
-            // GroupHomeEditColorPickerFragment 다이얼로그 열기
-//            val ColorPickerDialogFragment = GroupHomeEditColorPickerFragment()
-//            ColorPickerDialogFragment.show(parentFragmentManager, "ColorPickerDialogFragment")
-            val colorPickerPopUp = ColorPickerPopUp(context) // Pass the context.
-            colorPickerPopUp.setShowAlpha(true) // By default show alpha is true.
-                .setDialogTitle("Pick a Color")
-                .setOnPickColorListener(object : OnPickColorListener {
-                    override fun onColorPicked(color: Int) {
-                        // handle the use of color
-                    }
-
-                    override fun onCancel() {
-                        colorPickerPopUp.dismissDialog() // Dismiss the dialog.
-                    }
-                })
-                .show()
-
-        }
     }
 
     fun radioBtnClickEvent(view: View) {

@@ -66,7 +66,7 @@ class GroupMoreRvAdapter(
             if (member.isGroupMember == false) {
                 holder.group_more_item_add_btn_iv.setImageResource(R.drawable.ic_group_add_group) // 그룹에 추가된 상태의 아이콘
             } else {
-                holder.group_more_item_add_btn_iv.setImageResource(R.drawable.ic_check) // 그룹에 추가되지 않은 상태의 아이콘
+                holder.group_more_item_add_btn_iv.setImageResource(R.drawable.ic_group_more_check) // 그룹에 추가되지 않은 상태의 아이콘
             }
         }
     }

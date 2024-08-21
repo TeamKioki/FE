@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="330dp"
-        android:layout_height="467dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_group_home_edit_rounded_bg"
         android:orientation="vertical"
         android:padding="20dp">
@@ -23,16 +23,17 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="293dp"
+            android:layout_height="124dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="97dp"
-                android:layout_height="98dp"
-                android:layout_marginRight="20dp"
+                android:layout_width="117dp"
+                android:layout_height="99dp"
+
+                android:layout_marginRight="10dp"
                 android:src="@drawable/ic_add_img" />
 
             <LinearLayout
@@ -51,16 +52,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    >
+                    android:gravity="center_vertical">
 
                     <EditText
                         android:id="@+id/edit_member_name_et"
                         android:layout_width="79dp"
                         android:layout_height="35dp"
-                        android:textSize="20sp"
                         android:background="@android:color/transparent"
-                        android:backgroundTint="@null"/>
+                        android:backgroundTint="@null"
+                        android:textSize="20sp" />
 
                     <ImageView
                         android:id="@+id/edit_name_btn_iv"
@@ -73,10 +73,10 @@
                     android:id="@+id/edit_text_size_txt_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:text="글자크기"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp"/>
+                    android:textStyle="bold" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -90,11 +90,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="22dp"
                         android:button="@null"
+                        android:buttonTint="@color/selector_group_edit_radiobtn"
                         android:checked="true"
                         android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                        android:text="보통"
-                        android:buttonTint="@color/selector_group_edit_radiobtn"
-                        />
+                        android:text="보통" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/edit_radio_big_rb"
@@ -117,7 +116,7 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/shape_main_rounded_corner_apricot"
             android:gravity="center_vertical"
             android:padding="10dp"
@@ -133,7 +132,7 @@
                 android:background="@android:color/transparent"
                 android:backgroundTint="@null"
                 android:hint="제목을 입력하세요"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -172,37 +171,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-
-        <ImageView
-            android:id="@+id/edit_add_color_btn_iv"
-            android:layout_width="62dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-            app:srcCompat="@drawable/ic_add_img" />
-
-<!--        <com.skydoves.colorpickerview.ColorPickerView-->
-<!--            android:id="@+id/colorPickerView"-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="300dp"-->
-<!--            tools:ignore="MissingConstraints"-->
-
-<!--            />-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/edit_color_palette_fragmentContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_color_txt_tv" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/edit_add_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/btn_group_edit_rounded_orange"
             android:text="수정"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_color_palette_fragmentContainer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
