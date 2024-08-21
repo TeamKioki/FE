@@ -21,12 +21,13 @@
             android:src="@drawable/ic_main_menu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/main_user_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
             android:text="키오키님, \n오늘도 열심히 연습해봐요"
             android:textColor="@color/white"
             android:textSize="24dp"
@@ -35,31 +36,48 @@
 
         <ImageView
             android:id="@+id/main_comment_container_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="491dp"
+            android:layout_height="119dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_user_name_tv"
             app:srcCompat="@drawable/img_main_comment" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/main_comment_text_tv"
-            android:layout_width="203dp"
-            android:layout_height="49dp"
-            android:text="전자기기에 관련된 상식, 정보, 응원의 말"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/main_comment_container_iv"
-            app:layout_constraintEnd_toEndOf="@+id/main_comment_container_iv"
-            app:layout_constraintHorizontal_bias="0.165"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="35dp"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="@+id/main_comment_container_iv"
-            app:layout_constraintTop_toTopOf="@+id/main_comment_container_iv"
-            app:layout_constraintVertical_bias="0.637" />
+            app:layout_constraintTop_toTopOf="@+id/main_comment_container_iv">
+
+            <TextView
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:text="[공지사항]"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:text="키오스크 신규 추가 목록 안내"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:text="2024.08.02"
+                android:textSize="13sp" />
+
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_bottom_layout"
-            android:layout_width="match_parent"
-            android:layout_height="491dp"
+            android:layout_width="424dp"
+            android:layout_height="501dp"
             android:background="@drawable/shape_main_rounded_corner_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,8 +85,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
-                android:layout_width="360dp"
-                android:layout_height="150dp"
+                android:layout_width="355dp"
+                android:layout_height="128dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
@@ -79,8 +97,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/home_users_indicator">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="75dp"
+                    android:layout_height="70dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:src="@drawable/shape_main_peach_oval"
@@ -89,22 +107,22 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="95dp"
-                    android:layout_height="118dp"
-                    android:layout_marginStart="44dp"
+                    android:layout_width="88dp"
+                    android:layout_height="102dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="11dp"
                     android:src="@drawable/ic_main_character"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.322" />
+                    app:layout_constraintVertical_bias="0.6" />
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="160dp"
+                    android:layout_height="45dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginEnd="55dp"
                     android:text="키키와\n키오스크 연습하러 가기"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -115,8 +133,8 @@
                     android:id="@+id/main_goto_btn"
                     android:layout_width="168dp"
                     android:layout_height="41dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="50dp"
                     android:background="@drawable/btn_main_go_practice"
                     android:clickable="true"
                     android:focusable="true"
@@ -126,7 +144,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    app:layout_constraintVertical_bias="0.09">
+                    app:layout_constraintVertical_bias="0.0">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -160,7 +178,7 @@
                 app:layout_constraintHorizontal_bias="0.26"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/appCompatButton2"
@@ -177,13 +195,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/appCompatButton"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/main_select_user_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
                 android:text="계정 고르기"
                 android:textSize="20sp"
@@ -196,10 +214,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="180dp"
                 android:layout_marginTop="26dp"
-                android:layout_marginEnd="40dp"
-                android:orientation="horizontal"
+                android:layout_marginEnd="20dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/main_select_user_title_tv"
                 app:layout_constraintTop_toTopOf="parent">
@@ -207,11 +225,12 @@
                 <TextView
                     android:id="@+id/main_more_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
-                    android:text="자세히 보기"
                     android:clickable="true"
                     android:focusable="true"
+                    android:text="자세히 보기"
+                    android:textColor="#B3B3B3"
                     tools:layout_editor_absoluteX="173dp"
                     tools:layout_editor_absoluteY="35dp" />
 
@@ -224,8 +243,8 @@
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/main_users_vp"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_width="374dp"
+                android:layout_height="134dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="20dp"
@@ -247,7 +266,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="20dp"
                 android:text="다른 도움이 필요하신가요?"
                 android:textSize="20sp"
