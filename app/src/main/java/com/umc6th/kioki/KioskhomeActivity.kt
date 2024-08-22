@@ -31,16 +31,16 @@ class KioskhomeActivity : AppCompatActivity() {
 
         setupEditMode()
 
-//        val brandList = mutableListOf(
-//            Brand("버거킹", "햄버거 · 패스트푸드점", R.drawable.logo_burgerking),
-//            Brand("롯데리아", "햄버거 · 패스트푸드점", R.drawable.logo_lotteria),
-//            Brand("맘스터치", "햄버거 · 패스트푸드점", R.drawable.logo_momstouch),
-//            Brand("KFC", "햄버거 · 패스트푸드점", R.drawable.logo_kfc),
-//            Brand("서브웨이", "샌드위치", R.drawable.logo_subway)
-//        )
-//        setupRecyclerView(brandList)
+        val brandList = mutableListOf(
+            Brand("버거킹", "햄버거 · 패스트푸드점", R.drawable.logo_burgerking.toString()),
+            Brand("롯데리아", "햄버거 · 패스트푸드점", R.drawable.logo_lotteria.toString()),
+            Brand("맘스터치", "햄버거 · 패스트푸드점", R.drawable.logo_momstouch.toString()),
+            Brand("KFC", "햄버거 · 패스트푸드점", R.drawable.logo_kfc.toString()),
+            Brand("서브웨이", "샌드위치", R.drawable.logo_subway.toString())
+        )
+        setupRecyclerView(brandList)
 
-        fetchKioskData()
+        //fetchKioskData()
 
         goBack()
         plusBrand()
@@ -141,24 +141,24 @@ class KioskhomeActivity : AppCompatActivity() {
         itemTouchHelper.attachToRecyclerView(binding.kiohomeBrandlistRv)
     }
 
-    private fun fetchKioskData() {
-        val token = userPreferences.getString("jwt", "") ?: ""
-        val call = KioskRetrofitObject.getRetrofitService.getKioskList(token)
-        call.enqueue(object : Callback<KioskRetrofitClient2.KioskResponse> {
-            override fun onResponse(call: Call<KioskRetrofitClient2.KioskResponse>, response: Response<KioskRetrofitClient2.KioskResponse>) {
-                if (response.isSuccessful && response.body()?.isSuccess == true) {
-                    val kioskList = response.body()?.result ?: emptyList()
-                    setupRecyclerView(kioskList.map {
-                        Brand(it.name, "레벨: ${it.level}", it.imageUrl)
-                    }.toMutableList())
-                } else {
-                    Log.e("KioskhomeActivity", "API 응답 실패: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<KioskRetrofitClient2.KioskResponse>, t: Throwable) {
-                Log.e("KioskhomeActivity", "API 요청 실패: ${t.message}")
-            }
-        })
-    }
+//    private fun fetchKioskData() {
+//        val token = userPreferences.getString("jwt", "") ?: ""
+//        val call = KioskRetrofitObject.getRetrofitService.getKioskList(token)
+//        call.enqueue(object : Callback<KioskRetrofitClient2.KioskResponse> {
+//            override fun onResponse(call: Call<KioskRetrofitClient2.KioskResponse>, response: Response<KioskRetrofitClient2.KioskResponse>) {
+//                if (response.isSuccessful && response.body()?.isSuccess == true) {
+//                    val kioskList = response.body()?.result ?: emptyList()
+//                    setupRecyclerView(kioskList.map {
+//                        Brand(it.name, "레벨: ${it.level}", it.imageUrl)
+//                    }.toMutableList())
+//                } else {
+//                    Log.e("KioskhomeActivity", "API 응답 실패: ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<KioskRetrofitClient2.KioskResponse>, t: Throwable) {
+//                Log.e("KioskhomeActivity", "API 요청 실패: ${t.message}")
+//            }
+//        })
+//    }
 }
