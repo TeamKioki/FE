@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity() {
             binding.mainDrawerLayout.openDrawer(GravityCompat.END) // 드로어 열기
         }
 
+        binding.mainGotoBtn.setOnClickListener{
+            val intent = Intent(this, KioskhomeActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     // 처음 시작하는 프래그먼트 설정하는 함수
 //    private fun setStartFragment() {

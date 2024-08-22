@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="313dp"
+    android:layout_height="185dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shape_group_home_edit_rounded_bg">
+
+    <TextView
+        android:id="@+id/allkiosk_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="모든 키오스크에 현재 수정사항 적용"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_semibold"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/allkiosk_semititle_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="현재 수정하시는 부분을\n모든 키오스크에 적용하시겠습니까?"
+        android:textSize="15sp"
+        android:textColor="#474747"
+        android:fontFamily="@font/pretendard_regular"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/allkiosk_title_tv" />
+
+    <TextView
+        android:id="@+id/allkiosk_cancle_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="취소"
+        android:textSize="18sp"
+        android:textColor="#666666"
+        android:fontFamily="@font/pretendard_regular"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toStartOf="@id/allkiosk_semititle_tv"
+        app:layout_constraintTop_toBottomOf="@id/allkiosk_semititle_tv" />
+
+    <TextView
+        android:id="@+id/allkiosk_okay_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:textSize="18sp"
+        android:textColor="#FF5C00"
+        android:fontFamily="@font/pretendard_regular"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintEnd_toEndOf="@id/allkiosk_semititle_tv"
+        app:layout_constraintTop_toBottomOf="@id/allkiosk_semititle_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
