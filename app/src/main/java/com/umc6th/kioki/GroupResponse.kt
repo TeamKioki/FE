@@ -69,7 +69,7 @@ data class GroupMembersProfilePicture (
     @SerializedName("memberId") val memberId: Int,
     @SerializedName("userId") val userId:Int,
     @SerializedName("nickname") val nickname: String,
-    @SerializedName("profilePictureUrl") val profilePictureUrl: String,
+    @SerializedName("profileName") val profileName: String,
     @SerializedName("noteTitle") val noteTitle: String,
     @SerializedName("noteText") val noteText: String,
     @SerializedName("color") val color:String,

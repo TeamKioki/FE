@@ -8,3 +8,7 @@ interface OnItemClickListener {
 interface OnMoreGroupClickListener {
     fun onItemClick(member: NotMemberEntity)
 }
+
+interface DialogListener {
+    fun onModifiedDataReceived(data1: String, data2: Int, data3: Boolean)
+}

@@ -160,6 +160,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
     override fun onItemClick(member: MemberEntity) {
         val dialog = GroupHomeEditFragmentDialog()
         var bundle = Bundle() // 다이얼로그에 전달할 Bundle 생성
+        bundle.putInt("MemberId", member.memberId!!)
         bundle.putString("MemberName", member.nickname)
         bundle.putString("MemberNoteTitle", member.noteTitle)
         bundle.putString("MemberNoteText", member.noteText)

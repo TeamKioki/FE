@@ -98,8 +98,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".NavAccountEditActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".join.JoinActivity"
             android:exported="true" />
+
         <activity
             android:name=".GroupHomeActivity"
             android:exported="true" />

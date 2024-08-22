@@ -18,7 +18,7 @@
             android:layout_height="32dp"
             android:layout_margin="8dp"
             android:background="@drawable/selector_color_palette"
-
+            android:backgroundTint="@color/black"
             android:tag="@color/black"
             android:clickable="true"
 
@@ -30,7 +30,7 @@
             android:layout_margin="8dp"
             android:background="@drawable/shape_color_palette"
             android:backgroundTint="@color/red"
-            android:tag="@color/black"
+            android:tag="@color/red"
             android:clickable="true"
             />
         <View

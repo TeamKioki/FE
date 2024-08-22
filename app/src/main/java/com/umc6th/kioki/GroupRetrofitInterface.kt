@@ -1,11 +1,13 @@
 package com.umc6th.kioki
 
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -32,7 +34,14 @@ interface GroupRetrofitInterface {
     fun deleteMember(
         @Header("Authorization") token: String,
         @Path("memberId") memberId: Int
-        ) : Call<GroupMembersResponse>
+    ) : Call<GroupMembersResponse>
+
+    @PATCH("/groups/members/{memberId}")
+    fun modifyMember(
+        @Header("Authorization") token: String,
+        @Path("memberId") memberId: Int,
+        @Body requestBody: RequestBody
+    ) : Call<GroupMemberResponse>
 
     @GET("/groups/members/search")
     fun searchMembers(

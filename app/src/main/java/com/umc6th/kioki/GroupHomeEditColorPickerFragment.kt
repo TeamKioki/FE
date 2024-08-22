@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import androidx.fragment.app.DialogFragment
 import com.mrudultora.colorpicker.ColorPickerPopUp
 import com.mrudultora.colorpicker.ColorPickerPopUp.OnPickColorListener
@@ -12,6 +13,7 @@ import com.umc6th.kioki.databinding.FragmentGroupHomeEditColorpickerBinding
 
 class GroupHomeEditColorPickerFragment: DialogFragment() {
     lateinit var binding: FragmentGroupHomeEditColorpickerBinding // 연결할 xml 파일 가져오기
+    private lateinit var colorGrid: GridLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,6 @@ class GroupHomeEditColorPickerFragment: DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentGroupHomeEditColorpickerBinding.inflate(layoutInflater)
-
 
         return binding.root
     }

@@ -1,5 +1,6 @@
 package com.umc6th.kioki
 
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -36,21 +37,27 @@ class GroupHomeColorPalette : Fragment() {
 
         addColorButton.setOnClickListener {
             // GroupHomeEditColorPickerFragment 다이얼로그 열기
-//            val ColorPickerDialogFragment = GroupHomeEditColorPickerFragment()
-//            ColorPickerDialogFragment.show(parentFragmentManager, "ColorPickerDialogFragment")
-            val colorPickerPopUp = ColorPickerPopUp(context) // Pass the context.
-            colorPickerPopUp.setShowAlpha(true) // By default show alpha is true.
-                .setDialogTitle("Pick a Color")
+            val colorPickerPopUp = ColorPickerPopUp(context)
+            colorPickerPopUp.setShowAlpha(true)
+                .setDialogTitle("색상 추가")
+                .setPositiveButtonText("추가")
+                .setNegativeButtonText("취소")
                 .setOnPickColorListener(object : OnPickColorListener {
                     override fun onColorPicked(color: Int) {
                         // handle the use of color
                         val newColorView = View(requireContext()).apply {
+                            // 원 모양의 Drawable 생성
+                            val drawable = GradientDrawable().apply {
+                                shape = GradientDrawable.OVAL
+                                setColor(color) // 선택된 색상 적용
+                                setSize(32.dpToPx(), 32.dpToPx()) // 크기 설정
+                            }
                             layoutParams = GridLayout.LayoutParams().apply {
                                 width = 32.dpToPx()
                                 height = 32.dpToPx()
                                 setMargins(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
                             }
-                            background = ContextCompat.getDrawable(requireContext(), R.drawable.shape_color_palette)
+                            background = drawable
                             //setBackgroundColor(color) // 배경 색상 설정
 
                             tag = color
@@ -70,12 +77,21 @@ class GroupHomeColorPalette : Fragment() {
 
         }
 
+
+
         return binding.root
     }
     // 초기 뷰에 대해 클릭 리스너 설정
     private fun setupColorViewListeners() {
         for (i in 0 until colorGrid.childCount) {
             val childView = colorGrid.getChildAt(i)
+            // 색상을 동적으로 변경
+            val colorResId = view?.tag as? Int ?: return
+            val color = ContextCompat.getColor(requireContext(), colorResId)
+            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.shape_color_palette) as GradientDrawable
+            drawable.setColor(color)
+            view?.background = drawable
+
             childView?.setOnClickListener { onColorClick(childView) }
         }
     }

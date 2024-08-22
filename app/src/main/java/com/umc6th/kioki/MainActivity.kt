@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ExpandableListView
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
             binding.mainDrawerLayout.openDrawer(GravityCompat.END) // 드로어 열기
         }
 
+        val headerView = binding.navigationView.getHeaderView(0)
+        val drawerCancelIv = headerView.findViewById<ImageView>(R.id.drawer_cancel_iv)
+        drawerCancelIv.setOnClickListener {
+            binding.mainDrawerLayout.closeDrawer(GravityCompat.END) // 드로어 닫기
+        }
     }
 
     private fun updateViewPager(members: List<GroupMember>) {
@@ -70,7 +76,6 @@ class MainActivity : AppCompatActivity() {
 
         // indicator3를 viewPager2에 연결
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
-
     }
 
     private fun setExpandableList() {
@@ -78,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         val childList = mutableListOf(
             mutableListOf(),
             mutableListOf("계정 편집", "알림 설정", "계정 탈퇴"),
-            mutableListOf(),
+            mutableListOf("키오스크 등록 요청"),
             mutableListOf()
         )
         val expandableAdapter = MainExpandableListAdapter(this, parentList, childList)
@@ -91,7 +96,19 @@ class MainActivity : AppCompatActivity() {
             false
         }
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-            /* todo : child 클릭 이벤트 설정 */
+            val activity = when (groupPosition) {
+                1 -> when (childPosition) {
+                    0 -> NavAccountEditActivity::class.java // 계정 편집
+
+                    else -> null
+                }
+                else -> null
+            }
+            Log.d("그룹", childPosition.toString())
+
+            val intent = Intent(this, activity)
+            startActivity(intent)
+
             false
         }
     }
