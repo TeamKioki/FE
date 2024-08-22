@@ -117,6 +117,12 @@
             android:name=".tutorial.BurgerKingRealActivity"
             android:exported="true">
         </activity>
+        <activity android:name=".KioskhomeActivity"
+            android:exported="false" />
+        <activity android:name=".KioskSearchActivity"
+            android:exported="false" />
+        <activity android:name=".KioskFilterActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
