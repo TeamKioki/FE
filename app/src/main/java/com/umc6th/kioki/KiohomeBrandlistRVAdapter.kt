@@ -79,8 +79,8 @@ class KiohomeBrandlistRVAdapter(
                     // 키오스크 편집 다이얼로그 보여주기
                     val dialog = KioskEditDialog(
                         context,
-                        item.name
-                        //item.profile.toInt()
+                        item.name,
+                        item.logo.toInt()
                     )
                     dialog.show()
                 }
