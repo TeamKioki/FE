@@ -107,9 +107,9 @@
         android:src="@drawable/ic_bookmark"
         android:background="@android:color/transparent"
         android:layout_marginEnd="11dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginBottom="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/item_bg_iv"
+        app:layout_constraintBottom_toBottomOf="@+id/item_brandname_tv"
         android:visibility="gone" />
 
     <TextView

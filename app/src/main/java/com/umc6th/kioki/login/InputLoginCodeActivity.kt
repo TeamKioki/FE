@@ -50,10 +50,11 @@ class InputLoginCodeActivity : AppCompatActivity() {
         onDelKeyListener()
         setCertNumOnTextChangedListener()
         viewModel.loginState.observe(this) {
-            if (it) {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+//            if (it) {
+//
+//            }
         }
     }
 

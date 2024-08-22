@@ -53,5 +53,4 @@ interface GroupRetrofitInterface {
         @Header("Authorization") token: String,
         @Query("query") nickname: String
     ): Call<NotGroupMembersResponse>
-
 }
