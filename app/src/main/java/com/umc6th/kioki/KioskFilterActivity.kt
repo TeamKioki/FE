@@ -1,5 +1,6 @@
 package com.umc6th.kioki
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -22,6 +23,15 @@ class KioskFilterActivity : AppCompatActivity() {
         // 적용하기 버튼 클릭 시 필터링된 리스트를 리사이클러뷰에 적용
         binding.filterContinueCl.setOnClickListener {
             applyFilters()
+            finish()
+        }
+
+        binding.filterCloseBtn.setOnClickListener {
+            finish()
+        }
+
+        binding.filterRetryBtn.setOnClickListener {
+            resetFilters()
         }
     }
 
@@ -39,7 +49,7 @@ class KioskFilterActivity : AppCompatActivity() {
     private fun toggleFilterSelection(view: View) {
         val textView = view as TextView
         val isSelected = textView.background.constantState == ContextCompat.getDrawable(this,
-            R.drawable.background_orange
+            R.drawable.btn_group_edit_rounded_orange
         )?.constantState
 
         if (isSelected) {
@@ -48,20 +58,50 @@ class KioskFilterActivity : AppCompatActivity() {
             )
             textView.setTextColor(ContextCompat.getColor(this, R.color.black))
         } else {
-            textView.background = ContextCompat.getDrawable(this, R.drawable.background_orange)
+            textView.background = ContextCompat.getDrawable(this, R.drawable.btn_group_edit_rounded_orange)
             textView.setTextColor(ContextCompat.getColor(this, R.color.white))
         }
     }
 
     private fun applyFilters() {
-        // 선택된 필터에 따라 필터링 로직을 구현하세요.
-        // 예시: filterSelectedBrands 메서드에서 필터 조건에 맞는 브랜드 리스트를 필터링하여 리턴
-        //val filteredBrands = filterSelectedBrands()
+        val selectedFilters = mutableListOf<String>()
 
-        // 필터링된 리스트를 리사이클러뷰에 적용
-        //val adapter = KiohomeBrandlistRVAdapter(filteredBrands)
-        // RecyclerView 설정
-        // 예시: recyclerView.adapter = adapter
+        if (isFilterSelected(binding.filterEasyTv)) selectedFilters.add("쉬움")
+        if (isFilterSelected(binding.filterMidscoreTv)) selectedFilters.add("중간")
+        if (isFilterSelected(binding.filterDifTv)) selectedFilters.add("어려움")
+        if (isFilterSelected(binding.filterOneTv)) selectedFilters.add("1개")
+        if (isFilterSelected(binding.filterTwomoreTv)) selectedFilters.add("2개 이상")
+        if (isFilterSelected(binding.filterShortTv)) selectedFilters.add("0.5km 이내")
+        if (isFilterSelected(binding.filterMiddistTv)) selectedFilters.add("1.0km 이내")
+        if (isFilterSelected(binding.filterLongTv)) selectedFilters.add("1.5km 이내")
+
+        val intent = Intent()
+        intent.putStringArrayListExtra("selectedFilters", ArrayList(selectedFilters))
+        setResult(RESULT_OK, intent)
+        finish()
+    }
+
+    private fun isFilterSelected(textView: TextView): Boolean {
+        return textView.background.constantState == ContextCompat.getDrawable(this, R.drawable.btn_group_edit_rounded_orange)?.constantState
+    }
+
+    private fun resetFilter(textView: TextView) {
+        textView.background = ContextCompat.getDrawable(this,
+            R.drawable.background_lightgray_50dp
+        )
+        textView.setTextColor(ContextCompat.getColor(this, R.color.black))
+    }
+
+    private fun resetFilters() {
+        // 모든 필터 버튼을 기본 상태로 되돌림
+        resetFilter(binding.filterEasyTv)
+        resetFilter(binding.filterMidscoreTv)
+        resetFilter(binding.filterDifTv)
+        resetFilter(binding.filterOneTv)
+        resetFilter(binding.filterTwomoreTv)
+        resetFilter(binding.filterShortTv)
+        resetFilter(binding.filterMiddistTv)
+        resetFilter(binding.filterLongTv)
     }
 
 //    private fun filterSelectedBrands(): List<Brand> {

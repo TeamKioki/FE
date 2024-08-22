@@ -72,6 +72,18 @@ class KiohomeBrandlistRVAdapter(
                     )
                     dialog.show()
                 }
+            } else {
+                itemView.setOnClickListener {
+                    val context = itemView.context
+
+                    // 키오스크 편집 다이얼로그 보여주기
+                    val dialog = KioskEditDialog(
+                        context,
+                        item.name
+                        //item.profile.toInt()
+                    )
+                    dialog.show()
+                }
             }
 
             trashButton.setOnClickListener {
