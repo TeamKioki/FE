@@ -5,6 +5,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -72,7 +77,9 @@
             android:theme="@style/TransparentActivityTheme" />
         <activity
             android:name=".login.InputLoginCodeActivity"
-            android:exported="false" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".tutorial.practice.finish.PracticeFinishActivity"
             android:exported="false" />
@@ -87,15 +94,17 @@
         <activity
             android:name=".login.LoginActivity"
             android:exported="true">
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".join.JoinActivity"
@@ -116,6 +125,7 @@
         <activity
             android:name=".tutorial.BurgerKingRealActivity"
             android:exported="true">
+
         </activity>
     </application>
 

@@ -43,6 +43,7 @@
                 android:src="@drawable/one" />
 
             <TextView
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="메뉴 종류 선택"
@@ -77,6 +78,7 @@
                 android:src="@drawable/two" />
 
             <TextView
+                android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="메뉴 선택"
@@ -85,6 +87,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

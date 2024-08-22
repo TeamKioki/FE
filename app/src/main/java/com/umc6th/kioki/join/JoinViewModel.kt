@@ -1,5 +1,6 @@
 package com.umc6th.kioki.join
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,6 +13,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 class JoinViewModel(
     private val joinRepository: JoinRepository = JoinRepository()
@@ -22,6 +28,10 @@ class JoinViewModel(
     private val _isAuthCodeVerified = MutableLiveData<VerifyAuthCodeResult>(VerifyAuthCodeResult.Empty)
     val isAuthCodeVerified: LiveData<VerifyAuthCodeResult> = _isAuthCodeVerified
 
+    private val _presignedUrl = MutableLiveData<String>("")
+    val presignedUrl: LiveData<String> = _presignedUrl
+
+    private var imageName: String = ""
     private var userName: String = ""
     private var userBirthDay: String = ""
     private var userPhone: String = ""
@@ -47,6 +57,34 @@ class JoinViewModel(
     private fun setKioskIssues(issues: List<KioskIssue>) {
         _kioskIssues.update { issues }
     }
+
+    fun getPresignedUrl(fileName: String) {
+        viewModelScope.launch {
+            val response = joinRepository.getPresignedUrl(fileName)
+            if (response.isSuccessful) {
+                Log.d(TAG, "getPresignedUrl: success")
+                _presignedUrl.value = response.body()!!.data.url
+                imageName = response.body()!!.data.keyName
+            } else {
+                Log.d(TAG, "getPresignedUrl: ${response.message()}")
+            }
+        }
+    }
+
+    fun uploadImageToS3(presignedUrl: String, body: MultipartBody.Part) {
+
+
+        viewModelScope.launch {
+            val response = joinRepository.uploadImageToS3(presignedUrl, body)
+            if (response.isSuccessful) {
+                Log.d(TAG, "uploadImageToS3: success")
+            } else {
+                Log.d(TAG, "uploadImageToS3: ${response.message()}")
+            }
+        }
+    }
+
+
 
     fun selectKioskIssue(index: Int) {
         val updateIssues = _kioskIssues.value.mapIndexed { idx, it ->
@@ -88,7 +126,7 @@ class JoinViewModel(
             val response = joinRepository.executeJoin(
                 name = userName,
                 phone = userPhone,
-                imageName = "image",
+                imageName = imageName,
                 birthday = userBirthDay,
                 introduction = userIntroduction,
                 kioskDifficulty = userDifficulty

@@ -29,6 +29,7 @@
             android:id="@+id/linearLayout11"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginStart="70dp"
             android:layout_marginTop="100dp"
             android:orientation="horizontal"
@@ -42,6 +43,7 @@
                 android:src="@drawable/one" />
 
             <TextView
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="원하시는 음료를 선택하세요"
@@ -110,6 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/imageView15"
@@ -122,6 +125,7 @@
                 android:src="@drawable/two" />
 
             <TextView
+                android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="선택하신 후 확인을 눌러주세요"

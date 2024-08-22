@@ -18,7 +18,7 @@ import com.umc6th.kioki.tutorial.tutorial.SideMenuTutorialActivity
 class SelectSideDialog : DialogFragment() {
     private lateinit var binding: FragmentSelectSideDialogBinding
     private val sideAdapter: SideAdapter by lazy {
-        SideAdapter {
+        SideAdapter(requireContext()) {
             viewModel.selectSideMenu(it)
         }
     }
