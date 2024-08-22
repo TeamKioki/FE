@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         drawerCancelIv.setOnClickListener {
             binding.mainDrawerLayout.closeDrawer(GravityCompat.END) // 드로어 닫기
         }
+
+        binding.mainGotoBtn.setOnClickListener{
+            val intent = Intent(this, KioskhomeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun updateViewPager(members: List<GroupMember>) {
