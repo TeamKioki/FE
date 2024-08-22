@@ -23,7 +23,7 @@ class KioskEditDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_kioskedit)
-
+        updateTextColor(TextPrefs(context).getTextColor())
         // 다이얼로그의 dimAmount 설정 (0.0에서 1.0 사이의 값, 기본값은 0.5)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         window?.setDimAmount(0.85f)  // 배경을 좀 더 어둡게 설정 (0.8f로 설정)
@@ -38,6 +38,78 @@ class KioskEditDialog(
         val allkiosk: Button = findViewById(R.id.kioskedit_allkiosk_btn)
         val addbtn: Button = findViewById(R.id.kioskedit_add_btn)
 
+        val blackColorBtn: ImageView = findViewById(R.id.color1)
+        val redColorBtn: ImageView = findViewById(R.id.color2)
+        val yellowColorBtn: ImageView = findViewById(R.id.color3)
+        val greenColorBtn: ImageView = findViewById(R.id.color4)
+        val blueColorBtn: ImageView = findViewById(R.id.color5)
+        val purpleColorBtn: ImageView = findViewById(R.id.color6)
+        val whiteColorBtn: ImageView = findViewById(R.id.color7)
+
+        val colorButtons = listOf<ImageView>(
+            blackColorBtn,
+            redColorBtn,
+            yellowColorBtn,
+            greenColorBtn,
+            blueColorBtn,
+            purpleColorBtn,
+            whiteColorBtn
+        )
+
+        val defaultBackground = R.drawable.circle_shape
+
+        val tintList = listOf(
+            0xFF000000.toInt(),
+            0xFFFC002C.toInt(),
+            0xFFF8BE35.toInt(),
+            0xFF00B7A1.toInt(),
+            0xFF006ED2.toInt(),
+            0xFF9338B2.toInt()
+        )
+        addbtn.setOnClickListener {
+            dismiss()
+        }
+        colorButtons.forEach { button ->
+
+            button.setOnClickListener { view ->
+                selectedColor = when (view.id) {
+                    blackColorBtn.id -> Color.BLACK
+                    redColorBtn.id -> 0xFFFC002C.toInt()
+                    yellowColorBtn.id -> 0xFFF8BE35.toInt()
+                    greenColorBtn.id -> 0xFF00B7A1.toInt()
+                    blueColorBtn.id -> 0xFF006ED2.toInt()
+                    purpleColorBtn.id -> 0xFF9338B2.toInt()
+                    whiteColorBtn.id -> Color.WHITE
+                    else -> Color.BLACK // 기본 색상 (예: Black)
+                }
+                updateTextColor(selectedColor)
+            }
+        }
+//
+//        blackColorBtn.setOnClickListener {
+//            selectedColor = Color.BLACK
+//            updateTextColor(selectedColor)
+//        }
+//        redColorBtn.setOnClickListener {
+//            selectedColor = 0xFFFC002C.toInt()
+//            updateTextColor(selectedColor)
+//        }
+//        yellowColorBtn.setOnClickListener {
+//            selectedColor = 0xFFF8BE35.toInt()
+//            updateTextColor(selectedColor)
+//        }
+//        greenColorBtn.setOnClickListener {
+//            selectedColor = 0xFF00B7A1.toInt()
+//            updateTextColor(selectedColor)
+//        }
+//        blueColorBtn.setOnClickListener {
+//            selectedColor = 0xFF006ED2.toInt()
+//            updateTextColor(selectedColor)
+//        }
+//        purpleColorBtn.setOnClickListener {
+//            selectedColor = 0xFF9338B2.toInt()
+//            updateTextColor(selectedColor)
+//        }
         brandname.text = name
         brandlogo.setImageResource(logo)
 
@@ -79,5 +151,6 @@ class KioskEditDialog(
     private fun updateTextColor(color: Int) {
         val brandname: TextView = findViewById(R.id.kioskedit_name_et)
         brandname.setTextColor(color)
+        TextPrefs(context).setTextColor(color)
     }
 }

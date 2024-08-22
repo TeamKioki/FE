@@ -27,6 +27,13 @@ class OptionTutorialActivity : AppCompatActivity() {
                 text2.textSize = 20f
             }
         }
+
+        binding.apply {
+            TextPrefs(this@OptionTutorialActivity).getTextColor().let {
+                text1.setTextColor(it)
+                text2.setTextColor(it)
+            }
+        }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
         }

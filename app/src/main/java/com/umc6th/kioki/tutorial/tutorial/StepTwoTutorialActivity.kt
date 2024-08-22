@@ -30,5 +30,11 @@ class StepTwoTutorialActivity : AppCompatActivity() {
                 text2.textSize = 20f
             }
         }
+        binding.apply {
+            TextPrefs(this@StepTwoTutorialActivity).getTextColor().let {
+                text1.setTextColor(it)
+                text2.setTextColor(it)
+            }
+        }
     }
 }

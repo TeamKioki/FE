@@ -28,6 +28,12 @@ class DrinkTutorialActivity : AppCompatActivity() {
                 text2.textSize = 20f
             }
         }
+        binding.apply {
+            TextPrefs(this@DrinkTutorialActivity).getTextColor().let {
+                text1.setTextColor(it)
+                text2.setTextColor(it)
+            }
+        }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
         }

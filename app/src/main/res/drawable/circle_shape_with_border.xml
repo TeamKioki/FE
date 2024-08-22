@@ -1,0 +1,11 @@
+<!-- res/drawable/circle_shape_with_border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <size android:width="40dp" android:height="40dp"/>
+    <solid android:color="#FFFFFF" />
+    <stroke
+        android:width="3dp"
+        android:color="#FFFFFF"/> <!-- 테두리 색상 지정 -->
+
+</shape>

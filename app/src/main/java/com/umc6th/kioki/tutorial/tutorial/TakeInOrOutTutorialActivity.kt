@@ -29,5 +29,10 @@ class TakeInOrOutTutorialActivity : AppCompatActivity() {
                 text1.textSize = 20f
             }
         }
+        binding.apply {
+            TextPrefs(this@TakeInOrOutTutorialActivity).getTextColor().let {
+                text1.setTextColor(it)
+            }
+        }
     }
 }

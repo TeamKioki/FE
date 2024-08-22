@@ -23,5 +23,5 @@ class TextPrefs(context: Context) {
         editor.putInt("color", color).apply()
     }
 
-    fun getTextColor() = sharedPreference.getInt("color", 0)
+    fun getTextColor() = sharedPreference.getInt("color", 0xFFFFFFFF.toInt())
 }

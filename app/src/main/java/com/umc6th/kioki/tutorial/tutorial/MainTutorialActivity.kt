@@ -30,6 +30,13 @@ class MainTutorialActivity : AppCompatActivity() {
                 text3.textSize = 20f
             }
         }
+        binding.apply {
+            TextPrefs(this@MainTutorialActivity).getTextColor().let {
+                text1.setTextColor(it)
+                text2.setTextColor(it)
+                text3.setTextColor(it)
+            }
+        }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
         }

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="330dp"
     android:layout_height="366dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="#F3F2F2"
     android:background="@drawable/shape_group_home_edit_rounded_bg">
 
     <ImageButton
         android:id="@+id/kioskedit_close_btn"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:src="@drawable/ic_cancel"
-        android:background="@android:color/transparent"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="14dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,22 +21,22 @@
         android:id="@+id/kioskedit_brand_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="버거킹 화면"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/pretendard_semibold"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="버거킹 화면"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    
+
     <ImageView
         android:id="@+id/kioskedit_logobg_iv"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:src="@drawable/iv_backgroundcircle"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
+        android:src="@drawable/iv_backgroundcircle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/kioskedit_brand_tv" />
 
@@ -43,22 +44,22 @@
         android:id="@+id/item_brandlogo_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_burgerking"
         android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="@id/kioskedit_logobg_iv"
+        android:src="@drawable/logo_burgerking"
+        app:layout_constraintBottom_toBottomOf="@id/kioskedit_logobg_iv"
         app:layout_constraintEnd_toEndOf="@id/kioskedit_logobg_iv"
-        app:layout_constraintTop_toTopOf="@id/kioskedit_logobg_iv"
-        app:layout_constraintBottom_toBottomOf="@id/kioskedit_logobg_iv" />
+        app:layout_constraintStart_toStartOf="@id/kioskedit_logobg_iv"
+        app:layout_constraintTop_toTopOf="@id/kioskedit_logobg_iv" />
 
     <TextView
         android:id="@+id/kioskedit_username_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이름"
-        android:textSize="13sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/pretendard_medium"
         android:layout_marginStart="20dp"
+        android:fontFamily="@font/pretendard_medium"
+        android:text="이름"
+        android:textColor="@color/black"
+        android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/kioskedit_logobg_iv"
         app:layout_constraintTop_toTopOf="@id/kioskedit_logobg_iv" />
 
@@ -68,12 +69,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:hint="이름"
+        android:background="@android:color/transparent"
         android:fontFamily="@font/pretendard_medium"
+        android:hint="이름"
         android:text="버거킹"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:background="@android:color/transparent"
         app:layout_constraintStart_toEndOf="@id/kioskedit_logobg_iv"
         app:layout_constraintTop_toBottomOf="@id/kioskedit_username_tv" />
 
@@ -81,21 +82,21 @@
         android:id="@+id/kioskedit_edit_btn"
         android:layout_width="16.76dp"
         android:layout_height="19.41dp"
-        android:src="@drawable/ic_edit_name_btn"
         android:layout_marginStart="13dp"
-        app:layout_constraintStart_toEndOf="@id/kioskedit_name_et"
-        app:layout_constraintBottom_toBottomOf="@id/kioskedit_name_et" />
+        android:src="@drawable/ic_edit_name_btn"
+        app:layout_constraintBottom_toBottomOf="@id/kioskedit_name_et"
+        app:layout_constraintStart_toEndOf="@id/kioskedit_name_et" />
 
     <TextView
         android:id="@+id/kioskedit_textsize_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="글자 크기"
-        android:textSize="13sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/pretendard_medium"
         android:layout_marginStart="22dp"
         android:layout_marginTop="62dp"
+        android:fontFamily="@font/pretendard_medium"
+        android:text="글자 크기"
+        android:textColor="@color/black"
+        android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/kioskedit_logobg_iv"
         app:layout_constraintTop_toTopOf="@id/kioskedit_logobg_iv" />
 
@@ -111,27 +112,27 @@
             android:id="@+id/kioskedit_normal_rbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="보통"
-            android:textSize="11sp"
-            android:textColor="#808080"
-            android:fontFamily="@font/pretendard_regular"
             android:layout_marginRight="22dp"
             android:button="@null"
             android:buttonTint="@color/selector_group_edit_radiobtn"
             android:checked="true"
-            android:drawableEnd="?android:attr/listChoiceIndicatorSingle" />
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:fontFamily="@font/pretendard_regular"
+            android:text="보통"
+            android:textColor="#808080"
+            android:textSize="11sp" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/kioskedit_big_rbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="크게"
-            android:textSize="11sp"
-            android:textColor="#808080"
-            android:fontFamily="@font/pretendard_regular"
             android:button="@null"
             android:buttonTint="@color/selector_group_edit_radiobtn"
-            android:drawableEnd="?android:attr/listChoiceIndicatorSingle" />
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+            android:fontFamily="@font/pretendard_regular"
+            android:text="크게"
+            android:textColor="#808080"
+            android:textSize="11sp" />
 
     </RadioGroup>
 
@@ -139,49 +140,125 @@
         android:id="@+id/kioskedit_textcolor_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="글자 색상"
-        android:textSize="10sp"
-        android:textColor="@color/black"
         android:fontFamily="@font/pretendard_medium"
+        android:text="글자 색상"
+        android:textColor="@color/black"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@id/kioskedit_logobg_iv"
         app:layout_constraintTop_toBottomOf="@+id/kioskedit_group_rg" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/kioskedit_colorlist_fcv"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout18"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kioskedit_textcolor_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/kioskedit_textcolor_tv">
+
+        <!-- 첫 번째 원 -->
+        <ImageView
+            android:id="@+id/color1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="#000000" />
+
+        <!-- 두 번째 원 -->
+        <ImageView
+            android:id="@+id/color2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="#FC002C" />
+
+        <!-- 세 번째 원 -->
+        <ImageView
+            android:id="@+id/color3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="#F8BE35" />
+
+        <!-- 네 번째 원 -->
+        <ImageView
+            android:id="@+id/color4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="#00B7A1" />
+
+        <!-- 다섯 번째 원 -->
+        <ImageView
+            android:id="@+id/color5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="#006ED2" />
+
+        <!-- 여섯 번째 원 -->
+        <ImageView
+            android:id="@+id/color6"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="#9338B2" />
+
+
+        <ImageView
+            android:id="@+id/color7"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_shape" />
+
+
+    </LinearLayout>
+    <!--    <androidx.fragment.app.FragmentContainerView-->
+    <!--        android:id="@+id/kioskedit_colorlist_fcv"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="5dp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/kioskedit_textcolor_tv" />-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/kioskedit_allkiosk_btn"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="모든 키오스크에 현재 수정사항 적용"
-        android:textSize="16sp"
-        android:fontFamily="@font/pretendard_medium"
-        android:textColor="@color/black"
-        android:background="@drawable/background_lightgray_50dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_lightgray_50dp"
+        android:fontFamily="@font/pretendard_medium"
+        android:text="모든 키오스크에 현재 수정사항 적용"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/kioskedit_add_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/kioskedit_add_btn" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout18" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/kioskedit_add_btn"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="수정"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/pretendard_semibold"
-        android:background="@drawable/btn_group_edit_rounded_orange"
-        android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_group_edit_rounded_orange"
+        android:fontFamily="@font/pretendard_semibold"
+        android:text="수정"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
