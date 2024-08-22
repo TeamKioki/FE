@@ -12,6 +12,7 @@ import com.umc6th.kioki.databinding.FragmentAccountEditKioskSettingBinding
 class KioskSettingFragmentDialog : DialogFragment() {
     lateinit var binding: FragmentAccountEditKioskSettingBinding // 연결할 xml 파일 가져오기
     private var listener: DialogListener? = null
+    val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMCIsInBob25lIjoiMDEwODI0NzMwMTAiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzI0MzE5MjM5LCJleHAiOjE3MjY5MTEyMzl9.Zwz108s5qKDBo02nm16H_Ma_P0CnkUybG66XbkOk9_A"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +66,6 @@ class KioskSettingFragmentDialog : DialogFragment() {
 //            RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
 
         // 서버에서 제공받은 Access Token
-        val accessToken =
-            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
 
         // 수정 버튼 이벤트 핸들러
         binding.editModifyBtn.setOnClickListener {

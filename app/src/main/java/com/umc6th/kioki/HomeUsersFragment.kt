@@ -18,6 +18,8 @@ class HomeUsersFragment : Fragment() {
     private lateinit var members: List<GroupMember>
     private lateinit var apiService: GroupRetrofitInterface
     private lateinit var adapter: HomeUsersAdapter
+    val accessToken =
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMCIsInBob25lIjoiMDEwODI0NzMwMTAiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzI0MzE5MjM5LCJleHAiOjE3MjY5MTEyMzl9.Zwz108s5qKDBo02nm16H_Ma_P0CnkUybG66XbkOk9_A"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,9 +36,6 @@ class HomeUsersFragment : Fragment() {
         val choice =arguments?.getInt(MEMBER_ITEM)
         // 연결할 api 설정
         apiService = RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
-
-        // 서버에서 제공받은 Access Token
-        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
 
 
         choice?.let {

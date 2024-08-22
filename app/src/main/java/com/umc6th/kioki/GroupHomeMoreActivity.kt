@@ -15,6 +15,8 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener {
     lateinit var groupList: MutableList<NotMemberEntity> // 그룹 리스트
     lateinit var groupMoreRvAdapter: GroupMoreRvAdapter // 어댑터
     private lateinit var apiService: GroupRetrofitInterface
+    val accessToken =
+        "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMCIsInBob25lIjoiMDEwODI0NzMwMTAiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzI0MzE5MjM5LCJleHAiOjE3MjY5MTEyMzl9.Zwz108s5qKDBo02nm16H_Ma_P0CnkUybG66XbkOk9_A"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +39,6 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener {
 
         // DiffUtil 적용 후 데이터 추가
         //groupMoreRvAdapter.differ.submitList(groupList)
-
-        // 서버에서 제공받은 Access Token
-        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
 
         // API 호출
         fetchMembers(accessToken, "010")  // 멤버 목록 가져오기
