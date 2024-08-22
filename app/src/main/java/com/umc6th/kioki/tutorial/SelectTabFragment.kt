@@ -26,6 +26,8 @@ import com.umc6th.kioki.tutorial.tabMenus.WhopperFragment
 import com.umc6th.kioki.tutorial.tabMenus.dialog.SelectTakeInOrOutDialog
 import com.umc6th.kioki.tutorial.tutorial.MainTutorialActivity
 import com.umc6th.kioki.utils.TextPrefs
+import java.text.NumberFormat
+import java.util.Locale
 
 class SelectTabFragment : Fragment() {
 
@@ -104,7 +106,10 @@ class SelectTabFragment : Fragment() {
             cardAdapter.setCartList(it)
             binding.totalPrice.text = it.map { menu ->
                 menu.price
-            }.sum().toString() + "원"
+            }.sum().let { totalPrice ->
+                val formattedPrice = NumberFormat.getNumberInstance(Locale.KOREA).format(totalPrice)
+                "$formattedPrice 원"
+            }
             binding.selectedMenuCount.text = it.size.toString()
         }
 

@@ -98,8 +98,10 @@ class SelectOptionDialog : DialogFragment() {
             if (viewModel.selectedOption.value != MenuOption.SINGLE) {
                 SelectSideDialog().show(parentFragmentManager, "SelectSideDialog")
                 dismiss()
+            } else {
+                viewModel.addTotalMenu()
+                dismiss()
             }
-            dismiss()
         }
     }
 

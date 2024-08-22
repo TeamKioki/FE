@@ -8,6 +8,8 @@ import com.umc6th.kioki.tutorial.MenuItem
 import com.umc6th.kioki.databinding.KioskIssueRowItemBinding
 import com.umc6th.kioki.databinding.PremiumRowItemBinding
 import com.umc6th.kioki.utils.TextPrefs
+import java.text.NumberFormat
+import java.util.Locale
 
 class PremiumAdapter(private val context: Context, private val onClickListener: (MenuItem) -> Unit) : RecyclerView.Adapter<PremiumAdapter.ViewHolder>() {
 
@@ -30,7 +32,9 @@ class PremiumAdapter(private val context: Context, private val onClickListener: 
             } else {
                 binding.burgerName.text = item.name
             }
-            binding.burgerPrice.text = item.price.toString()
+            binding.burgerPrice.text = NumberFormat.getNumberInstance(
+                Locale.KOREA).format(item.price) + "원~"
+
         }
     }
 

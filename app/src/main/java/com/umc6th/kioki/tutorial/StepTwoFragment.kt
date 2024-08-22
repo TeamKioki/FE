@@ -1,5 +1,6 @@
 package com.umc6th.kioki.tutorial
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import androidx.fragment.app.activityViewModels
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.FragmentStepTwoBinding
 import com.umc6th.kioki.utils.TextPrefs
+import java.text.NumberFormat
+import java.util.Locale
 
 class StepTwoFragment : Fragment() {
     private lateinit var binding: FragmentStepTwoBinding
@@ -48,5 +51,17 @@ class StepTwoFragment : Fragment() {
             }
         }
         viewModel.setScreen(TutorialScreen.StepTwo)
+
+        binding.appCompatButton5.setOnClickListener {
+            startActivity(Intent(requireContext(), RealEndActivity::class.java))
+            requireActivity().finish()
+        }
+
+        viewModel.totalOrderPrice.observe(viewLifecycleOwner) {
+            val decimalPrice = NumberFormat.getNumberInstance(
+                Locale.KOREA).format(it) + "원"
+            binding.orderPrice.text = decimalPrice
+            binding.totalPaymentPrice.text = decimalPrice
+        }
     }
 }

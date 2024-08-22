@@ -9,6 +9,8 @@ import com.umc6th.kioki.databinding.SideRowItemBinding
 import com.umc6th.kioki.tutorial.MenuItem
 import com.umc6th.kioki.utils.TextPrefs
 import com.umc6th.kioki.utils.TokenPrefs
+import java.text.NumberFormat
+import java.util.Locale
 
 class CartAdapter(private val context: Context, private val onDeleteClickListener: (Int) -> Unit) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     private val cartItems = mutableListOf<MenuItem>()
@@ -24,7 +26,8 @@ class CartAdapter(private val context: Context, private val onDeleteClickListene
                 binding.menuPrice.textSize = 15f
             }
             binding.menuName.text = menuItem.name
-            binding.menuPrice.text = menuItem.price.toString()
+
+            binding.menuPrice.text = NumberFormat.getNumberInstance(Locale.KOREA).format(menuItem.price) + "원"
         }
     }
 

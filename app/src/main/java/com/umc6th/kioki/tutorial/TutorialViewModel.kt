@@ -62,6 +62,8 @@ class TutorialViewModel : ViewModel() {
     private val _totalPrice = MutableLiveData<Int>()
     val totalPrice: LiveData<Int> = _totalPrice
 
+    val totalOrderPrice = MutableLiveData<Int>(0)
+
     fun setScreen(screen: TutorialScreen) {
         _currentScreen.value = screen
     }
@@ -116,6 +118,10 @@ class TutorialViewModel : ViewModel() {
         val currentList = _selectedTotalMenu.value?.toMutableList()
         currentList?.removeAt(index)
         _selectedTotalMenu.value = currentList?: emptyList()
+    }
+
+    fun setOrderPrice(orderPrice: Int) {
+        totalOrderPrice.value = orderPrice
     }
 }
 

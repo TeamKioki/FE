@@ -10,10 +10,14 @@ import androidx.navigation.fragment.findNavController
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.FragmentStepOneBinding
 import com.umc6th.kioki.utils.TextPrefs
+import java.text.NumberFormat
+import java.util.Locale
 
 class StepOneFragment : Fragment() {
     private lateinit var binding: FragmentStepOneBinding
     private val viewModel: TutorialViewModel by activityViewModels()
+    private val price = 10800
+    private var orderPrice = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,8 +56,45 @@ class StepOneFragment : Fragment() {
         }
         viewModel.setScreen(TutorialScreen.StepOne)
 
+        binding.apply {
+            menuTitle.text = viewModel.selectedMenuItem.value?.name
+        }
+
         binding.payButton.setOnClickListener {
             findNavController().navigate(R.id.action_stepOneFragment_to_stepTwoFragment)
         }
+
+        binding.plusButton.setOnClickListener {
+            val plusCount = binding.textView30.text.toString().toInt() + 1
+            val currentPrice = (price * plusCount).toInt()
+            val decimalPrice = NumberFormat.getNumberInstance(
+                Locale.KOREA).format(currentPrice) + "원"
+            binding.totalPrice.text = decimalPrice
+            binding.menuPrice.text = decimalPrice
+            binding.orderPrice.text = decimalPrice
+            binding.totalPaymentPrice.text = decimalPrice
+            binding.textView30.text = plusCount.toString()
+            orderPrice = currentPrice
+            viewModel.setOrderPrice(orderPrice)
+        }
+
+        binding.minusButton.setOnClickListener {
+            val currentCount = binding.textView30.text.toString().toInt()
+            if (currentCount > 1) {
+                val minusCount = currentCount - 1
+                val currentPrice = (price * minusCount).toInt()
+                val decimalPrice = NumberFormat.getNumberInstance(
+                    Locale.KOREA).format(currentPrice) + "원"
+                binding.totalPrice.text = decimalPrice.toString()
+                binding.menuPrice.text = decimalPrice.toString()
+                binding.orderPrice.text = decimalPrice.toString()
+                binding.totalPaymentPrice.text = decimalPrice.toString()
+                binding.textView30.text = minusCount.toString()
+                orderPrice = currentPrice
+                viewModel.setOrderPrice(orderPrice)
+
+            }
+        }
+
     }
 }
