@@ -20,7 +20,7 @@ class PremiumFragment : Fragment() {
     private lateinit var binding: FragmentPremiumBinding
     private val viewModel: TutorialViewModel by activityViewModels()
     private val premiumAdapter: PremiumAdapter by lazy {
-        PremiumAdapter {
+        PremiumAdapter(requireContext()) {
             viewModel.setMenuItem(it)
             SelectOptionDialog().show(childFragmentManager, "SelectOptionDialog")
         }

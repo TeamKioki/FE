@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivitySideMenuTutorialBinding
+import com.umc6th.kioki.utils.TextPrefs
 
 class SideMenuTutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySideMenuTutorialBinding
@@ -19,6 +20,12 @@ class SideMenuTutorialActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        if (TextPrefs(this).getTextSize()) {
+            binding.apply {
+                text1.textSize = 20f
+                text2.textSize = 20f
+            }
         }
         binding.tutorialCloseButton.setOnClickListener {
             finish()

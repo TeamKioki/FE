@@ -43,7 +43,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:padding="11dp"
-            android:src="@drawable/ic_home_arrow_right"
+            android:src="@drawable/leftarrowgray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityOptionTutorialBinding
+import com.umc6th.kioki.utils.TextPrefs
 
 class OptionTutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOptionTutorialBinding
@@ -20,7 +21,12 @@ class OptionTutorialActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        if (TextPrefs(this).getTextSize()) {
+            binding.apply {
+                text1.textSize = 20f
+                text2.textSize = 20f
+            }
+        }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
         }

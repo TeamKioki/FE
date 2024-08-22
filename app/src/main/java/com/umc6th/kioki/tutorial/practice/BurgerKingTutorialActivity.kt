@@ -13,6 +13,7 @@ import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityBurgerKingTutorialBinding
 import com.umc6th.kioki.tutorial.adapter.PracticeAdapter
 import com.umc6th.kioki.tutorial.practice.finish.PracticeFinishActivity
+import com.umc6th.kioki.utils.TextPrefs
 
 class BurgerKingTutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBurgerKingTutorialBinding
@@ -44,6 +45,12 @@ class BurgerKingTutorialActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val textSize = TextPrefs(this).getTextSize()
+        if (textSize) {
+            binding.apply {
+
+            }
         }
         binding.fragmentContainerView2.adapter = practiceAdapter
         practiceAdapter.setFragments(fragments)

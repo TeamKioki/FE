@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityDrinkTutorialBinding
+import com.umc6th.kioki.utils.TextPrefs
 
 class DrinkTutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDrinkTutorialBinding
@@ -21,7 +22,12 @@ class DrinkTutorialActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        if (TextPrefs(this).getTextSize()) {
+            binding.apply {
+                text1.textSize = 20f
+                text2.textSize = 20f
+            }
+        }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
         }

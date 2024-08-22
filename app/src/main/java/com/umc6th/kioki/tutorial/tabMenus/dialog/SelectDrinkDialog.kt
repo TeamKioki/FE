@@ -19,7 +19,7 @@ class SelectDrinkDialog : DialogFragment() {
     private lateinit var binding: FragmentSelectDrinkDialogBinding
     private val viewModel: TutorialViewModel by activityViewModels()
     private val sideAdapter by lazy {
-        SideAdapter {
+        SideAdapter(requireContext()) {
             viewModel.selectDrinkMenu(it)
         }
     }

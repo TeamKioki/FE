@@ -24,6 +24,7 @@ import com.umc6th.kioki.tutorial.tabMenus.SpecialPackFragment
 import com.umc6th.kioki.tutorial.tabMenus.WhopperFragment
 import com.umc6th.kioki.tutorial.tabMenus.dialog.SelectTakeInOrOutDialog
 import com.umc6th.kioki.tutorial.tutorial.MainTutorialActivity
+import com.umc6th.kioki.utils.TextPrefs
 
 class SelectTabFragment : Fragment() {
 
@@ -44,7 +45,7 @@ class SelectTabFragment : Fragment() {
     private lateinit var binding: FragmentSelectTabBinding
     private val viewModel: TutorialViewModel by activityViewModels()
     private val cardAdapter: CartAdapter by lazy {
-        CartAdapter {
+        CartAdapter(requireContext()) {
             viewModel.removeSelectedMenu(it)
         }
     }
@@ -59,6 +60,24 @@ class SelectTabFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (TextPrefs(requireContext()).getTextSize()) {
+            binding.apply {
+                tab1.tabTitle.textSize = 16f
+                tab2.tabTitle.textSize = 16f
+                tab3.tabTitle.textSize = 16f
+                tab4.tabTitle.textSize = 16f
+                tab5.tabTitle.textSize = 16f
+                tab6.tabTitle.textSize = 16f
+                tab7.tabTitle.textSize = 16f
+                tab8.tabTitle.textSize = 16f
+                textView14.textSize = 16f
+                textView15.textSize = 16f
+                cancelButton.textSize = 17f
+                payButton.textSize = 17f
+            }
+        }
+
         binding.cartRv.apply {
             adapter = cardAdapter
             layoutManager = LinearLayoutManager(

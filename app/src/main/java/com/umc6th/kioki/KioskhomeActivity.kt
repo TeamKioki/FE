@@ -20,14 +20,14 @@ class KioskhomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityKioskhomeBinding
     private lateinit var adapter: KiohomeBrandlistRVAdapter
     private var isEditMode = false
-    private lateinit var userPreferences: SharedPreferences
+    //private lateinit var userPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKioskhomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userPreferences = MyApplication.getUser()
+        //userPreferences = MyApplication.getUser()
 
         setupEditMode()
 

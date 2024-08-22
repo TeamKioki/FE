@@ -2,12 +2,14 @@ package com.umc6th.kioki
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.umc6th.kioki.tutorial.BurgerKingRealActivity
 
 class BrandpracticeDialog(
     context: Context,
@@ -34,11 +36,19 @@ class BrandpracticeDialog(
         brandlogo.setImageResource(logo)  //추후 logo 부분 수정
 
         practicemode.setOnClickListener {
+            val intent = Intent(context, BurgerKingRealActivity::class.java).putExtra(
+                "isPracticeMode", true
+            )
+            context.startActivity(intent)
             dismiss()
             // 연습 모드로 이동
         }
 
         realmode.setOnClickListener {
+            val intent = Intent(context, BurgerKingRealActivity::class.java).putExtra(
+                "isPracticeMode", false
+            )
+            context.startActivity(intent)
             dismiss()
             // 실전 모드로 이동
         }

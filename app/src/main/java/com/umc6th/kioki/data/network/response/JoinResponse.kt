@@ -13,3 +13,8 @@ data class AuthCodeVerifyResponse(
     @SerializedName("isCodeValid") val isCodeValid: Boolean
 )
 
+data class PresignedUrlResponse(
+    @SerializedName("url") val url: String,
+    @SerializedName("keyName") val keyName: String
+)
+

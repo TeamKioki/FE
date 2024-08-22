@@ -1,13 +1,15 @@
 package com.umc6th.kioki.tutorial.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.tutorial.MenuItem
 import com.umc6th.kioki.databinding.KioskIssueRowItemBinding
 import com.umc6th.kioki.databinding.PremiumRowItemBinding
+import com.umc6th.kioki.utils.TextPrefs
 
-class PremiumAdapter(private val onClickListener: (MenuItem) -> Unit) : RecyclerView.Adapter<PremiumAdapter.ViewHolder>() {
+class PremiumAdapter(private val context: Context, private val onClickListener: (MenuItem) -> Unit) : RecyclerView.Adapter<PremiumAdapter.ViewHolder>() {
 
     private val premiumItems = mutableListOf<MenuItem>()
 
@@ -19,6 +21,10 @@ class PremiumAdapter(private val onClickListener: (MenuItem) -> Unit) : Recycler
         }
         fun bind(item: MenuItem) {
             binding.burgerImage.setImageResource(item.imageRes)
+            if (TextPrefs(context).getTextSize()) {
+                binding.burgerName.textSize = 15f
+                binding.burgerName.textSize = 15f
+            }
             if (item.name.length > 10) {
                 binding.burgerName.text = "블랙바비큐콰트로\n치즈와퍼"
             } else {

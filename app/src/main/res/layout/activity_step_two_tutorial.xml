@@ -28,6 +28,7 @@
             android:id="@+id/linearLayout11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginStart="17dp"
             android:layout_marginTop="240dp"
             android:orientation="horizontal"
@@ -41,6 +42,7 @@
                 android:src="@drawable/one" />
 
             <TextView
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="결제수단을 선택해주세요."
@@ -106,6 +108,7 @@
                 android:src="@drawable/two" />
 
             <TextView
+                android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="결제수단 확인이 완료되면 결제를 진행해주세요"

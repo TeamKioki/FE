@@ -49,6 +49,7 @@ android {
 
 }
 dependencies {
+    implementation ("com.github.bumptech.glide:glide:4.13.0")
     implementation("com.github.ome450901:SimpleRatingBar:1.5.1")
     implementation ("com.github.clans:fab:1.6.4")
     implementation ("com.tbuonomo:dotsindicator:5.0")

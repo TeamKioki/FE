@@ -296,7 +296,7 @@
                     android:fontFamily="@font/bmjua"
                     android:text="취소"
                     android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -310,7 +310,7 @@
                     android:fontFamily="@font/bmjua"
                     android:text="결제하기"
                     android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 

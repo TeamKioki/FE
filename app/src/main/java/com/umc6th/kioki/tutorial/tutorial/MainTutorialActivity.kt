@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainTutorialBinding
+import com.umc6th.kioki.utils.TextPrefs
 
 class MainTutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainTutorialBinding
@@ -21,6 +22,19 @@ class MainTutorialActivity : AppCompatActivity() {
             insets
         }
 
+        val textSize = TextPrefs(this).getTextSize()
+        if (textSize) {
+            binding.apply {
+                text1.textSize = 20f
+                text2.textSize = 20f
+                text3.textSize = 20f
+            }
+        }
+        binding.apply {
+            text1.textSize = 20f
+            text2.textSize = 20f
+            text3.textSize = 15f
+        }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
         }

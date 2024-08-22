@@ -1,12 +1,14 @@
 package com.umc6th.kioki.tutorial.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.tutorial.SideMenu
 import com.umc6th.kioki.databinding.SideRowItemBinding
+import com.umc6th.kioki.utils.TextPrefs
 
-class SideAdapter(private val onClickListener: (Int) -> Unit) : RecyclerView.Adapter<SideAdapter.ViewHolder>() {
+class SideAdapter(private val context: Context, private val onClickListener: (Int) -> Unit) : RecyclerView.Adapter<SideAdapter.ViewHolder>() {
 
     private val items = mutableListOf<SideMenu>()
 
@@ -21,6 +23,10 @@ class SideAdapter(private val onClickListener: (Int) -> Unit) : RecyclerView.Ada
                 binding.checked.visibility = android.view.View.VISIBLE
             } else {
                 binding.checked.visibility = android.view.View.GONE
+            }
+            if (TextPrefs(context).getTextSize()) {
+                binding.sideName.textSize = 10f
+                binding.sidePrice.textSize = 10f
             }
             binding.sideName.text = item.name
             binding.sideImage.setImageResource(item.imageRes)

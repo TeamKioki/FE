@@ -5,19 +5,25 @@ import com.umc6th.kioki.data.network.request.ExecuteJoinRequest
 import com.umc6th.kioki.data.network.request.RequestVerifyCode
 import com.umc6th.kioki.data.network.request.VerifyAuthCodeRequest
 import com.umc6th.kioki.data.service.AuthService
+import com.umc6th.kioki.data.service.JoinService
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class JoinRepository(
 ) {
-    private val joinService = RetrofitClient.create(AuthService::class.java)
+    private val authService = RetrofitClient.create(AuthService::class.java)
 
+    private val joinService = RetrofitClient.create(JoinService::class.java)
     suspend fun requestPhoneNumber(phoneNumber: String) =
-        joinService.requestAuthCode(RequestVerifyCode(phoneNumber))
+        authService.requestAuthCode(RequestVerifyCode(phoneNumber))
 
 
     suspend fun verifyAuthCode(phone: String, authCode: String) =
-        joinService.verifyAuthCode(
+        authService.verifyAuthCode(
             VerifyAuthCodeRequest(phone, authCode)
         )
+
+    suspend fun getPresignedUrl(fileName: String) = joinService.getPresignedUrl(fileName)
 
 
     suspend fun executeJoin(
@@ -27,7 +33,7 @@ class JoinRepository(
         birthday: String,
         introduction: String,
         kioskDifficulty: String
-    ) = joinService.executeJoin(
+    ) = authService.executeJoin(
         ExecuteJoinRequest(
             name,
             phone,
@@ -37,4 +43,7 @@ class JoinRepository(
             kioskDifficulty
         )
     )
+
+    suspend fun uploadImageToS3(presignedUrl: String, image: MultipartBody.Part) =
+        joinService.uploadImageToS3(presignedUrl, image)
 }
