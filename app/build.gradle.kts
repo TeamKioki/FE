@@ -87,5 +87,7 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
+    // OkHttp3
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.2")
 
 }

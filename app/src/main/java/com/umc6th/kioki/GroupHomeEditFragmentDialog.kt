@@ -1,6 +1,7 @@
 package com.umc6th.kioki
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,19 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.mrudultora.colorpicker.ColorPickerPopUp
 import com.mrudultora.colorpicker.ColorPickerPopUp.OnPickColorListener
+import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.FragmentGroupHomeEditBinding
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GroupHomeEditFragmentDialog: DialogFragment() {
     lateinit var binding: FragmentGroupHomeEditBinding // 연결할 xml 파일 가져오기
+    private lateinit var apiService: GroupRetrofitInterface
 
+    var memberId: Int = 0
     var memberName:String = ""
     var memberNoteTitle:String = ""
     var memberNoteText:String = ""
@@ -31,6 +40,11 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     ): View? {
         binding = FragmentGroupHomeEditBinding.inflate(layoutInflater)
 
+        if (savedInstanceState == null) {
+            childFragmentManager.beginTransaction()
+                .add(R.id.edit_color_palette_fragmentContainer, GroupHomeColorPalette())
+                .commitNow()
+        }
 
         return binding.root
     }
@@ -42,6 +56,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
 
         // activity에서 전달해준 bundle 값 받기
         var bundle = arguments
+        memberId = bundle!!.getInt("MemberId")
         memberName = bundle!!.getString("MemberName").toString()
         memberNoteTitle = bundle!!.getString("MemberNoteTitle").toString()
         memberNoteText = bundle!!.getString("MemberNoteText").toString()
@@ -61,27 +76,17 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             dismiss()
         }
 
-        binding.editAddColorBtnIv.setOnClickListener {
-            // 현재 DialogFragment 닫기
-            dismiss()
+        // 연결할 api 설정
+        apiService =
+            RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
 
-            // GroupHomeEditColorPickerFragment 다이얼로그 열기
-//            val ColorPickerDialogFragment = GroupHomeEditColorPickerFragment()
-//            ColorPickerDialogFragment.show(parentFragmentManager, "ColorPickerDialogFragment")
-            val colorPickerPopUp = ColorPickerPopUp(context) // Pass the context.
-            colorPickerPopUp.setShowAlpha(true) // By default show alpha is true.
-                .setDialogTitle("Pick a Color")
-                .setOnPickColorListener(object : OnPickColorListener {
-                    override fun onColorPicked(color: Int) {
-                        // handle the use of color
-                    }
+        // 서버에서 제공받은 Access Token
+        val accessToken =
+            "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
 
-                    override fun onCancel() {
-                        colorPickerPopUp.dismissDialog() // Dismiss the dialog.
-                    }
-                })
-                .show()
-
+        // 수정 버튼 이벤트 핸들러
+        binding.editModifyBtn.setOnClickListener {
+            modifyMember(accessToken, memberId)
         }
     }
 
@@ -90,5 +95,47 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         if(isSelected) {
 
         }
+    }
+
+    fun modifyMember(accessToken: String, memberId: Int) {
+        // JSON 형식으로 데이터를 작성
+        val jsonBody = """
+        {
+            "noteTitle": "${binding.editInputTitleEt.text}",
+            "noteBody": "${binding.editInputContentEt.text}",
+            "color": "string",
+            "fontSize": "NORMAL",
+            "nickname": "${binding.editMemberNameEt.text}",
+            "profileName": "string"
+        }
+    """.trimIndent()
+
+        // RequestBody 생성
+        val requestBody = jsonBody.toRequestBody("application/json".toMediaTypeOrNull())
+
+        apiService.modifyMember("Bearer $accessToken", memberId, requestBody).enqueue(object :
+            Callback<GroupMemberResponse> {
+            override fun onResponse(
+                call: Call<GroupMemberResponse>,
+                response: Response<GroupMemberResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val result = response.body()
+                    Log.d("통신", "GroupMembers Response: $result")
+                    // 멤버 목록 처리
+
+                } else {
+                    Log.e(
+                        "통신",
+                        "ModifyGroup Response 실패: ${response.code()} - ${response.message()}"
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<GroupMemberResponse>, t: Throwable) {
+                Log.e("통신", "통신 실패: ${t.message}", t)
+            }
+        })
+
     }
 }
