@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="366dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shape_group_home_edit_rounded_bg">
+
+    <ImageButton
+        android:id="@+id/kioskedit_close_btn"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_cancel"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/kioskedit_brand_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="버거킹 화면"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_semibold"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <ImageView
+        android:id="@+id/kioskedit_profile_iv"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:src="@drawable/iv_profile"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kioskedit_brand_tv" />
+
+    <TextView
+        android:id="@+id/kioskedit_username_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_medium"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@id/kioskedit_profile_iv"
+        app:layout_constraintTop_toTopOf="@id/kioskedit_profile_iv" />
+
+    <TextView
+        android:id="@+id/kioskedit_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="김지유"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_medium"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/kioskedit_profile_iv"
+        app:layout_constraintTop_toBottomOf="@id/kioskedit_username_tv" />
+
+    <ImageView
+        android:id="@+id/kioskedit_edit_btn"
+        android:layout_width="16.76dp"
+        android:layout_height="19.41dp"
+        android:src="@drawable/ic_edit_name_btn"
+        android:layout_marginStart="13dp"
+        app:layout_constraintStart_toEndOf="@id/kioskedit_name_tv"
+        app:layout_constraintBottom_toBottomOf="@id/kioskedit_name_tv" />
+
+    <TextView
+        android:id="@+id/kioskedit_textsize_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="글자 크기"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_medium"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="62dp"
+        app:layout_constraintStart_toEndOf="@id/kioskedit_profile_iv"
+        app:layout_constraintTop_toTopOf="@id/kioskedit_profile_iv" />
+
+    <RadioGroup
+        android:id="@+id/kioskedit_group_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/kioskedit_textsize_tv"
+        app:layout_constraintTop_toBottomOf="@id/kioskedit_textsize_tv">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/kioskedit_normal_rbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보통"
+            android:textSize="11sp"
+            android:textColor="#808080"
+            android:fontFamily="@font/pretendard_regular"
+            android:layout_marginRight="22dp"
+            android:button="@null"
+            android:buttonTint="@color/selector_group_edit_radiobtn"
+            android:checked="true"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/kioskedit_big_rbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="크게"
+            android:textSize="11sp"
+            android:textColor="#808080"
+            android:fontFamily="@font/pretendard_regular"
+            android:button="@null"
+            android:buttonTint="@color/selector_group_edit_radiobtn"
+            android:drawableEnd="?android:attr/listChoiceIndicatorSingle" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/kioskedit_textcolor_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="글자 색상"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/pretendard_medium"
+        app:layout_constraintStart_toStartOf="@id/kioskedit_profile_iv"
+        app:layout_constraintTop_toBottomOf="@+id/kioskedit_group_rg" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/kioskedit_colorlist_fcv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kioskedit_textcolor_tv" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kioskedit_allkiosk_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="모든 키오스크에 현재 수정사항 적용"
+        android:textColor="@color/black"
+        android:background="@drawable/background_lightgray_50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/kioskedit_add_btn" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kioskedit_add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="추가"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_group_edit_rounded_orange"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

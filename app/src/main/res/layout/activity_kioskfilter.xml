@@ -225,7 +225,7 @@
                 android:id="@+id/filter_check_iv"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@drawable/ic_check"
+                android:src="@drawable/iv_check"
                 android:background="@android:color/transparent" />
 
             <TextView
