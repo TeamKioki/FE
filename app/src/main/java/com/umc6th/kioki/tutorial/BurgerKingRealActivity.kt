@@ -23,11 +23,12 @@ import com.umc6th.kioki.tutorial.tabMenus.WhopperFragment
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityBurgerKingRealBinding
 import com.umc6th.kioki.tutorial.practice.BurgerKingTutorialActivity
+import com.umc6th.kioki.tutorial.tabMenus.dialog.SelectTakeInOrOutDialog
 import com.umc6th.kioki.tutorial.tutorial.MainTutorialActivity
 import com.umc6th.kioki.tutorial.tutorial.StepOneTutorialActivity
 import com.umc6th.kioki.tutorial.tutorial.StepTwoTutorialActivity
 
-class BurgerKingRealActivity : AppCompatActivity() {
+class BurgerKingRealActivity : AppCompatActivity(), SelectTakeInOrOutDialog.SelectTakeInOrOutListener {
     private lateinit var binding: ActivityBurgerKingRealBinding
     private val viewModel: TutorialViewModel by viewModels()
     override fun onResume() {
@@ -73,11 +74,11 @@ class BurgerKingRealActivity : AppCompatActivity() {
         )
     }
 
-     fun onTakeInSelected() {
+     override fun onTakeInSelected() {
         findNavController(R.id.burgerkingNavHostFragment).navigate(R.id.action_selectTabFragment_to_stepOneFragment)
     }
 
-     fun onTakeOutSelected() {
+     override fun onTakeOutSelected() {
         findNavController(R.id.burgerkingNavHostFragment).navigate(R.id.action_selectTabFragment_to_stepOneFragment)
     }
 }
