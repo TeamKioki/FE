@@ -64,14 +64,13 @@ class BurgerKingRealActivity : AppCompatActivity() {
             finish()
         }
 
-//        val isPracticeMode = intent.getBooleanExtra("isPracticeMode", false)
-//        if (isPracticeMode) startActivity(
-//            Intent(
-//                this, BurgerKingTutorialActivity::
-//                class.java
-//            )
-//        )
-        startActivity(Intent(this, BurgerKingTutorialActivity::class.java))
+        val isPracticeMode = intent.getBooleanExtra("isPracticeMode", false)
+        if (isPracticeMode) startActivity(
+            Intent(
+                this, BurgerKingTutorialActivity::
+                class.java
+            )
+        )
     }
 
      fun onTakeInSelected() {
