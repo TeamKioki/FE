@@ -2,12 +2,15 @@ package com.umc6th.kioki
 
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
 import androidx.fragment.app.DialogFragment
 import com.mrudultora.colorpicker.ColorPickerPopUp
 import com.mrudultora.colorpicker.ColorPickerPopUp.OnPickColorListener
@@ -23,10 +26,15 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     lateinit var binding: FragmentGroupHomeEditBinding // 연결할 xml 파일 가져오기
     private lateinit var apiService: GroupRetrofitInterface
 
+    var count: Int = 0
+
     var memberId: Int = 0
     var memberName:String = ""
     var memberNoteTitle:String = ""
     var memberNoteText:String = ""
+
+    private val originalDimensions = mutableMapOf<View, Pair<Int, Int>>()
+    private var isBigSizeApplied = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +53,8 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 .add(R.id.edit_color_palette_fragmentContainer, GroupHomeColorPalette())
                 .commitNow()
         }
+
+        storeOriginalSizes(binding.root)
 
         return binding.root
     }
@@ -71,6 +81,23 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         val colorStateList = ContextCompat.getColorStateList(requireContext(), R.color.selector_group_edit_radiobtn)
         radioButton.buttonTintList = colorStateList
 
+        binding.editRadioNormalRb.setOnClickListener {
+            if (isBigSizeApplied) {
+                restoreOriginalSizes(binding.root)
+                isBigSizeApplied = false
+                count = 0
+
+            }
+        }
+
+        binding.editRadioBigRb.setOnClickListener {
+            if(count == 0) {
+                adjustViewSizes(binding.root, scaleFactor = 1.2f)
+                isBigSizeApplied = true
+                count++
+            }
+        }
+
         // 'x' 아이콘 누르면 다이얼로그 닫히도록 하는 이벤트
         binding.editCancelIv.setOnClickListener {
             dismiss()
@@ -88,8 +115,68 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
         }
+
+
+    }
+    // 모든 뷰의 크기를 조정하는 함수
+    private fun adjustViewSizes(view: View, scaleFactor: Float) {
+        val layoutParams = view.layoutParams
+
+        if (layoutParams != null) {
+            //layoutParams.width = (layoutParams.width * scaleFactor).toInt()
+            layoutParams.height = (layoutParams.height * scaleFactor).toInt()
+            if (layoutParams is ViewGroup.MarginLayoutParams) {
+                layoutParams.leftMargin = (layoutParams.leftMargin * scaleFactor).toInt()
+                layoutParams.topMargin = (layoutParams.topMargin * scaleFactor).toInt()
+                layoutParams.rightMargin = (layoutParams.rightMargin * scaleFactor).toInt()
+                layoutParams.bottomMargin = (layoutParams.bottomMargin * scaleFactor).toInt()
+            }
+            view.layoutParams = layoutParams
+        }
+
+        view.setPadding(
+            (view.paddingLeft * scaleFactor).toInt(),
+            (view.paddingTop * scaleFactor).toInt(),
+            (view.paddingRight * scaleFactor).toInt(),
+            (view.paddingBottom * scaleFactor).toInt()
+        )
+
+        if (view is TextView) {
+            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, view.textSize * scaleFactor)
+        }
+
+        if (view is ViewGroup) {
+            for (child in view.children) {
+                adjustViewSizes(child, scaleFactor)
+            }
+        }
+
+    }
+    private fun storeOriginalSizes(view: View) {
+        view.layoutParams?.let { layoutParams ->
+            originalDimensions[view] = Pair(layoutParams.width, layoutParams.height)
+        }
+        if (view is ViewGroup) {
+            for (child in view.children) {
+                storeOriginalSizes(child)
+            }
+        }
     }
 
+    private fun restoreOriginalSizes(view: View) {
+        val originalSize = originalDimensions[view]
+        if (originalSize != null) {
+            val layoutParams = view.layoutParams
+            layoutParams.width = originalSize.first
+            layoutParams.height = originalSize.second
+            view.layoutParams = layoutParams
+        }
+        if (view is ViewGroup) {
+            for (child in view.children) {
+                restoreOriginalSizes(child)
+            }
+        }
+    }
     fun radioBtnClickEvent(view: View) {
         val isSelected: Boolean = (view as? AppCompatRadioButton)?.isChecked ?: false
         if(isSelected) {
