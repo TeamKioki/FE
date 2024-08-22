@@ -19,4 +19,9 @@ class TextPrefs(context: Context) {
 
     fun getTextSize() = sharedPreference.getBoolean("text", false)
 
+    fun setTextColor(color: Int) {
+        editor.putInt("color", color).apply()
+    }
+
+    fun getTextColor() = sharedPreference.getInt("color", 0)
 }

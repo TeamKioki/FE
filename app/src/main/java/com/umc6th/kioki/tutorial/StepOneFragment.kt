@@ -39,6 +39,7 @@ class StepOneFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setOrderPrice(10800)
         binding.apply {
             if (TextPrefs(requireContext()).getTextSize()) {
                 menuTitle.textSize = 20f

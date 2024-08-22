@@ -14,6 +14,7 @@ import com.umc6th.kioki.utils.dialogFragmentResize
 import com.umc6th.kioki.databinding.FragmentSelectSideDialogBinding
 import com.umc6th.kioki.tutorial.tutorial.DrinkTutorialActivity
 import com.umc6th.kioki.tutorial.tutorial.SideMenuTutorialActivity
+import com.umc6th.kioki.utils.TextPrefs
 
 class SelectSideDialog : DialogFragment() {
     private lateinit var binding: FragmentSelectSideDialogBinding
@@ -45,6 +46,15 @@ class SelectSideDialog : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         observeSideMenus()
         observeTotalPrice()
+        binding.apply {
+            if (TextPrefs(requireContext()).getTextSize()) {
+                binding.textView12.textSize = 20f
+                binding.cancelButton.textSize = 20f
+                binding.completeButton.textSize = 20f
+                binding.textView13.textSize = 24f
+                binding.totalPrice.textSize = 24f
+            }
+        }
         binding.exitItem.setOnClickListener {
             dismiss()
             requireActivity().finish()

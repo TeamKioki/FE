@@ -30,11 +30,6 @@ class MainTutorialActivity : AppCompatActivity() {
                 text3.textSize = 20f
             }
         }
-        binding.apply {
-            text1.textSize = 20f
-            text2.textSize = 20f
-            text3.textSize = 15f
-        }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
         }

@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityTakeInOrOutTutorialBinding
+import com.umc6th.kioki.utils.TextPrefs
 
 class TakeInOrOutTutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTakeInOrOutTutorialBinding
@@ -22,6 +23,11 @@ class TakeInOrOutTutorialActivity : AppCompatActivity() {
         }
         binding.tutorialCloseButton.setOnClickListener {
             finish()
+        }
+        if (TextPrefs(this).getTextSize()) {
+            binding.apply {
+                text1.textSize = 20f
+            }
         }
     }
 }

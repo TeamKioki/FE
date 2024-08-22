@@ -13,6 +13,7 @@ import com.umc6th.kioki.databinding.FragmentSelectDrinkDialogBinding
 import com.umc6th.kioki.tutorial.TutorialViewModel
 import com.umc6th.kioki.tutorial.adapter.SideAdapter
 import com.umc6th.kioki.tutorial.tutorial.DrinkTutorialActivity
+import com.umc6th.kioki.utils.TextPrefs
 import com.umc6th.kioki.utils.dialogFragmentResize
 
 class SelectDrinkDialog : DialogFragment() {
@@ -46,6 +47,15 @@ class SelectDrinkDialog : DialogFragment() {
         observeDrinkMenus()
         observeTotalPrice()
 
+        binding.apply {
+            if (TextPrefs(requireContext()).getTextSize()) {
+                binding.textView12.textSize = 20f
+                binding.cancelButton.textSize = 20f
+                binding.completeButton.textSize = 20f
+                binding.textView13.textSize = 24f
+                binding.totalPrice.textSize = 24f
+            }
+        }
         binding.tutorialItem.setOnClickListener {
             startActivity(Intent(requireContext(), DrinkTutorialActivity::class.java))
         }

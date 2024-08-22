@@ -17,6 +17,7 @@ import com.umc6th.kioki.tutorial.TutorialViewModel
 import com.umc6th.kioki.utils.dialogFragmentResize
 import com.umc6th.kioki.databinding.FragmentSelectOptionDialogBinding
 import com.umc6th.kioki.tutorial.tutorial.OptionTutorialActivity
+import com.umc6th.kioki.utils.TextPrefs
 
 class SelectOptionDialog : DialogFragment() {
     private val viewModel: TutorialViewModel by activityViewModels()
@@ -60,6 +61,21 @@ class SelectOptionDialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeSelectedMenu()
+
+        binding.apply {
+            if (TextPrefs(requireContext()).getTextSize()) {
+                binding.textView12.textSize = 20f
+                largeTitle.textSize = 20f
+                largeDescription.textSize = 11f
+                largePrice.textSize = 20f
+                normalTitle.textSize = 20f
+                normalDescription.textSize = 11f
+                normalPrice.textSize = 20f
+                singleTitle.textSize = 20f
+                singleDescription.textSize = 11f
+                singlePrice.textSize = 20f
+            }
+        }
         binding.exitItem.setOnClickListener {
             dismiss()
             requireActivity().finish()

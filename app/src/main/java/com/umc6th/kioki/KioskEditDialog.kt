@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
+import com.umc6th.kioki.utils.TextPrefs
 
 class KioskEditDialog(
     context: Context,
@@ -36,6 +37,21 @@ class KioskEditDialog(
 
         username.text = name
         //userprofile.setImageResource(profile)
+
+        normal.isChecked = !TextPrefs(context).getTextSize()
+        big.isChecked = TextPrefs(context).getTextSize()
+
+        normal.setOnCheckedChangeListener({ buttonView, isChecked ->
+            if (isChecked) {
+                TextPrefs(context).setTextSize(false)
+            }
+        })
+
+        big.setOnCheckedChangeListener({ buttonView, isChecked ->
+            if (isChecked) {
+                TextPrefs(context).setTextSize(true)
+            }
+        })
 
         closebtn.setOnClickListener{
             dismiss()
