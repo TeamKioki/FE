@@ -16,11 +16,12 @@
 
         <ImageButton
             android:id="@+id/main_drawer_btn_ib"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_main_menu"
+            android:src="@drawable/iconoir_menu"
+            android:background="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:text="키오키님, \n오늘도 열심히 연습해봐요"
             android:textColor="@color/white"
             android:textSize="24dp"
@@ -38,8 +39,8 @@
 
         <ImageView
             android:id="@+id/main_comment_container_iv"
-            android:layout_width="491dp"
-            android:layout_height="119dp"
+            android:layout_width="480dp"
+            android:layout_height="121dp"
             app:layout_constraintBottom_toTopOf="@+id/main_bottom_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

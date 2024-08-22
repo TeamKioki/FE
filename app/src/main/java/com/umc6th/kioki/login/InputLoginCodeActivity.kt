@@ -30,10 +30,11 @@ class InputLoginCodeActivity : AppCompatActivity() {
             viewModel.login(phone, binding.inputAuthCode.text.toString())
         }
         viewModel.loginState.observe(this) {
-            if (it) {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+//            if (it) {
+//
+//            }
         }
     }
 }
