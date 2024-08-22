@@ -30,14 +30,25 @@
         app:layout_constraintTop_toTopOf="parent" />
     
     <ImageView
-        android:id="@+id/kioskedit_profile_iv"
+        android:id="@+id/kioskedit_logobg_iv"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:src="@drawable/iv_profile"
+        android:src="@drawable/iv_backgroundcircle"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/kioskedit_brand_tv" />
+
+    <ImageView
+        android:id="@+id/item_brandlogo_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_burgerking"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="@id/kioskedit_logobg_iv"
+        app:layout_constraintEnd_toEndOf="@id/kioskedit_logobg_iv"
+        app:layout_constraintTop_toTopOf="@id/kioskedit_logobg_iv"
+        app:layout_constraintBottom_toBottomOf="@id/kioskedit_logobg_iv" />
 
     <TextView
         android:id="@+id/kioskedit_username_tv"
@@ -48,20 +59,22 @@
         android:textColor="@color/black"
         android:fontFamily="@font/pretendard_medium"
         android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@id/kioskedit_profile_iv"
-        app:layout_constraintTop_toTopOf="@id/kioskedit_profile_iv" />
+        app:layout_constraintStart_toEndOf="@id/kioskedit_logobg_iv"
+        app:layout_constraintTop_toTopOf="@id/kioskedit_logobg_iv" />
 
-    <TextView
-        android:id="@+id/kioskedit_name_tv"
+    <EditText
+        android:id="@+id/kioskedit_name_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="김지유"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/pretendard_medium"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@id/kioskedit_profile_iv"
+        android:layout_marginTop="8dp"
+        android:hint="이름"
+        android:fontFamily="@font/pretendard_medium"
+        android:text="버거킹"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@id/kioskedit_logobg_iv"
         app:layout_constraintTop_toBottomOf="@id/kioskedit_username_tv" />
 
     <ImageView
@@ -70,8 +83,8 @@
         android:layout_height="19.41dp"
         android:src="@drawable/ic_edit_name_btn"
         android:layout_marginStart="13dp"
-        app:layout_constraintStart_toEndOf="@id/kioskedit_name_tv"
-        app:layout_constraintBottom_toBottomOf="@id/kioskedit_name_tv" />
+        app:layout_constraintStart_toEndOf="@id/kioskedit_name_et"
+        app:layout_constraintBottom_toBottomOf="@id/kioskedit_name_et" />
 
     <TextView
         android:id="@+id/kioskedit_textsize_tv"
@@ -83,8 +96,8 @@
         android:fontFamily="@font/pretendard_medium"
         android:layout_marginStart="22dp"
         android:layout_marginTop="62dp"
-        app:layout_constraintStart_toEndOf="@id/kioskedit_profile_iv"
-        app:layout_constraintTop_toTopOf="@id/kioskedit_profile_iv" />
+        app:layout_constraintStart_toEndOf="@id/kioskedit_logobg_iv"
+        app:layout_constraintTop_toTopOf="@id/kioskedit_logobg_iv" />
 
     <RadioGroup
         android:id="@+id/kioskedit_group_rg"
@@ -130,7 +143,7 @@
         android:textSize="10sp"
         android:textColor="@color/black"
         android:fontFamily="@font/pretendard_medium"
-        app:layout_constraintStart_toStartOf="@id/kioskedit_profile_iv"
+        app:layout_constraintStart_toStartOf="@id/kioskedit_logobg_iv"
         app:layout_constraintTop_toBottomOf="@+id/kioskedit_group_rg" />
 
     <androidx.fragment.app.FragmentContainerView
@@ -146,6 +159,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="모든 키오스크에 현재 수정사항 적용"
+        android:textSize="16sp"
+        android:fontFamily="@font/pretendard_medium"
         android:textColor="@color/black"
         android:background="@drawable/background_lightgray_50dp"
         android:layout_marginBottom="10dp"
@@ -158,8 +173,10 @@
         android:id="@+id/kioskedit_add_btn"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="추가"
+        android:text="수정"
+        android:textSize="16sp"
         android:textColor="@color/white"
+        android:fontFamily="@font/pretendard_semibold"
         android:background="@drawable/btn_group_edit_rounded_orange"
         android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="20dp"
