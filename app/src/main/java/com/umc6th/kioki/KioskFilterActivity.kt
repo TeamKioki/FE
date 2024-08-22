@@ -1,11 +1,11 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.umc6th.myapplication.databinding.ActivityKioskfilterBinding
+import com.umc6th.kioki.databinding.ActivityKioskfilterBinding
 
 class KioskFilterActivity : AppCompatActivity() {
 
@@ -14,6 +14,7 @@ class KioskFilterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKioskfilterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 필터 클릭 이벤트 설정
         setFilterClickListeners()
@@ -37,10 +38,14 @@ class KioskFilterActivity : AppCompatActivity() {
 
     private fun toggleFilterSelection(view: View) {
         val textView = view as TextView
-        val isSelected = textView.background.constantState == ContextCompat.getDrawable(this, R.drawable.background_orange)?.constantState
+        val isSelected = textView.background.constantState == ContextCompat.getDrawable(this,
+            R.drawable.background_orange
+        )?.constantState
 
         if (isSelected) {
-            textView.background = ContextCompat.getDrawable(this, R.drawable.background_lightgray_50dp)
+            textView.background = ContextCompat.getDrawable(this,
+                R.drawable.background_lightgray_50dp
+            )
             textView.setTextColor(ContextCompat.getColor(this, R.color.black))
         } else {
             textView.background = ContextCompat.getDrawable(this, R.drawable.background_orange)

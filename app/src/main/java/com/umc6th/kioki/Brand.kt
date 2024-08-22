@@ -1,7 +1,7 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 data class Brand(
     var name: String,
     var info: String,
-    var logo: Int
+    var logo: String
 )

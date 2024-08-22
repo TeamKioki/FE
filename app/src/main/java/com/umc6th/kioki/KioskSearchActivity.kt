@@ -1,14 +1,14 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.umc6th.myapplication.databinding.ActivityKiosksearchBinding
+import com.umc6th.kioki.databinding.ActivityKiosksearchBinding
 
 class KioskSearchActivity : AppCompatActivity() {
 
@@ -17,6 +17,7 @@ class KioskSearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKiosksearchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         showFilter()
         initSpinner()
@@ -48,7 +49,7 @@ class KioskSearchActivity : AppCompatActivity() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     if (p0 != null) {
                         //잘 선택되는 지 토스트 메세지로 확인, 추후 선택된 정렬 방식이 보이도록 재설정 예정
-                        Toast.makeText(this@KioskSearchActivity, p0.getItemAtPosition(p2).toString(), Toast.LENGTH_SHORT).show()
+                        Log.d("KioskSearch", p0.getItemAtPosition(p2).toString())
                     }
                 }
 

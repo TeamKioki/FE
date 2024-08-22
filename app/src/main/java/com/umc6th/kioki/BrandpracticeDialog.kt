@@ -1,8 +1,7 @@
-package com.umc6th.myapplication
+package com.umc6th.kioki
 
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -14,13 +13,15 @@ class BrandpracticeDialog(
     context: Context,
     private val name: String,
     private val info: String,
-    private val logo: String
+    private val logo: Int
 ) : Dialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_brandpractice)
 
+        // 다이얼로그의 dimAmount 설정 (0.0에서 1.0 사이의 값, 기본값은 0.5)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window?.setDimAmount(0.85f)  // 배경을 좀 더 어둡게 설정 (0.8f로 설정)
 
         var brandname: TextView = findViewById(R.id.dialog_brandname_tv)
         var brandinfo: TextView = findViewById(R.id.dialog_brandinfo_tv)
@@ -30,16 +31,16 @@ class BrandpracticeDialog(
 
         brandname.text = name
         brandinfo.text = info
-        //brandlogo.setImageResource(logo)  //추후 logo 부분 수정
+        brandlogo.setImageResource(logo)  //추후 logo 부분 수정
 
         practicemode.setOnClickListener {
-            // 연습 모드로 이동
             dismiss()
+            // 연습 모드로 이동
         }
 
         realmode.setOnClickListener {
-            // 실전 모드로 이동
             dismiss()
+            // 실전 모드로 이동
         }
     }
 }
