@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.umc6th.kioki.onboarding.adapter.OnboardingAdapter
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityOnboardingBinding
+import com.umc6th.kioki.login.LoginActivity
 import com.umc6th.kioki.tutorial.practice.finish.PracticeFinishActivity
 
 class OnboardingActivity : AppCompatActivity() {
@@ -53,6 +54,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         binding.startTextView.setOnClickListener {
 //            startActivity(Intent(this, PracticeFinishActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 

@@ -29,6 +29,7 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener {
         backBtn.setOnClickListener {
             finish()
         }
+
         // 연결할 api 설정
         apiService = RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
 
