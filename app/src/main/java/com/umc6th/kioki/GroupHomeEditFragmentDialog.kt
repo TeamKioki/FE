@@ -13,6 +13,8 @@ import com.mrudultora.colorpicker.ColorPickerPopUp
 import com.mrudultora.colorpicker.ColorPickerPopUp.OnPickColorListener
 import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.FragmentGroupHomeEditBinding
+import com.umc6th.kioki.utils.TextPrefs
+import com.umc6th.kioki.utils.TokenPrefs
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
@@ -87,6 +89,17 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         // 수정 버튼 이벤트 핸들러
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
+        }
+        binding.editRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.edit_radio_normal_rb -> {
+                   TextPrefs(requireContext()).setTextSize(false)
+                }
+
+                R.id.edit_radio_big_rb -> {
+                    TextPrefs(requireContext()).setTextSize(true)
+                }
+            }
         }
     }
 
