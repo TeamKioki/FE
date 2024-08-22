@@ -14,8 +14,8 @@ import android.widget.TextView
 
 class KioskEditDialog(
     context: Context,
-    private val name: String
-    //private val profile: Int
+    private val name: String,
+    private val logo: Int
 ) : Dialog(context) {
     private var selectedColor: Int = Color.BLACK // 기본 색상
 
@@ -29,7 +29,7 @@ class KioskEditDialog(
 
         var brandname: TextView = findViewById(R.id.kioskedit_name_et)
         val editbtn: ImageView = findViewById(R.id.kioskedit_edit_btn)
-        val brandlogo: ImageView = findViewById(R.id.kioskedit_logobg_iv)
+        val brandlogo: ImageView = findViewById(R.id.item_brandlogo_iv)
         val normal: RadioButton = findViewById(R.id.kioskedit_normal_rbtn)
         val big: RadioButton = findViewById(R.id.kioskedit_big_rbtn)
 
@@ -38,7 +38,7 @@ class KioskEditDialog(
         val addbtn: Button = findViewById(R.id.kioskedit_add_btn)
 
         brandname.text = name
-        //userprofile.setImageResource(profile)
+        brandlogo.setImageResource(logo)
 
         closebtn.setOnClickListener{
             dismiss()
