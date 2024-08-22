@@ -8,6 +8,10 @@ android {
     namespace = "com.umc6th.kioki"
     compileSdk = 34
 
+    viewBinding{
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "com.umc6th.kioki"
         minSdk = 24
