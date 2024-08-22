@@ -8,6 +8,10 @@ android {
     namespace = "com.umc6th.kioki"
     compileSdk = 34
 
+    viewBinding{
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "com.umc6th.kioki"
         minSdk = 24
@@ -84,5 +88,7 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
+    // OkHttp3
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.2")
 
 }

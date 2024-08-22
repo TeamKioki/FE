@@ -9,11 +9,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GroupRvAdapter(
     var groupList: MutableList<MemberEntity>,
-    private val listener: OnItemClickListener
-    ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val listener: OnItemClickListener,
+    private val apiService: GroupRetrofitInterface,  // Retrofit 서비스 주입
+    private val accessToken: String                  // 액세스 토큰 주입
+
+): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var showDeleteButton: Boolean = false
 
@@ -23,13 +29,13 @@ class GroupRvAdapter(
     }
 
     // DiffUtil을 위한 콜백
-    private val differCallback = object : DiffUtil.ItemCallback<GroupMembersResult>() {
-        override fun areItemsTheSame(oldItem: GroupMembersResult, newItem: GroupMembersResult): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<MemberEntity>() {
+        override fun areItemsTheSame(oldItem: MemberEntity, newItem: MemberEntity): Boolean {
             // GroupMembersResult의 식별자를 비교
             return oldItem.memberId == newItem.memberId
         }
 
-        override fun areContentsTheSame(oldItem: GroupMembersResult, newItem: GroupMembersResult): Boolean {
+        override fun areContentsTheSame(oldItem: MemberEntity, newItem: MemberEntity): Boolean {
             // GroupMembersResult의 내용을 비교
             return oldItem == newItem
         }
@@ -49,9 +55,17 @@ class GroupRvAdapter(
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    //listener.onItemClick(differ.currentList[position])
+                    listener.onItemClick(groupList[position])
                 }
             }
+            group_item_delete_btn_iv.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val member = groupList[position]
+                    deleteMember(member.memberId!!, position)
+                }
+            }
+
         }
     }
 
@@ -81,8 +95,8 @@ class GroupRvAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         // val group: Group = groupList[position]
         if (holder is ViewHolder) {
-            val member: GroupMembersResult = differ.currentList[position]
-            //holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
+            val member: MemberEntity = differ.currentList[position]
+            holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
             holder.group_item_name_tv.text = member.nickname
             holder.group_item_description1_tv.text = member.noteTitle
             holder.group_item_description2_tv.text = member.noteText
@@ -95,9 +109,9 @@ class GroupRvAdapter(
                 View.GONE
             }
 
-            holder.group_item_delete_btn_iv.setOnClickListener {
-                removeItem(position)
-            }
+//            holder.group_item_delete_btn_iv.setOnClickListener {
+//                removeItem(position)
+//            }
         } else if (holder is AddButtonViewHolder) {
             holder.add_button_iv.setImageResource(R.drawable.ic_group_plus)
 
@@ -106,11 +120,42 @@ class GroupRvAdapter(
             }
         }
     }
+
     // 추가 버튼 이벤트 -> 눌렀다고 신호 전달만
     private fun clickAddButton() {
         listener.onAddButtonClick()
     }
+
     // 아이템 삭제 메서드
+    private fun deleteMember(memberId: Int, position: Int) {
+        apiService.deleteMember("Bearer $accessToken", memberId).enqueue(object :
+            Callback<GroupMembersResponse> {
+            override fun onResponse(
+                call: Call<GroupMembersResponse>,
+                response: Response<GroupMembersResponse>
+            ) {
+                if (response.isSuccessful && response.code() == 204) {
+                    val result = response.body()
+                    Log.d("통신", "GroupMember Delete Response: $result")
+
+                    // 서버에서 성공적으로 삭제된 경우 리스트에서 해당 아이템 제거
+                    removeItem(position)
+
+                } else {
+                    Log.e(
+                        "통신",
+                        "GroupMembers Response 실패: ${response.code()} - ${response.message()}"
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<GroupMembersResponse>, t: Throwable) {
+                Log.e("통신", "삭제 통신 실패: ${t.message}", t)
+            }
+        })
+    }
+
+    // 리스트에서 해당 아이템 제거 메서드
     private fun removeItem(position: Int) {
         // 리스트에서 해당 아이템 제거
         val mutableList = differ.currentList.toMutableList()

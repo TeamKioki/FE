@@ -12,7 +12,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.umc6th.kioki.tutorial.adapter.TabMenuAdapter
 import com.umc6th.kioki.tutorial.tabMenus.AlldayKingFragment
 import com.umc6th.kioki.tutorial.tabMenus.ChickenAndShrimpFragment
@@ -23,15 +22,12 @@ import com.umc6th.kioki.tutorial.tabMenus.SpecialPackFragment
 import com.umc6th.kioki.tutorial.tabMenus.WhopperFragment
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityBurgerKingRealBinding
-import com.umc6th.kioki.tutorial.adapter.CartAdapter
 import com.umc6th.kioki.tutorial.practice.BurgerKingTutorialActivity
-import com.umc6th.kioki.tutorial.tabMenus.dialog.SelectTakeInOrOutDialog
 import com.umc6th.kioki.tutorial.tutorial.MainTutorialActivity
 import com.umc6th.kioki.tutorial.tutorial.StepOneTutorialActivity
 import com.umc6th.kioki.tutorial.tutorial.StepTwoTutorialActivity
 
-class BurgerKingRealActivity : AppCompatActivity(),
-    SelectTakeInOrOutDialog.SelectTakeInOrOutListener {
+class BurgerKingRealActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBurgerKingRealBinding
     private val viewModel: TutorialViewModel by viewModels()
     override fun onResume() {
@@ -78,11 +74,11 @@ class BurgerKingRealActivity : AppCompatActivity(),
         startActivity(Intent(this, BurgerKingTutorialActivity::class.java))
     }
 
-    override fun onTakeInSelected() {
+     fun onTakeInSelected() {
         findNavController(R.id.burgerkingNavHostFragment).navigate(R.id.action_selectTabFragment_to_stepOneFragment)
     }
 
-    override fun onTakeOutSelected() {
+     fun onTakeOutSelected() {
         findNavController(R.id.burgerkingNavHostFragment).navigate(R.id.action_selectTabFragment_to_stepOneFragment)
     }
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <GridLayout
+        android:id="@+id/color_palette_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="6"
+        android:orientation="horizontal"
+        android:alignmentMode="alignMargins"
+        >
+
+        <View
+            android:id="@+id/color_black"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/selector_color_palette"
+            android:backgroundTint="@color/black"
+            android:tag="@color/black"
+            android:clickable="true"
+
+            />
+        <View
+            android:id="@+id/color_red"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_color_palette"
+            android:backgroundTint="@color/red"
+            android:tag="@color/red"
+            android:clickable="true"
+            />
+        <View
+            android:id="@+id/color_yellow"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_color_palette"
+            android:backgroundTint="#F8BE35"
+            android:tag="@color/black"
+            android:clickable="true"
+            />
+        <View
+            android:id="@+id/color_green"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_color_palette"
+            android:backgroundTint="#00B7A1"
+            android:tag="@color/black"
+            android:clickable="true"
+            />
+        <View
+            android:id="@+id/color_blue"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_color_palette"
+            android:backgroundTint="#006ED2"
+            android:tag="@color/black"
+            android:clickable="true"
+            />
+        <ImageView
+            android:id="@+id/edit_add_color_btn_iv"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:srcCompat="@drawable/ic_add_img" />
+
+    </GridLayout>
+</ScrollView>

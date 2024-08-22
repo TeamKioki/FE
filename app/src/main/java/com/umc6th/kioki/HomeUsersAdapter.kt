@@ -5,18 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.databinding.UserItemBinding
 
-class HomeUsersAdapter(private val userList : List<MemberEntity>) : RecyclerView.Adapter<HomeUsersAdapter.UserViewHolder>(){
-    inner class UserViewHolder(private val binding: UserItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(user: MemberEntity){
-            user.memberImg?.let { binding.userImgIv.setImageResource(it) }
-            binding.userNameTv.text = user.memberName
-            binding.userDescriptionTv.text = user.memberNoteTitle
+class HomeUsersAdapter(private var userList: List<GroupMember>) : RecyclerView.Adapter<HomeUsersAdapter.UserViewHolder>() {
+
+    inner class UserViewHolder(private val binding: UserItemBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(user: GroupMember) {
+            //binding.userImgIv.setImageResource(user.profilePictureUrl?) // 이미지 리소스 설정
+            binding.userNameTv.text = user.nickname
+            binding.userDescriptionTv.text = user.noteTitle
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(
-            UserItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            UserItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -25,8 +26,11 @@ class HomeUsersAdapter(private val userList : List<MemberEntity>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.bind(userList[position])
+        holder.bind(userList[position]) // 해당 위치의 유저 데이터를 바인딩
     }
 
-
+    fun updateMembers(newMembers: List<GroupMember>) {
+        userList = newMembers
+        notifyDataSetChanged()
+    }
 }
