@@ -31,7 +31,7 @@ class SelectSideDialog : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        context?.dialogFragmentResize(this, 0.95f, 0.8f)
+        context?.dialogFragmentResize(this, 0.95f, 0.7f)
     }
 
     override fun onCreateView(

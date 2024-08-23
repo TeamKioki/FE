@@ -29,7 +29,7 @@ class SelectOptionDialog : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        context?.dialogFragmentResize(this, 0.95f, 0.7f)
+        context?.dialogFragmentResize(this, 0.95f, 0.65f)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
