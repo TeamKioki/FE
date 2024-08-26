@@ -1,6 +1,9 @@
 package com.umc6th.kioki.group
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -33,12 +36,21 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     var memberNoteTitle:String = ""
     var memberNoteText:String = ""
 
-    private val originalDimensions = mutableMapOf<View, Pair<Int, Int>>()
+    private val originalTextSizes = mutableMapOf<TextView, Float>()
     private var isBigSizeApplied = false
+
+    private var currentTheme: Int? = null // 텍스트뷰 기본 크기
+    private lateinit var pref : DefaultPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        pref = DefaultPreferenceManager(requireContext())
+
+//        // 글자 크기에 따라 테마 설정
+//        val textSize = pref.getTextSize()
+//        currentTheme = getAppTheme(textSize)
+//        requireActivity().setTheme(currentTheme)
     }
 
     override fun onCreateView(
@@ -75,6 +87,8 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         binding.editInputTitleEt.setText(memberNoteTitle)
         binding.editInputContentEt.setText(memberNoteText)
 
+        // 기본 텍스트 크기 저장
+        saveOriginalTextSizes(binding.root)
 
         // 라디오버튼 색상 지정 -> 안됨....
         val radioButton = binding.editRadioNormalRb
@@ -117,19 +131,109 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
         }
+//        // 테마 변경에 따라 재설정
+//        currentTheme = R.style.Theme_App_Medium.toInt()
+//        val textSize = pref.getTextSize()
+//        val newTheme = getAppTheme(textSize)
+//        if (currentTheme != newTheme) {
+//            currentTheme = newTheme
+//            requireActivity().setTheme(currentTheme!!)
+//        }
+
+        applyTheme()
+
+        // 글자 크기
         binding.editRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.edit_radio_normal_rb -> {
-                    TextPrefs(requireContext()).setTextSize(false)
+                    //TextPrefs(requireContext()).setTextSize(false)
+                    pref.setTextSize(1)
+//                    refreshDialog()
+                    //setAppTheme(R.style.Theme_App_Medium)
+                    updateTextSize(1)
                 }
 
                 R.id.edit_radio_big_rb -> {
-                    TextPrefs(requireContext()).setTextSize(true)
+                    //TextPrefs(requireContext()).setTextSize(true)
+                    pref.setTextSize(2)
+//                    //refreshDialog()
+//                    onResume()
+                    //setAppTheme(R.style.Theme_App_Large)
+                    updateTextSize(2)
+
                 }
             }
         }
     }
+    private fun saveOriginalTextSizes(view: View) {
+        if (view is TextView) {
+            originalTextSizes[view] = view.textSize // Save the original text size in pixels
+        }
 
+        if (view is ViewGroup) {
+            for (child in view.children) {
+                saveOriginalTextSizes(child)
+            }
+        }
+    }
+
+    private fun applyTheme() {
+        val textSize = pref.getTextSize()
+        updateTextSize(textSize)
+    }
+    private fun updateTextSize(textSize: Int) {
+        val scaleFactor = when (textSize) {
+            0 -> 0.8f // 작은 텍스트 크기
+            1 -> 0.9f // 기본 텍스트 크기
+            2 -> 1.2f // 큰 텍스트 크기
+            else -> 1.0f
+        }
+
+        // TextView의 텍스트 크기 변경
+        originalTextSizes.forEach { (textView, originalSize) ->
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, originalSize * scaleFactor)
+        }
+    }
+    
+    private fun adjustViewSizes(view: View, scaleFactor: Float) {
+        if (view is TextView) {
+            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, view.textSize * scaleFactor)
+        }
+
+        if (view is ViewGroup) {
+            for (child in view.children) {
+                adjustViewSizes(child, scaleFactor)
+            }
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d("그룹",  requireActivity().theme.toString())
+        refreshDialog()
+    }
+
+    private fun getAppTheme(textSize: Int): Int {
+        return when (textSize) {
+            0 -> R.style.Theme_App_Small // 작은 글씨 테마
+            1 -> R.style.Theme_App_Medium // 기본 글씨 테마
+            2 -> R.style.Theme_App_Large // 큰 글씨 테마
+            else -> R.style.Theme_App_Medium // 기본 테마
+        }
+    }
+    fun setAppTheme(themeResId: Int) {
+        val preferences = requireActivity().getSharedPreferences("AppTheme", Context.MODE_PRIVATE)
+        with(preferences.edit()) {
+            putInt("selected_theme", themeResId)
+            apply()
+        }
+    }
+    private fun refreshDialog() {
+        parentFragmentManager.beginTransaction().apply {
+            detach(this@GroupHomeEditFragmentDialog)
+            attach(this@GroupHomeEditFragmentDialog)
+            commitAllowingStateLoss()
+        }
+    }
     private fun modifyMember(accessToken: String, memberId: Int) {
 
         val jsonBody = """
@@ -166,39 +270,39 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
 
     }
     // 모든 뷰의 크기를 조정하는 함수
-    private fun adjustViewSizes(view: View, scaleFactor: Float) {
-        val layoutParams = view.layoutParams
-
-        if (layoutParams != null) {
-            //layoutParams.width = (layoutParams.width * scaleFactor).toInt()
-            layoutParams.height = (layoutParams.height * scaleFactor).toInt()
-            if (layoutParams is ViewGroup.MarginLayoutParams) {
-                layoutParams.leftMargin = (layoutParams.leftMargin * scaleFactor).toInt()
-                layoutParams.topMargin = (layoutParams.topMargin * scaleFactor).toInt()
-                layoutParams.rightMargin = (layoutParams.rightMargin * scaleFactor).toInt()
-                layoutParams.bottomMargin = (layoutParams.bottomMargin * scaleFactor).toInt()
-            }
-            view.layoutParams = layoutParams
-        }
-
-        view.setPadding(
-            (view.paddingLeft * scaleFactor).toInt(),
-            (view.paddingTop * scaleFactor).toInt(),
-            (view.paddingRight * scaleFactor).toInt(),
-            (view.paddingBottom * scaleFactor).toInt()
-        )
-
-        if (view is TextView) {
-            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, view.textSize * scaleFactor)
-        }
-
-        if (view is ViewGroup) {
-            for (child in view.children) {
-                adjustViewSizes(child, scaleFactor)
-            }
-        }
-
-    }
+//    private fun adjustViewSizes(view: View, scaleFactor: Float) {
+//        val layoutParams = view.layoutParams
+//
+//        if (layoutParams != null) {
+//            //layoutParams.width = (layoutParams.width * scaleFactor).toInt()
+//            layoutParams.height = (layoutParams.height * scaleFactor).toInt()
+//            if (layoutParams is ViewGroup.MarginLayoutParams) {
+//                layoutParams.leftMargin = (layoutParams.leftMargin * scaleFactor).toInt()
+//                layoutParams.topMargin = (layoutParams.topMargin * scaleFactor).toInt()
+//                layoutParams.rightMargin = (layoutParams.rightMargin * scaleFactor).toInt()
+//                layoutParams.bottomMargin = (layoutParams.bottomMargin * scaleFactor).toInt()
+//            }
+//            view.layoutParams = layoutParams
+//        }
+//
+//        view.setPadding(
+//            (view.paddingLeft * scaleFactor).toInt(),
+//            (view.paddingTop * scaleFactor).toInt(),
+//            (view.paddingRight * scaleFactor).toInt(),
+//            (view.paddingBottom * scaleFactor).toInt()
+//        )
+//
+//        if (view is TextView) {
+//            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, view.textSize * scaleFactor)
+//        }
+//
+//        if (view is ViewGroup) {
+//            for (child in view.children) {
+//                adjustViewSizes(child, scaleFactor)
+//            }
+//        }
+//
+//    }
 //    private fun storeOriginalSizes(view: View) {
 //        view.layoutParams?.let { layoutParams ->
 //            originalDimensions[view] = Pair(layoutParams.width, layoutParams.height)

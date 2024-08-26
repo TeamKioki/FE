@@ -21,12 +21,14 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
     val accessToken =
         "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMCIsInBob25lIjoiMDEwODI0NzMwMTAiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzI0MzE5MjM5LCJleHAiOjE3MjY5MTEyMzl9.Zwz108s5qKDBo02nm16H_Ma_P0CnkUybG66XbkOk9_A"
 
+    private var currentTheme = R.style.Theme_App_Medium // 텍스트뷰 기본 크기
+    private lateinit var pref : DefaultPreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 레이아웃 설정
         binding = ActivityGroupHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Log.d("그룹홈", "onCreate called")
 
         // 연결할 api 설정
         apiService =
@@ -73,7 +75,12 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
             }
         }
 
-
+        // 글자 크기
+        pref = DefaultPreferenceManager(this)
+        val textSize = pref.getTextSize()
+        currentTheme = getAppTheme(textSize)
+        setTheme(currentTheme)
+        
     }
 
     override fun onResume() {
@@ -90,6 +97,14 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
         //groupListAdapter.differ.submitList(groupList)
 
     }
+
+    private fun getAppTheme(textSize: Int) =
+        when (textSize) {
+            0 -> R.style.Theme_App_Small
+            1 -> R.style.Theme_App_Medium
+            2 -> R.style.Theme_App_Large
+            else -> R.style.Theme_App_Medium
+        }
 
     // API
     private fun fetchMembers(token: String) {
