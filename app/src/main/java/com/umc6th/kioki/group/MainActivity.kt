@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         //setStartFragment()
         setStartActivity()
+
         // ViewPager2에 어댑터 설정
         binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this)
 
@@ -93,11 +94,11 @@ class MainActivity : AppCompatActivity() {
         val expandableList = findViewById<ExpandableListView>(R.id.main_menu_el)
         expandableList.setAdapter(expandableAdapter)
 
-
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnGroupClickListener { parent, v, groupPosition, id ->
             /* todo : parent 클릭 이벤트 설정 */
             false
         }
+
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
             val activity = when (groupPosition) {
                 1 -> when (childPosition) {

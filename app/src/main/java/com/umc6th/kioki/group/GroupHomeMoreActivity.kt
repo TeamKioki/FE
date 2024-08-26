@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener {
+class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener, OnGroupMemberChangeListener {
     lateinit var binding:ActivityGroupHomeMoreBinding // 연결할 xml 파일
     lateinit var groupList: MutableList<NotMemberEntity> // 그룹 리스트
     lateinit var groupMoreRvAdapter: GroupMoreRvAdapter // 어댑터
@@ -36,14 +36,28 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener {
         groupList = mutableListOf() // 그룹리스트 초기화
 
         // 리싸이클러뷰, 어댑터 초기화
-        setupRecyclerView()
+//        setupRecyclerView()
 
-        // DiffUtil 적용 후 데이터 추가
-        //groupMoreRvAdapter.differ.submitList(groupList)
+        // groupList에 memberLists 목록 추가하기
+        groupList.addAll(NotMemberLists.members)
+
+//        // DiffUtil 적용 후 데이터 추가
+//        groupMoreRvAdapter.differ.submitList(groupList)
 
         // API 호출
         fetchMembers(accessToken, "010")  // 멤버 목록 가져오기
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 리싸이클러뷰 설정
+        setupRecyclerView()
+
+        // DiffUtil 적용 후 데이터 추가
+        groupMoreRvAdapter.differ.submitList(groupList)
+
+        Log.d("멤버목록", "추천친구 목록: ${groupList}")
     }
     private fun setupRecyclerView() {
         // 리싸이클러뷰를 어댑터와 연결
@@ -57,41 +71,41 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener {
 
     // API
     private fun fetchMembers(token: String, query:String) {
-        apiService.searchNotMembers("Bearer $token", query).enqueue(object :
-            Callback<NotGroupMembersResponse> {
-            override fun onResponse(call: Call<NotGroupMembersResponse>, response: Response<NotGroupMembersResponse>) {
-                if (response.isSuccessful && response.code() == 200) {
-                    val result = response.body()
-                    Log.d("통신", "GroupMembers Response: $result")
-                    // 멤버 목록 처리
-                    val groupMembers = result?.result
-                    Log.d("멤버목록", groupMembers.toString())
-                    if(groupMembers!=null && groupMembers.isNotEmpty()) {
-                        groupList.clear()
-                        groupList.addAll(groupMembers.map { member ->
-                            NotMemberEntity(
-                                userId = member.userId,
-                                name = member.name,
-                                phone  = member.phone,
-                                introduction = member.introduction,
-                                imageName = member.imageName,
-                                isGroupMember = member.isGroupMember
-
-                            )
-                        })
-                        Log.d("멤버목록", groupList.toString())
-
-                        groupMoreRvAdapter.differ.submitList(groupList)
-                    }
-                } else {
-                    Log.e("통신", "GroupMembers Response 실패: ${response.code()} - ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<NotGroupMembersResponse>, t: Throwable) {
-                Log.e("통신", "통신 실패: ${t.message}", t)
-            }
-        })
+//        apiService.searchNotMembers("Bearer $token", query).enqueue(object :
+//            Callback<NotGroupMembersResponse> {
+//            override fun onResponse(call: Call<NotGroupMembersResponse>, response: Response<NotGroupMembersResponse>) {
+//                if (response.isSuccessful && response.code() == 200) {
+//                    val result = response.body()
+//                    Log.d("통신", "GroupMembers Response: $result")
+//                    // 멤버 목록 처리
+//                    val groupMembers = result?.result
+//                    Log.d("멤버목록", groupMembers.toString())
+//                    if(groupMembers!=null && groupMembers.isNotEmpty()) {
+//                        groupList.clear()
+//                        groupList.addAll(groupMembers.map { member ->
+//                            NotMemberEntity(
+//                                userId = member.userId,
+//                                name = member.name,
+//                                phone  = member.phone,
+//                                introduction = member.introduction,
+//                                imageName = member.imageName,
+//                                isGroupMember = member.isGroupMember
+//
+//                            )
+//                        })
+//                        Log.d("멤버목록", groupList.toString())
+//
+//                        groupMoreRvAdapter.differ.submitList(groupList)
+//                    }
+//                } else {
+//                    Log.e("통신", "GroupMembers Response 실패: ${response.code()} - ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<NotGroupMembersResponse>, t: Throwable) {
+//                Log.e("통신", "통신 실패: ${t.message}", t)
+//            }
+//        })
     }
 
     override fun onItemClick(member: NotMemberEntity) {
@@ -107,4 +121,7 @@ class GroupHomeMoreActivity:AppCompatActivity(), OnMoreGroupClickListener {
 
     }
 
+    override fun onGroupMemberChanged() {
+        groupMoreRvAdapter.notifyDataSetChanged() // 리사이클러뷰 갱신
+    }
 }

@@ -23,4 +23,5 @@ interface MemberDao {
 
     @Query("SELECT * FROM MemberTable WHERE id = :id")
     fun getMember(id: Int): MemberEntity
+
 }

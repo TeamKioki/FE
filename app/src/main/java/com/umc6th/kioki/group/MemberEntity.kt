@@ -13,6 +13,7 @@ data class MemberEntity(
     var nickname: String? = null,
     var noteTitle: String? = null,
     var noteText: String? = null,
+    var isGroupMember: Boolean? = false
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
@@ -24,7 +25,7 @@ data class NotMemberEntity(
     var phone: String? = null,
     var introduction: String? = null,
     var imageName: String? = null,
-    var isGroupMember: Boolean? = null,
+    var isGroupMember: Boolean? = false,
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }

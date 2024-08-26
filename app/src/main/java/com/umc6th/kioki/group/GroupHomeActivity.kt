@@ -13,9 +13,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
+class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMemberChangeListener {
     private lateinit var binding: ActivityGroupHomeBinding
-    private lateinit var groupList: MutableList<MemberEntity>
+    lateinit var groupList: MutableList<MemberEntity>
     private lateinit var groupListAdapter: GroupRvAdapter
     private lateinit var apiService: GroupRetrofitInterface
     val accessToken =
@@ -27,12 +27,13 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         binding = ActivityGroupHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.d("그룹홈", "onCreate called")
+
         // 연결할 api 설정
         apiService =
             RetrofitClient.create(GroupRetrofitInterface::class.java)
 
         // API 호출
-        fetchMembers(accessToken)  // 멤버 목록 가져오기
+        //fetchMembers(accessToken)  // 멤버 목록 가져오기
 
         // 뒤로가기 버튼 이벤트
         val backBtn = binding.groupHeaderNavBackIv
@@ -40,7 +41,12 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
             finish()
         }
 
-        groupList = mutableListOf()
+//        groupList = mutableListOf()
+//        groupList.addAll(MemberLists.members)
+        groupList = MemberLists.members.filter { it.isGroupMember == true }.toMutableList()
+
+        Log.d("멤버목록", "그룹친구 목록: ${groupList}")
+
         // 리싸이클러뷰
         val rv = binding.groupRecyclerview
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -50,7 +56,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         rv.adapter = groupListAdapter
 
         // DiffUtil 적용 후 데이터 추가
-        //groupListAdapter.differ.submitList(groupList)
+        groupListAdapter.differ.submitList(groupList)
 
         // 삭제 편집 버튼 누르면 모든 리스트 왼쪽에 삭제 버튼 뜨게 하기
         binding.groupDeleteBtnIv.setOnClickListener {
@@ -73,6 +79,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
     override fun onResume() {
         super.onResume()
         Log.d("확인", "resume")
+        onGroupMemberChanged()
         //groupListAdapter.differ.submitList(groupList)
     }
 
@@ -80,7 +87,8 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         super.onRestart()
         Log.d("확인", "restart")
         //fetchMembers(accessToken)
-        groupListAdapter.differ.submitList(groupList)
+        //groupListAdapter.differ.submitList(groupList)
+
     }
 
     // API
@@ -184,5 +192,11 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         val intent = Intent(this, GroupHomeMoreActivity::class.java)
         startActivity(intent)
 
+    }
+
+    override fun onGroupMemberChanged() {
+        groupList = MemberLists.members.filter { it.isGroupMember == true }.toMutableList()
+        groupListAdapter.differ.submitList(groupList)
+        groupListAdapter.notifyDataSetChanged()
     }
 }
