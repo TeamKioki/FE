@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,12 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.viewpager2.widget.ViewPager2
-import com.umc6th.kioki.data.client.RetrofitClient
+import com.umc6th.kioki.KioskhomeActivity
+import com.umc6th.kioki.NavAccountEditActivity
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {

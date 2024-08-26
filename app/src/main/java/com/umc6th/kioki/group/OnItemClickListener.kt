@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 interface OnItemClickListener {
     fun onItemClick(member: MemberEntity)

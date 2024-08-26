@@ -1,8 +1,4 @@
-package com.umc6th.kioki
-
-import android.util.Log
-import retrofit2.Call
-import retrofit2.Callback
+package com.umc6th.kioki.group
 
 class GroupService {
 //    fun getMembers() {

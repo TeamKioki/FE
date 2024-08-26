@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.os.Bundle
 import android.util.Log
@@ -6,14 +6,12 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.fragment.app.DialogFragment
-import com.mrudultora.colorpicker.ColorPickerPopUp
-import com.mrudultora.colorpicker.ColorPickerPopUp.OnPickColorListener
+import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.FragmentGroupHomeEditBinding
 import com.umc6th.kioki.utils.TextPrefs
@@ -80,7 +78,9 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
 
         // 라디오버튼 색상 지정 -> 안됨....
         val radioButton = binding.editRadioNormalRb
-        val colorStateList = ContextCompat.getColorStateList(requireContext(), R.color.selector_group_edit_radiobtn)
+        val colorStateList = ContextCompat.getColorStateList(requireContext(),
+            R.color.selector_group_edit_radiobtn
+        )
         radioButton.buttonTintList = colorStateList
 
 //        binding.editRadioNormalRb.setOnClickListener {

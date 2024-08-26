@@ -1,6 +1,5 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.umc6th.kioki.R
 
 class GroupMoreRvAdapter(
     var groupList: MutableList<NotMemberEntity>,

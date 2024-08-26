@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.FragmentAccountEditKioskSettingBinding
+import com.umc6th.kioki.group.DialogListener
+import com.umc6th.kioki.group.GroupHomeColorPalette
 
 class KioskSettingFragmentDialog : DialogFragment() {
     lateinit var binding: FragmentAccountEditKioskSettingBinding // 연결할 xml 파일 가져오기

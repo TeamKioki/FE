@@ -1,13 +1,11 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Nickname
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.ActivityGroupHomeBinding
 import retrofit2.Call
@@ -31,7 +29,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
         Log.d("그룹홈", "onCreate called")
         // 연결할 api 설정
         apiService =
-            RetrofitClient.create(GroupRetrofitInterface::class.java) // baseurl 뒤에 붙일 url이 있는 인터페이스 파일 연결
+            RetrofitClient.create(GroupRetrofitInterface::class.java)
 
         // API 호출
         fetchMembers(accessToken)  // 멤버 목록 가져오기
@@ -71,6 +69,20 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener {
 
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("확인", "resume")
+        //groupListAdapter.differ.submitList(groupList)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("확인", "restart")
+        //fetchMembers(accessToken)
+        groupListAdapter.differ.submitList(groupList)
+    }
+
     // API
     private fun fetchMembers(token: String) {
         apiService.getMembers("Bearer $token").enqueue(object :

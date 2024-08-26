@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
-import com.umc6th.kioki.MainActivity
+import com.umc6th.kioki.group.MainActivity
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityInputLoginCodeBinding
 

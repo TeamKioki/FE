@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.umc6th.kioki.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

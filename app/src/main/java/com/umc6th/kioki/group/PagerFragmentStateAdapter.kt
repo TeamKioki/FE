@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

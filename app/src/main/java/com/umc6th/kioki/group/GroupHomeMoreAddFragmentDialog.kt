@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.os.Bundle
 import android.util.Log
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
-import com.umc6th.kioki.databinding.FragmentGroupHomeEditBinding
 import com.umc6th.kioki.databinding.FragmentGroupHomeMoreAddBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -67,6 +67,7 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
         binding.moreAddGroupBtn.setOnClickListener {
             addGroupMember()
         }
+
         // 어댑터에 변경된 데이터를 갱신
         val activity = activity as GroupHomeMoreActivity
         val member = activity.groupList.find { it.userId == userId }
@@ -85,12 +86,11 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
 
     fun addGroupMember() {
         // 서버에서 제공받은 Access Token
-        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
+        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMCIsInBob25lIjoiMDEwODI0NzMwMTAiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzI0MzE5MjM5LCJleHAiOjE3MjY5MTEyMzl9.Zwz108s5qKDBo02nm16H_Ma_P0CnkUybG66XbkOk9_A"
         val userIdRequest = UserIdRequest(userId)
 
         // API 호출
         postMembers(accessToken, userIdRequest)  // 멤버 목록 가져오기
-
     }
     // API
     private fun postMembers(token: String, userIdRequest: UserIdRequest) {
