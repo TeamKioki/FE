@@ -130,7 +130,32 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         // 수정 버튼 이벤트 핸들러
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
+
+            // 선택된 라디오 버튼 확인
+            val selectedTheme = when (binding.editRadioGroup.checkedRadioButtonId) {
+                R.id.edit_radio_normal_rb -> R.style.Theme_App_Medium
+                R.id.edit_radio_big_rb -> R.style.Theme_App_Large
+                else -> R.style.Theme_App_Medium
+            }
+
+            // 테마를 저장
+            val pref = DefaultPreferenceManager(requireContext())
+            pref.setTextSize(
+                when (selectedTheme) {
+                    R.style.Theme_App_Small -> 0
+                    R.style.Theme_App_Medium -> 1
+                    R.style.Theme_App_Large -> 2
+                    else -> 1
+                }
+            )
+
+            // GroupHomeActivity를 재생성하여 새로운 테마 적용
+            activity?.let {
+                it.setTheme(selectedTheme)
+                it.recreate()
+            }
         }
+
 //        // 테마 변경에 따라 재설정
 //        currentTheme = R.style.Theme_App_Medium.toInt()
 //        val textSize = pref.getTextSize()
@@ -164,6 +189,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 }
             }
         }
+
     }
     private fun saveOriginalTextSizes(view: View) {
         if (view is TextView) {

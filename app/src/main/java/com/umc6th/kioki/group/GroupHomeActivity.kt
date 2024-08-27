@@ -80,13 +80,21 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
         val textSize = pref.getTextSize()
         currentTheme = getAppTheme(textSize)
         setTheme(currentTheme)
-        
     }
 
     override fun onResume() {
         super.onResume()
         Log.d("확인", "resume")
         onGroupMemberChanged()
+
+        // 글자 크기에 따라 테마를 다시 설정
+        val textSize = pref.getTextSize()
+        val newTheme = getAppTheme(textSize)
+
+        if (currentTheme != newTheme) {
+            currentTheme = newTheme
+            recreate()  // Activity 재생성하여 새로운 테마 적용
+        }
         //groupListAdapter.differ.submitList(groupList)
     }
 
