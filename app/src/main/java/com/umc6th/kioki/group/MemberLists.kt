@@ -4,9 +4,9 @@ import com.umc6th.kioki.R
 
 object MemberLists {
     val members = listOf(
-        MemberEntity(1,1, R.drawable.ic_home_user_character1, "키오키", "안녕하세요", null, true),
-        MemberEntity(2,2, R.drawable.ic_home_user_character1, "유저2", "키오스크 초보자",null, true),
-        MemberEntity(3,3, R.drawable.ic_home_user_character1, "유저3", "안녕", null, true),
+        MemberEntity(1,1, R.drawable.ic_home_user_character1, "키오키", "안녕하세요", "602호", true),
+        MemberEntity(2,2, R.drawable.ic_home_user_character1, "유저2", "키오스크 초보자","", true),
+        MemberEntity(3,3, R.drawable.ic_home_user_character1, "유저3", "안녕", "", true),
         MemberEntity(4,4, R.drawable.ic_home_user_character1, "유저4", "602호"),
         MemberEntity(5, 5, R.drawable.ic_home_user_character1, "유저5", "602호"),
         MemberEntity(6, 6, R.drawable.ic_home_user_character1, "유저6", "602호"),
@@ -18,6 +18,7 @@ object MemberLists {
         member?.isGroupMember = isGroupMember
     }
 }
+
 object NotMemberLists {
     val members = listOf(
         NotMemberEntity(1,"키오키", "010-1234-5678", "안녕하세요", "R.drawable.ic_home_user_character1", true),

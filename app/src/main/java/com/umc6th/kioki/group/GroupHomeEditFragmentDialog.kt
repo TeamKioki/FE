@@ -1,15 +1,23 @@
 package com.umc6th.kioki.group
 
+import android.Manifest
+import android.app.Activity.RESULT_OK
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.MediaStore
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
@@ -28,9 +36,9 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     lateinit var binding: FragmentGroupHomeEditBinding // 연결할 xml 파일 가져오기
     private lateinit var apiService: GroupRetrofitInterface
     private lateinit var textPrefs: TextPrefs
+    private var imageUri: Uri? = null
 
     var count: Int = 0
-
     var memberId: Int = 0
     var memberName:String = ""
     var memberNoteTitle:String = ""
@@ -127,9 +135,32 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         val accessToken =
             "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
 
+        binding.editGroupProfileImgIv.clipToOutline = true
+        // 이미지 설정
+        binding.editGroupProfileImgIv.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                openGallery()
+                Log.d("클릭", "이미지 클릭")
+
+                // 버튼 텍스트 숨기기
+                //button.text = null
+            } else {
+                Log.d("클릭", "이미지 설정 클릭")
+                requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+
+        }
         // 수정 버튼 이벤트 핸들러
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
+            // 수정된 텍스트를 부모 Activity에 전달하고 업데이트
+            val newMemberName = binding.editMemberNameEt.text.toString()
+            val newNoteTitle = binding.editInputTitleEt.text.toString()
+            val newNoteText = binding.editInputContentEt.text.toString()
+
+            // 전달하기 위해 인텐트 사용 (또는 다른 방법으로 업데이트 가능)
+            val activity = activity as? GroupHomeActivity
+            activity?.updateMemberData(memberId, newMemberName, newNoteTitle, newNoteText)
 
             // 선택된 라디오 버튼 확인
             val selectedTheme = when (binding.editRadioGroup.checkedRadioButtonId) {
@@ -189,8 +220,8 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 }
             }
         }
-
     }
+
     private fun saveOriginalTextSizes(view: View) {
         if (view is TextView) {
             originalTextSizes[view] = view.textSize // Save the original text size in pixels
@@ -220,7 +251,31 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, originalSize * scaleFactor)
         }
     }
-    
+
+    // 갤러리 open
+    private val requestPermissionLauncher: ActivityResultLauncher<String> =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                openGallery()
+            }
+        }
+
+    // 가져온 사진 보여주기
+    private val pickImageLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                data?.data?.let {
+                    imageUri = it
+                    binding.editGroupProfileImgIv.setImageURI(imageUri)
+                }
+            }
+        }
+    private fun openGallery() {
+        val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        pickImageLauncher.launch(gallery)
+    }
+
     private fun adjustViewSizes(view: View, scaleFactor: Float) {
         if (view is TextView) {
             view.setTextSize(TypedValue.COMPLEX_UNIT_PX, view.textSize * scaleFactor)

@@ -15,7 +15,6 @@ class HomeUsersAdapter(private var userList: List<MemberEntity>) : RecyclerView.
             binding.userNameTv.text = user.nickname
             binding.userDescriptionTv.text = user.noteTitle
 
-            // Update background based on selection
             itemView.isSelected = isSelected
         }
     }

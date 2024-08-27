@@ -105,6 +105,18 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
         //groupListAdapter.differ.submitList(groupList)
 
     }
+    fun updateMemberData(memberId: Int, newMemberName: String, newNoteTitle: String, newNoteText: String) {
+        // memberId에 해당하는 아이템을 찾아 업데이트
+        val member = groupList.find { it.memberId == memberId }
+        member?.let {
+            it.nickname = newMemberName
+            it.noteTitle = newNoteTitle
+            it.noteText = newNoteText
+
+            // RecyclerView 갱신
+            groupListAdapter.notifyDataSetChanged()
+        }
+    }
 
     private fun getAppTheme(textSize: Int) =
         when (textSize) {

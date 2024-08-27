@@ -24,15 +24,16 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="293dp"
-            android:layout_height="124dp"
+            android:layout_width="300dp"
+            android:layout_height="119dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/edit_group_profile_img_iv"
                 android:layout_width="117dp"
-                android:layout_height="99dp"
+                android:layout_height="105dp"
 
                 android:layout_marginRight="10dp"
                 android:src="@drawable/ic_add_img" />
@@ -48,8 +49,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="이름"
-                    android:textStyle="bold"
-                    android:textSize="?attr/mainTextSize"/>
+                    android:textSize="?attr/mainTextSize"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -62,8 +63,7 @@
                         android:layout_height="35dp"
                         android:background="@android:color/transparent"
                         android:backgroundTint="@null"
-                        android:textSize="?attr/mainTextSize"
-                        />
+                        android:textSize="?attr/mainTextSize" />
 
                     <ImageView
                         android:id="@+id/edit_name_btn_iv"
@@ -79,8 +79,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:text="글자크기"
-                    android:textStyle="bold"
-                    android:textSize="?attr/mainTextSize"/>
+                    android:textSize="?attr/mainTextSize"
+                    android:textStyle="bold" />
 
                 <RadioGroup
                     android:id="@+id/edit_radio_group"
@@ -98,8 +98,7 @@
                         android:buttonTint="@color/selector_group_edit_radiobtn"
                         android:checked="true"
                         android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
-                        android:text="보통"
-                        />
+                        android:text="보통" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/edit_radio_big_rb"

@@ -11,7 +11,6 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.umc6th.kioki.KioskhomeActivity
-import com.umc6th.kioki.NavAccountEditActivity
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainBinding
 
@@ -75,12 +74,12 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
 
         }
     }
+
     private fun setUpViewPager() {
         val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
         binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, filteredMembers)
 
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
-
     }
 
 //    private fun setUpViewPager(memberList: List<GroupMember>) {
