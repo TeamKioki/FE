@@ -1,5 +1,6 @@
 package com.umc6th.kioki.group
 
+import android.net.Uri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -29,4 +30,9 @@ data class NotMemberEntity(
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
+
+data class NoticeEntity(
+    var noticeTitle: String? = null,
+    var noticeDate: String? = null
+)
 

@@ -67,6 +67,7 @@ class GroupRvAdapter(
 //                }
 //            }
 
+
         }
     }
 
@@ -97,10 +98,15 @@ class GroupRvAdapter(
         // val group: Group = groupList[position]
         if (holder is ViewHolder) {
             val member: MemberEntity = differ.currentList[position]
-            holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
+            //holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
             holder.group_item_name_tv.text = member.nickname
             holder.group_item_description1_tv.text = member.noteTitle
             holder.group_item_description2_tv.text = member.noteText
+
+            // Uri로 이미지 설정
+            member.profilePictureUrl?.let {
+                //holder.group_item_img_iv.setImageURI(it)
+            } ?: holder.group_item_img_iv.setImageResource(R.drawable.ic_home_user_character1) // 기본 이미지 설정
 
             holder.group_item_delete_btn_iv.setImageResource(R.drawable.ic_group_subtract)
 

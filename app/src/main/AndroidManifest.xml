@@ -106,6 +106,9 @@
         <activity
             android:name=".group.NavAccountEditActivity"
             android:exported="true" />
+        <activity
+            android:name=".group.NoticeActivity"
+            android:exported="true" />
 
         <activity
             android:name=".join.JoinActivity"

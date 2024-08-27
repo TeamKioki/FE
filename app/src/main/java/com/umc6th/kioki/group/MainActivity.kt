@@ -56,6 +56,12 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
             val intent = Intent(this, KioskhomeActivity::class.java)
             startActivity(intent)
         }
+
+        // 공지사항
+        binding.mainCommentContainerIv.setOnClickListener {
+            val intent = Intent(this, NoticeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun updateViewPager(members: List<GroupMember>) {
@@ -63,7 +69,6 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
         //adapter.updateMembers(members)
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)  // Indicator 업데이트
     }
-
 
     private fun setStartActivity() {
         // '자세히 보기' 누르면 HomeGroupfragment로 넘어가도록 설정
@@ -95,7 +100,7 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
         val childList = mutableListOf(
             mutableListOf(),
             mutableListOf("계정 편집", "알림 설정", "계정 탈퇴"),
-            mutableListOf("키오스크 등록 요청"),
+            mutableListOf("자주 묻는 질문 (FAQ)", "문의하기 (Q&A)", "키오스크 등록 요청"),
             mutableListOf()
         )
         val expandableAdapter = MainExpandableListAdapter(this, parentList, childList)
