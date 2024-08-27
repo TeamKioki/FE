@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.databinding.UserItemBinding
 
-class HomeUsersAdapter(private var userList: List<GroupMember>) : RecyclerView.Adapter<HomeUsersAdapter.UserViewHolder>() {
+class HomeUsersAdapter(private var userList: List<MemberEntity>) : RecyclerView.Adapter<HomeUsersAdapter.UserViewHolder>() {
 
     private var selectedItemPosition: Int = 0
 
     inner class UserViewHolder(private val binding: UserItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: GroupMember, isSelected: Boolean) {
+        fun bind(user: MemberEntity, isSelected: Boolean) {
             // Set user data
             binding.userNameTv.text = user.nickname
             binding.userDescriptionTv.text = user.noteTitle
@@ -57,7 +57,7 @@ class HomeUsersAdapter(private var userList: List<GroupMember>) : RecyclerView.A
 //        }
 //    }
 
-    fun updateMembers(newMembers: List<GroupMember>) {
+    fun updateMembers(newMembers: List<MemberEntity>) {
         userList = newMembers
         notifyDataSetChanged()
     }

@@ -166,6 +166,7 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
         listener?.onGroupMemberChanged()
 
 
+
         //Log.d("멤버목록", "추천친구 목록: ${groupHomeMoreActivity.groupList}")
 
 

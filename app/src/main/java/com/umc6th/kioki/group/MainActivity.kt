@@ -16,7 +16,7 @@ import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +35,12 @@ class MainActivity : AppCompatActivity() {
         //setStartFragment()
         setStartActivity()
 
-        // ViewPager2에 어댑터 설정
-        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this)
-
-        // indicator3를 viewPager2에 연결
-        binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
+        setUpViewPager()
+//        // ViewPager2에 어댑터 설정
+//        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this)
+//
+//        // indicator3를 viewPager2에 연결
+//        binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
 
         binding.mainDrawerBtnIb.setOnClickListener {
             setExpandableList() // drawerMenu 생성
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)  // Indicator 업데이트
     }
 
+
     private fun setStartActivity() {
         // '자세히 보기' 누르면 HomeGroupfragment로 넘어가도록 설정
         binding.mainMoreBtn.setOnClickListener {
@@ -73,14 +75,21 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+    private fun setUpViewPager() {
+        val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
+        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, filteredMembers)
 
-    private fun setUpViewPager(memberList: List<GroupMember>) {
-        // ViewPager2에 어댑터 설정
-        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, memberList)
-
-        // indicator3를 viewPager2에 연결
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
+
     }
+
+//    private fun setUpViewPager(memberList: List<GroupMember>) {
+//        // ViewPager2에 어댑터 설정
+//        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, memberList)
+//
+//        // indicator3를 viewPager2에 연결
+//        binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
+//    }
 
     private fun setExpandableList() {
         val parentList = mutableListOf("공지사항", "계정관리", "문의하기", "고객센터") // 부모 리스트
@@ -115,5 +124,10 @@ class MainActivity : AppCompatActivity() {
 
             false
         }
+    }
+
+    override fun onGroupMemberChanged() {
+        setUpViewPager()
+        Log.d("그룹", "눌러짐")
     }
 }
