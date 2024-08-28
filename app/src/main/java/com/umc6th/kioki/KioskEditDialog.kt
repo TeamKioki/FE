@@ -45,8 +45,11 @@ class KioskEditDialog(
         }
 
         allkiosk.setOnClickListener {
-            dismiss()
             // 다이얼로그 띄우기
+            val dialog = KioskAllApplyDialog(
+                context
+            )
+            dialog.show()
         }
 
         // GridLayout에서 색상 클릭 리스너 설정
