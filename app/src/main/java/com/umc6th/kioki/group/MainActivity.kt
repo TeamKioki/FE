@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.umc6th.kioki.KioskhomeActivity
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainBinding
+import com.umc6th.kioki.inquire.InquireActivity
+import com.umc6th.kioki.unregister.UnregisterActivity
 
 
 class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
@@ -116,13 +118,17 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
             val activity = when (groupPosition) {
                 1 -> when (childPosition) {
                     0 -> NavAccountEditActivity::class.java // 계정 편집
-
+                    1 -> null // 알림 설정
+                    2 -> UnregisterActivity::class.java // 계정 탈퇴
                     else -> null
+                }
+                2 -> when (childPosition) {
+                    0 ->  InquireActivity::class.java// 자주 묻는 질문 (FAQ)
+                    else -> InquireActivity::class.java// 키오스크 등록 요청
                 }
                 else -> null
             }
             Log.d("그룹", childPosition.toString())
-
             val intent = Intent(this, activity)
             startActivity(intent)
 

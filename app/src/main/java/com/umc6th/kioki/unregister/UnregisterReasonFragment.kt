@@ -31,7 +31,7 @@ class UnregisterReasonFragment : Fragment() {
             requireActivity().finish()
         }
         binding.nextButton.setOnClickListener {
-            findNavController().navigate(R.id.action_unregisterReadFragment_to_unregisterReasonFragment)
+            findNavController().navigate(R.id.action_unregisterReasonFragment_to_unregisterReadFragment)
         }
     }
 }

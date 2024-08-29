@@ -1,3 +1,5 @@
+package com.umc6th.kioki.inquire
+
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -7,21 +9,19 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayoutMediator
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityInquireBinding
-import com.umc6th.kioki.inquire.MyInquiriesFragment
-import com.umc6th.kioki.inquire.WriteInquireFragment
 import com.umc6th.kioki.inquire.adapter.InquireAdapter
 
 class InquireActivity : AppCompatActivity() {
 
 //    // 예: "문의하기" 버튼 클릭 시
-//    val intent = Intent(context, InquireActivity::class.java).apply {
-//        putExtra(InquireActivity.EXTRA_INITIAL_TAB_INDEX, InquireActivity.TAB_WRITE_INQUIRE)
+//    val intent = Intent(context, com.umc6th.kioki.inquire.InquireActivity::class.java).apply {
+//        putExtra(com.umc6th.kioki.inquire.InquireActivity.EXTRA_INITIAL_TAB_INDEX, com.umc6th.kioki.inquire.InquireActivity.TAB_WRITE_INQUIRE)
 //    }
 //    startActivity(intent)
 //
 //    // 예: "나의 문의 내역" 버튼 클릭 시
-//    val intent = Intent(context, InquireActivity::class.java).apply {
-//        putExtra(InquireActivity.EXTRA_INITIAL_TAB_INDEX, InquireActivity.TAB_MY_INQUIRIES)
+//    val intent = Intent(context, com.umc6th.kioki.inquire.InquireActivity::class.java).apply {
+//        putExtra(com.umc6th.kioki.inquire.InquireActivity.EXTRA_INITIAL_TAB_INDEX, com.umc6th.kioki.inquire.InquireActivity.TAB_MY_INQUIRIES)
 //    }
 //    startActivity(intent)
 
@@ -44,6 +44,9 @@ class InquireActivity : AppCompatActivity() {
             insets
         }
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
         binding.viewPager.adapter = inquireAdapter
         inquireAdapter.setFragments(fragments)
 

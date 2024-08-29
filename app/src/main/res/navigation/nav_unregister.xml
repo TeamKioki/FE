@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_unregister"
-    app:startDestination="@id/unregisterReadFragment">
+    app:startDestination="@id/unregisterReasonFragment">
 
     <fragment
         android:id="@+id/unregisterReadFragment"
         android:name="com.umc6th.kioki.unregister.UnregisterReadFragment"
         android:label="fragment_unregister_read"
-        tools:layout="@layout/fragment_unregister_read" >
-        <action
-            android:id="@+id/action_unregisterReadFragment_to_unregisterReasonFragment"
-            app:destination="@id/unregisterReasonFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_unregister_read" />
     <fragment
         android:id="@+id/unregisterReasonFragment"
         android:name="com.umc6th.kioki.unregister.UnregisterReasonFragment"
         android:label="fragment_unregister_reason"
-        tools:layout="@layout/fragment_unregister_reason" />
+        tools:layout="@layout/fragment_unregister_reason" >
+        <action
+            android:id="@+id/action_unregisterReasonFragment_to_unregisterReadFragment"
+            app:destination="@id/unregisterReadFragment" />
+    </fragment>
 </navigation>
