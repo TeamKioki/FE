@@ -1,6 +1,5 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.umc6th.kioki.R
 
 class GroupMoreRvAdapter(
     var groupList: MutableList<NotMemberEntity>,
@@ -32,7 +32,8 @@ class GroupMoreRvAdapter(
 
                     }
                 }
-            }        }
+            }
+        }
 
     // 추가
     private val differCallback = object : DiffUtil.ItemCallback<NotMemberEntity>() {
@@ -41,9 +42,12 @@ class GroupMoreRvAdapter(
         }
 
         override fun areContentsTheSame(oldItem: NotMemberEntity, newItem: NotMemberEntity): Boolean {
+            // User의 내용을 비교해서 같으면 true -> UI 변경 없음
+            // User의 내용을 비교해서 다르면 false -> UI 변경
             return oldItem == newItem
         }
     }
+
     val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

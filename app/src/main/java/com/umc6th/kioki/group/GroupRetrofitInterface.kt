@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import okhttp3.RequestBody
 import retrofit2.Call

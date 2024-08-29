@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

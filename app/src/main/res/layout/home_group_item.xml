@@ -44,20 +44,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="GroupName"
-                android:textSize="16sp"
+                android:textSize="?attr/mainTextSize"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/group_item_description1_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Group Description 1" />
+                android:text="Group Description 1"
+                android:textSize="?attr/mainTextSize"/>
 
             <TextView
                 android:id="@+id/group_item_description2_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Group Description 2" />
+                android:text="Group Description 2"
+                android:textSize="?attr/mainTextSize"/>
 
         </LinearLayout>
 

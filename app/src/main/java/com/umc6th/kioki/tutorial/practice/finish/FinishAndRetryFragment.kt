@@ -34,10 +34,9 @@ class FinishAndRetryFragment : Fragment() {
             })
             requireActivity().finish()
         }
-
+        
         binding.closeButton.setOnClickListener {
             requireActivity().finish()
         }
     }
-
 }

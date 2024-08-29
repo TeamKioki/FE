@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.os.Bundle
 import android.util.Log
@@ -6,9 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
-import com.umc6th.kioki.databinding.FragmentGroupHomeEditBinding
 import com.umc6th.kioki.databinding.FragmentGroupHomeMoreAddBinding
+import okhttp3.internal.notify
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +23,8 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
     var memberId : Int = 0
     var userId : Int = 0
     private lateinit var apiService: GroupRetrofitInterface
+    private var listener: OnGroupMemberChangeListener? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +68,32 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
 
         // 그룹 추가 버튼 클릭 이벤트
         binding.moreAddGroupBtn.setOnClickListener {
-            addGroupMember()
+            val currentText = binding.moreAddGroupBtn.text.toString()
+            if(currentText == "그룹 추가") {
+                addGroupMember()
+            } else if(currentText == "그룹 삭제") {
+                deleteGroupMember()
+            }
         }
+
+//        // 어댑터에 변경된 데이터를 갱신
+//        val activity = activity as GroupHomeMoreActivity
+//        val member = activity.groupList.find { it.userId == userId }
+//
+//        member?.let {
+//            val position = activity.groupList.indexOf(it)
+//            activity.groupMoreRvAdapter.notifyItemChanged(position)
+//
+//            // UI 업데이트 (버튼 텍스트 변경)
+//            if (it.isGroupMember == true) {
+//                binding.moreAddGroupBtn.text = "그룹 삭제"
+//            }
+//        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         // 어댑터에 변경된 데이터를 갱신
         val activity = activity as GroupHomeMoreActivity
         val member = activity.groupList.find { it.userId == userId }
@@ -78,20 +105,30 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
             // UI 업데이트 (버튼 텍스트 변경)
             if (it.isGroupMember == true) {
                 binding.moreAddGroupBtn.text = "그룹 삭제"
+            } else {
+                binding.moreAddGroupBtn.text = "그룹 추가"
             }
         }
 
     }
+    fun setOnGroupMemberChangeListener(listener: OnGroupMemberChangeListener) {
+        this.listener = listener
+    }
 
     fun addGroupMember() {
         // 서버에서 제공받은 Access Token
-        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwicGhvbmUiOiIwMTAxMjM0NTY3OCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MjM3MTU1NTgsImV4cCI6MTcyNjMwNzU1OH0._TI2xGiWqvtNp9ooaf_rRo8puTA1tAZqKoAjADmKwOA"
+        val accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMCIsInBob25lIjoiMDEwODI0NzMwMTAiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzI0MzE5MjM5LCJleHAiOjE3MjY5MTEyMzl9.Zwz108s5qKDBo02nm16H_Ma_P0CnkUybG66XbkOk9_A"
         val userIdRequest = UserIdRequest(userId)
 
         // API 호출
-        postMembers(accessToken, userIdRequest)  // 멤버 목록 가져오기
+        //postMembers(accessToken, userIdRequest)  // 멤버 목록 가져오기
 
+        updateGroupMemberStatus(true)
     }
+    fun deleteGroupMember() {
+        updateGroupMemberStatus(false)
+    }
+
     // API
     private fun postMembers(token: String, userIdRequest: UserIdRequest) {
         apiService.postMembers("Bearer $token", userIdRequest).enqueue(object :
@@ -117,13 +154,22 @@ class GroupHomeMoreAddFragmentDialog: DialogFragment() {
     }
 
     private fun updateGroupMemberStatus(isGroupMember: Boolean) {
+        NotMemberLists.updateIsGroupMember(userId, isGroupMember)
+
+
         // 멤버가 그룹에 추가된 후 isGroupMember 값을 true로 변경
-        val activity = activity as GroupHomeMoreActivity
-        val member = activity.groupList.find { it.userId == userId }
+        val groupHomeMoreActivity = activity as GroupHomeMoreActivity
+        val member = groupHomeMoreActivity.groupList.find { it.userId == userId }
+
         member?.isGroupMember = isGroupMember
+        groupHomeMoreActivity.onGroupMemberChanged() // 바로 데이터 갱신
+        listener?.onGroupMemberChanged()
+
+
+
+        //Log.d("멤버목록", "추천친구 목록: ${groupHomeMoreActivity.groupList}")
 
 
         dismiss()
     }
-
 }
