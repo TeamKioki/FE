@@ -24,15 +24,16 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="293dp"
-            android:layout_height="124dp"
+            android:layout_width="300dp"
+            android:layout_height="119dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/edit_group_profile_img_iv"
                 android:layout_width="117dp"
-                android:layout_height="99dp"
+                android:layout_height="105dp"
 
                 android:layout_marginRight="10dp"
                 android:src="@drawable/ic_add_img" />
@@ -48,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="이름"
+                    android:textSize="?attr/mainTextSize"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -61,7 +63,7 @@
                         android:layout_height="35dp"
                         android:background="@android:color/transparent"
                         android:backgroundTint="@null"
-                        android:textSize="20sp" />
+                        android:textSize="?attr/mainTextSize" />
 
                     <ImageView
                         android:id="@+id/edit_name_btn_iv"
@@ -77,6 +79,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:text="글자크기"
+                    android:textSize="?attr/mainTextSize"
                     android:textStyle="bold" />
 
                 <RadioGroup
@@ -135,7 +138,6 @@
                 android:backgroundTint="@null"
                 android:hint="제목을 입력하세요"
                 android:textSize="15sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -169,6 +171,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:text="글자 색상"
+            android:textSize="?attr/mainTextSize"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />

@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -12,8 +12,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.mrudultora.colorpicker.ColorPickerPopUp
 import com.mrudultora.colorpicker.ColorPickerPopUp.OnPickColorListener
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.FragmentColorPaletteBinding
-import com.umc6th.kioki.databinding.FragmentGroupHomeEditColorpickerBinding
 
 class GroupHomeColorPalette : Fragment() {
     lateinit var binding: FragmentColorPaletteBinding
@@ -88,7 +88,9 @@ class GroupHomeColorPalette : Fragment() {
             // 색상을 동적으로 변경
             val colorResId = view?.tag as? Int ?: return
             val color = ContextCompat.getColor(requireContext(), colorResId)
-            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.shape_color_palette) as GradientDrawable
+            val drawable = ContextCompat.getDrawable(requireContext(),
+                R.drawable.shape_color_palette
+            ) as GradientDrawable
             drawable.setColor(color)
             view?.background = drawable
 

@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,6 +13,7 @@ data class MemberEntity(
     var nickname: String? = null,
     var noteTitle: String? = null,
     var noteText: String? = null,
+    var isGroupMember: Boolean? = false
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
@@ -24,8 +25,21 @@ data class NotMemberEntity(
     var phone: String? = null,
     var introduction: String? = null,
     var imageName: String? = null,
-    var isGroupMember: Boolean? = null,
+    var isGroupMember: Boolean? = false,
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
+
+data class NoticeEntity(
+    var noticeTitle: String? = null,
+    var noticeDate: String? = null
+)
+
+data class ReviewEntity(
+    var restaurantImg:Int? = null,
+    var restaurantName: String? = null,
+    var foodType: String? = null,
+    var rating:Double? = null,
+    var reviewContent: String? = null
+)
 

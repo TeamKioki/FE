@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.umc6th.kioki.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -58,13 +59,14 @@ class GroupRvAdapter(
                     listener.onItemClick(groupList[position])
                 }
             }
-            group_item_delete_btn_iv.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    val member = groupList[position]
-                    deleteMember(member.memberId!!, position)
-                }
-            }
+//            group_item_delete_btn_iv.setOnClickListener {
+//                val position = adapterPosition
+//                if (position != RecyclerView.NO_POSITION) {
+//                    val member = groupList[position]
+////
+//                }
+//            }
+
 
         }
     }
@@ -96,10 +98,15 @@ class GroupRvAdapter(
         // val group: Group = groupList[position]
         if (holder is ViewHolder) {
             val member: MemberEntity = differ.currentList[position]
-            holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
+            //holder.group_item_img_iv.setImageResource(member.profilePictureUrl!!)
             holder.group_item_name_tv.text = member.nickname
             holder.group_item_description1_tv.text = member.noteTitle
             holder.group_item_description2_tv.text = member.noteText
+
+            // Uri로 이미지 설정
+            member.profilePictureUrl?.let {
+                //holder.group_item_img_iv.setImageURI(it)
+            } ?: holder.group_item_img_iv.setImageResource(R.drawable.ic_home_user_character1) // 기본 이미지 설정
 
             holder.group_item_delete_btn_iv.setImageResource(R.drawable.ic_group_subtract)
 
@@ -109,9 +116,10 @@ class GroupRvAdapter(
                 View.GONE
             }
 
-//            holder.group_item_delete_btn_iv.setOnClickListener {
-//                removeItem(position)
-//            }
+            holder.group_item_delete_btn_iv.setOnClickListener {
+                removeItem(position)
+            }
+
         } else if (holder is AddButtonViewHolder) {
             holder.add_button_iv.setImageResource(R.drawable.ic_group_plus)
 
@@ -159,10 +167,17 @@ class GroupRvAdapter(
     private fun removeItem(position: Int) {
         // 리스트에서 해당 아이템 제거
         val mutableList = differ.currentList.toMutableList()
+        val member = mutableList[position]
+        member.isGroupMember = false // isGroupMember를 false로 설정
+        // Update the corresponding NotMemberEntity's isGroupMember to false
+        member?.userId?.let { NotMemberLists.updateIsGroupMember(it, false) }
+
         mutableList.removeAt(position)
 
         // 업데이트된 리스트를 submit
         differ.submitList(mutableList)
+
+
     }
 
     // 삭제 편집 버튼을 클릭하면 모든 그룹 아이템들의 삭제 아이콘이 뜨도록

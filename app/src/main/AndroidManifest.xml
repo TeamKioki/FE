@@ -94,22 +94,30 @@
             android:exported="true" >
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".group.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".group.NavAccountEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".group.NoticeActivity"
+            android:exported="true" />
+
         <activity
             android:name=".join.JoinActivity"
             android:exported="true" />
         <activity
-            android:name=".GroupHomeActivity"
+            android:name=".group.GroupHomeActivity"
             android:exported="true" />
         <activity
-            android:name=".GroupHomeMoreActivity"
+            android:name=".group.GroupHomeMoreActivity"
             android:exported="true" />
         <activity
             android:name=".tutorial.practice.BurgerKingTutorialActivity"

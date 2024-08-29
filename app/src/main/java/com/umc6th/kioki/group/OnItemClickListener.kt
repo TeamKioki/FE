@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 interface OnItemClickListener {
     fun onItemClick(member: MemberEntity)
@@ -7,6 +7,10 @@ interface OnItemClickListener {
 
 interface OnMoreGroupClickListener {
     fun onItemClick(member: NotMemberEntity)
+}
+
+interface OnGroupMemberChangeListener {
+    fun onGroupMemberChanged()
 }
 
 interface DialogListener {

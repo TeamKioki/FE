@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.group
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,15 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.viewpager2.widget.ViewPager2
-import com.umc6th.kioki.data.client.RetrofitClient
+import com.umc6th.kioki.KioskhomeActivity
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,11 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         //setStartFragment()
         setStartActivity()
-        // ViewPager2에 어댑터 설정
-        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this)
 
-        // indicator3를 viewPager2에 연결
-        binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
+        setUpViewPager()
+//        // ViewPager2에 어댑터 설정
+//        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this)
+//
+//        // indicator3를 viewPager2에 연결
+//        binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
 
         binding.mainDrawerBtnIb.setOnClickListener {
             setExpandableList() // drawerMenu 생성
@@ -55,6 +54,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.mainGotoBtn.setOnClickListener{
             val intent = Intent(this, KioskhomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 공지사항
+        binding.mainCommentContainerIv.setOnClickListener {
+            val intent = Intent(this, NoticeActivity::class.java)
             startActivity(intent)
         }
     }
@@ -75,31 +80,38 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpViewPager(memberList: List<GroupMember>) {
-        // ViewPager2에 어댑터 설정
-        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, memberList)
+    private fun setUpViewPager() {
+        val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
+        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, filteredMembers)
 
-        // indicator3를 viewPager2에 연결
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
     }
+
+//    private fun setUpViewPager(memberList: List<GroupMember>) {
+//        // ViewPager2에 어댑터 설정
+//        binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, memberList)
+//
+//        // indicator3를 viewPager2에 연결
+//        binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
+//    }
 
     private fun setExpandableList() {
         val parentList = mutableListOf("공지사항", "계정관리", "문의하기", "고객센터") // 부모 리스트
         val childList = mutableListOf(
             mutableListOf(),
             mutableListOf("계정 편집", "알림 설정", "계정 탈퇴"),
-            mutableListOf("키오스크 등록 요청"),
+            mutableListOf("자주 묻는 질문 (FAQ)", "문의하기 (Q&A)", "키오스크 등록 요청"),
             mutableListOf()
         )
         val expandableAdapter = MainExpandableListAdapter(this, parentList, childList)
         val expandableList = findViewById<ExpandableListView>(R.id.main_menu_el)
         expandableList.setAdapter(expandableAdapter)
 
-
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnGroupClickListener { parent, v, groupPosition, id ->
             /* todo : parent 클릭 이벤트 설정 */
             false
         }
+
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
             val activity = when (groupPosition) {
                 1 -> when (childPosition) {
@@ -116,5 +128,10 @@ class MainActivity : AppCompatActivity() {
 
             false
         }
+    }
+
+    override fun onGroupMemberChanged() {
+        setUpViewPager()
+        Log.d("그룹", "눌러짐")
     }
 }
