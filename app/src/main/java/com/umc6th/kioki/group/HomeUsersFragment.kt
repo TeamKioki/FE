@@ -46,25 +46,41 @@ class HomeUsersFragment : Fragment() {
 ////                else -> fetchMembersPaged(accessToken, choice)
 //            }
 //        }
-        choice?.let {
-            val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
-            adapter.updateMembers(filteredMembers)
-
-            //HomeUsersAdapter(filteredMembers)
+//        choice?.let {
+//            val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
+//            adapter.updateMembers(filteredMembers)
+//
+//            //HomeUsersAdapter(filteredMembers)
+//        }
+        arguments?.let { args ->
+            val startIndex = args.getInt(START_INDEX)
+            val endIndex = args.getInt(END_INDEX)
+            members = MemberLists.members.subList(startIndex, endIndex)
+            adapter.updateMembers(members)
         }
         return binding.root
     }
 
     companion object {
         private const val MEMBER_ITEM = "member_item"
-
-        @JvmStatic
-        fun newInstance(member: MemberEntity) =
-            HomeUsersFragment().apply {
-                arguments = Bundle().apply {
-                    member.memberId?.let { putInt(MEMBER_ITEM, it) }
-                }
-            }
+        private const val START_INDEX = "start_index"
+        private const val END_INDEX = "end_index"
+//        @JvmStatic
+//        fun newInstance(member: MemberEntity) =
+//            HomeUsersFragment().apply {
+//                arguments = Bundle().apply {
+//                    member.memberId?.let { putInt(MEMBER_ITEM, it) }
+//                }
+//            }
+    @JvmStatic
+    fun newInstance(startIndex: Int, endIndex: Int): HomeUsersFragment {
+        return HomeUsersFragment().apply {
+            arguments = Bundle().apply {
+                putInt(START_INDEX, startIndex)
+                putInt(END_INDEX, endIndex)
+        }
+    }
+}
     }
 
 //    private fun fetchMembersPaged(token: String, page: Int) {

@@ -24,6 +24,10 @@ class NavAccountEditActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 키오스크 평가 리싸이클러뷰
+        binding.accountEditKioskReviewRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.accountEditKioskReviewRv.adapter = ReviewRvAdapter(DummyLists.reivews)
+
         // 친구 목록 리싸이클러뷰
         binding.accountEditGroupListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }

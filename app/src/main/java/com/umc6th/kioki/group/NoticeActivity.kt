@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.R
-import com.umc6th.kioki.databinding.ActivityGroupHomeBinding
 import com.umc6th.kioki.databinding.ActivityNoticeBinding
 
 class NoticeActivity:AppCompatActivity() {
@@ -26,7 +25,7 @@ class NoticeActivity:AppCompatActivity() {
         // RecyclerView 설정
         val recyclerView = findViewById<RecyclerView>(R.id.notice_rv)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = NoticeRvAdapter(NoticeLists.notices)
+        recyclerView.adapter = NoticeRvAdapter(DummyLists.notices)
     }
 
 }

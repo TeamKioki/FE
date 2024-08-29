@@ -1,6 +1,5 @@
 package com.umc6th.kioki.group
 
-import android.net.Uri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -34,5 +33,13 @@ data class NotMemberEntity(
 data class NoticeEntity(
     var noticeTitle: String? = null,
     var noticeDate: String? = null
+)
+
+data class ReviewEntity(
+    var restaurantImg:Int? = null,
+    var restaurantName: String? = null,
+    var foodType: String? = null,
+    var rating:Double? = null,
+    var reviewContent: String? = null
 )
 
