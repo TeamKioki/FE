@@ -45,6 +45,7 @@
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_regular"
                 android:text="결제수단을 선택해주세요."
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -109,8 +110,9 @@
 
             <TextView
                 android:id="@+id/text2"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_regular"
                 android:text="결제수단 확인이 완료되면 결제를 진행해주세요"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
@@ -131,6 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="결제하기"
+            android:fontFamily="@font/pretendard_regular"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"

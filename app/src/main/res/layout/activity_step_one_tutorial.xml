@@ -194,6 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="개수와 금액을 먼저 확인해주세요"
+                android:fontFamily="@font/pretendard_regular"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -205,7 +206,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/pretendard_regular"
+            android:layout_marginEnd="50dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/imageView21"
             app:layout_constraintEnd_toEndOf="parent">
@@ -218,7 +220,7 @@
 
             <TextView
                 android:id="@+id/text2"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="이상이 없을 경우 확인을 눌러주세요"
                 android:textColor="@color/white"
@@ -246,6 +248,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_regular"
             android:background="@android:color/transparent"
             android:src="@drawable/orangecircle"
             app:layout_constraintBottom_toBottomOf="@+id/imageView21"

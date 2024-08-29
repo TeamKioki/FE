@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_unregister"
+    app:startDestination="@id/unregisterReadFragment">
+
+    <fragment
+        android:id="@+id/unregisterReadFragment"
+        android:name="com.umc6th.kioki.unregister.UnregisterReadFragment"
+        android:label="fragment_unregister_read"
+        tools:layout="@layout/fragment_unregister_read" >
+        <action
+            android:id="@+id/action_unregisterReadFragment_to_unregisterReasonFragment"
+            app:destination="@id/unregisterReasonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/unregisterReasonFragment"
+        android:name="com.umc6th.kioki.unregister.UnregisterReasonFragment"
+        android:label="fragment_unregister_reason"
+        tools:layout="@layout/fragment_unregister_reason" />
+</navigation>

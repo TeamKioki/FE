@@ -47,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="메뉴 종류 선택"
+                android:fontFamily="@font/pretendard_regular"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -82,16 +83,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="메뉴 선택"
+                android:fontFamily="@font/pretendard_regular"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/text3"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:fontFamily="@font/pretendard_regular"
             android:text="세트 or 단품 여부 선택\n사이드메뉴, 음료 선택"
             android:textColor="#B7B7B7"
             android:textSize="13sp"

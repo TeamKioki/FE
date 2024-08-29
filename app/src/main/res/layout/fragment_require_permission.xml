@@ -42,6 +42,7 @@
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_regular"
             android:layout_marginTop="40dp"
             android:text="키오키를 이용하기 위해서는\n다음 권한이 필요해요"
             android:textSize="24sp"

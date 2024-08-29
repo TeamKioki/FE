@@ -61,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:gravity="center"
+            android:fontFamily="@font/pretendard_regular"
             android:text="매장에서 식사할 경우 매장식사를,\n포장으로 가지고 나갈 경우에 포장을 선택해주세요"
             android:textColor="@color/white"
             android:textSize="14sp"

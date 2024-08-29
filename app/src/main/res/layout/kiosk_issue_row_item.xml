@@ -16,6 +16,7 @@
         <TextView
             android:id="@+id/issueContent"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/pretendard_regular"
             android:layout_height="wrap_content"
             android:background="@{issue.isSelected ? @drawable/oval_primary_bg : @drawable/oval_gray_bg}"
             android:paddingHorizontal="20dp"

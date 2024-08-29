@@ -41,6 +41,7 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
+            android:fontFamily="@font/pretendard_regular"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="프로필 사진 선택하기"
@@ -54,6 +55,7 @@
             android:id="@+id/textView5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_regular"
             android:layout_marginTop="20dp"
             android:text="나를 잘 나타내줄 사진을 선택해보세요.\n사진 대신 캐릭터를 선택하셔도 좋아요."
             android:textSize="15sp"
@@ -79,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/pretendard_regular"
             android:text="건너뛰기"
             android:textColor="#666666"
             android:textSize="12sp"
@@ -128,6 +131,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nextButton"
             android:layout_width="0dp"
+            android:fontFamily="@font/pretendard_regular"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_button_primary_color"

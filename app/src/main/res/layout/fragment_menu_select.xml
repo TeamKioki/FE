@@ -6,19 +6,31 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     tools:context=".tutorial.practice.MenuSelectFragment">
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="40dp"
-        android:text="1. 메뉴 종류 선택"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/one" />
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴 종류 선택"
+            android:fontFamily="@font/pretendard_regular"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView17"
@@ -29,8 +41,8 @@
         android:text="상단 탭의 메뉴 종류를 선택해주세요."
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintStart_toStartOf="@+id/linearLayout11"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout11" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -74,17 +86,30 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
-    <TextView
-        android:id="@+id/textView18"
+    <LinearLayout
+        android:id="@+id/linearLayout12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
-        android:text="2. 메뉴 선택"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-        app:layout_constraintEnd_toStartOf="@+id/imageView9" />
+        app:layout_constraintEnd_toStartOf="@+id/imageView9">
+
+        <ImageView
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/two" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴 선택"
+            android:fontFamily="@font/pretendard_regular"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,6 +118,6 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintStart_toStartOf="@+id/linearLayout12"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,6 +40,7 @@
 
         <TextView
             android:id="@+id/textView9"
+            android:fontFamily="@font/pretendard_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -61,6 +62,7 @@
             android:id="@+id/nextButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:fontFamily="@font/pretendard_regular"
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_button_primary_color"
             android:text="로그인하기"

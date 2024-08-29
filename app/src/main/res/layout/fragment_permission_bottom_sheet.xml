@@ -15,6 +15,7 @@
             android:id="@+id/textView11"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_semibold"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
@@ -56,6 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="9dp"
                     android:paddingTop="23dp"
+                    android:fontFamily="@font/pretendard_semibold"
                     android:paddingBottom="23dp"
                     android:text="모두 동의하기"
                     android:textColor="@color/black"
@@ -92,6 +94,7 @@
                 <TextView
                     android:id="@+id/permission1"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/pretendard_regular"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="9dp"
                     android:text="서비스 이용약관 동의"
@@ -103,6 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
+                    android:fontFamily="@font/pretendard_regular"
                     android:text="(필수)"
                     android:textColor="@color/gray800"
                     android:textSize="18sp"
@@ -127,6 +131,7 @@
                     android:id="@+id/permission2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendard_regular"
                     android:layout_marginStart="9dp"
                     android:text="위치기반 서비스 이용악관 동의"
                     android:textColor="@color/gray800"
@@ -137,6 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
+                    android:fontFamily="@font/pretendard_regular"
                     android:text="(필수)"
                     android:textColor="@color/gray800"
                     android:textSize="18sp"
@@ -162,6 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="9dp"
+                    android:fontFamily="@font/pretendard_regular"
                     android:text="개인정보 처리 방침 동의"
                     android:textColor="@color/gray800"
                     android:textSize="18sp"
@@ -172,6 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:text="(필수)"
+                    android:fontFamily="@font/pretendard_regular"
                     android:textColor="@color/gray800"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -198,6 +206,7 @@
                     android:layout_marginStart="9dp"
                     android:text="선택적 정보 알림 수신 동의"
                     android:textColor="#D3D3D3"
+                    android:fontFamily="@font/pretendard_regular"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -207,6 +216,7 @@
                     android:layout_marginStart="5dp"
                     android:text="(선택)"
                     android:textColor="#D3D3D3"
+                    android:fontFamily="@font/pretendard_regular"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -218,6 +228,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="18dp"
+                android:fontFamily="@font/pretendard_regular"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/round_button_primary_color"
                 android:text="회원가입 완료하기"
