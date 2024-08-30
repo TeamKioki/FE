@@ -6,5 +6,5 @@ data class BrandItem(
     val brandLogoResId: Int,
     val pinCount: Int,
     val distance: String,
-    var isBookmarked: Boolean = false // 즐겨찾기 상태를 저장하는 필드
+    var isBookmarked: Boolean = true // 즐겨찾기 상태를 저장하는 필드
 )
