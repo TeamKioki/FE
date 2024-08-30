@@ -12,8 +12,8 @@ object DummyLists {
     )
     val reivews = listOf(
         ReviewEntity(R.drawable.burgerking, "버거킹", "햄버거/패스트푸드점", 4.0,"연습을 하고 갔지만 메뉴가 너무 많고 주문과정이 복잡하게 느껴졌어요"),
-        ReviewEntity(R.drawable.burgerking,"메가커피", "햄버거/패스트푸드점", 5.0, "연습을 하고 갔지만 메뉴가 너무 많고 주문과정이 복잡하게 느껴졌어요"),
-        ReviewEntity(R.drawable.burgerking,"버거킹", "햄버거/패스트푸드점", 4.0, "연습을 하고 갔지만 메뉴가 너무 많고 주문과정이 복잡하게 느껴졌어요")
+        ReviewEntity(R.drawable.logo_subway,"서브웨이", "샌드위치", 5.0, "연습을 하고 갔지만 메뉴가 너무 많고 주문과정이 복잡하게 느껴졌어요"),
+        ReviewEntity(R.drawable.logo_momstouch,"맘스터치", "햄버거/패스트푸드점", 4.0, "연습을 하고 갔지만 메뉴가 너무 많고 주문과정이 복잡하게 느껴졌어요")
 
     )
 }

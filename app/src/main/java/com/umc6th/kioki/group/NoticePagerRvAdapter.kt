@@ -1,5 +1,6 @@
 package com.umc6th.kioki.group
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,14 @@ class NoticePagerRvAdapter(private val noticeList: List<NoticeEntity>) : Recycle
         fun bind(notice: NoticeEntity) {
             noticeTitle.text = notice.noticeTitle
             noticeDate.text = notice.noticeDate
+
+            itemView.setOnClickListener {
+                // NoticeActivity로 이동하는 Intent 생성
+                val intent = Intent(itemView.context, NoticeActivity::class.java)
+
+                // Activity 시작
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

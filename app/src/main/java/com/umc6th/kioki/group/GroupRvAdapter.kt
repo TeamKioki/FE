@@ -59,6 +59,7 @@ class GroupRvAdapter(
                     listener.onItemClick(groupList[position])
                 }
             }
+
 //            group_item_delete_btn_iv.setOnClickListener {
 //                val position = adapterPosition
 //                if (position != RecyclerView.NO_POSITION) {
@@ -102,6 +103,13 @@ class GroupRvAdapter(
             holder.group_item_name_tv.text = member.nickname
             holder.group_item_description1_tv.text = member.noteTitle
             holder.group_item_description2_tv.text = member.noteText
+
+            // 테마 적용: theme 값을 사용하여 텍스트뷰의 스타일을 동적으로 설정
+            holder.group_item_name_tv.context.setTheme(member.theme)
+            holder.group_item_description1_tv.context.setTheme(member.theme)
+            holder.group_item_description2_tv.context.setTheme(member.theme)
+
+
 
             // Uri로 이미지 설정
             member.profilePictureUrl?.let {

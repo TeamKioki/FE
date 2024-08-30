@@ -7,8 +7,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.provider.MediaStore
 import android.util.Log
 import android.util.TypedValue
@@ -158,17 +156,13 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             val newNoteTitle = binding.editInputTitleEt.text.toString()
             val newNoteText = binding.editInputContentEt.text.toString()
 
-            // 전달하기 위해 인텐트 사용 (또는 다른 방법으로 업데이트 가능)
-            val activity = activity as? GroupHomeActivity
-            activity?.updateMemberData(memberId, newMemberName, newNoteTitle, newNoteText, imageUri)
-
+            Log.d("그룹", "memberId: ${memberId}")
             // 선택된 라디오 버튼 확인
             val selectedTheme = when (binding.editRadioGroup.checkedRadioButtonId) {
                 R.id.edit_radio_normal_rb -> R.style.Theme_App_Medium
                 R.id.edit_radio_big_rb -> R.style.Theme_App_Large
                 else -> R.style.Theme_App_Medium
             }
-
             // 테마를 저장
             val pref = DefaultPreferenceManager(requireContext())
             pref.setTextSize(
@@ -179,11 +173,16 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                     else -> 1
                 }
             )
+            // 전달하기 위해 인텐트 사용 (또는 다른 방법으로 업데이트 가능)
+            val activity = activity as? GroupHomeActivity
+            activity?.updateMemberData(memberId, newMemberName, newNoteTitle, newNoteText, imageUri, selectedTheme)
+
+
 
             // GroupHomeActivity를 재생성하여 새로운 테마 적용
             activity?.let {
                 it.setTheme(selectedTheme)
-                it.recreate()
+                //it.recreate()
             }
         }
 

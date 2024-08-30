@@ -106,7 +106,14 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
         //groupListAdapter.differ.submitList(groupList)
 
     }
-    fun updateMemberData(memberId: Int, newMemberName: String, newNoteTitle: String, newNoteText: String, imageUri: Uri?) {
+    fun updateMemberData(
+        memberId: Int,
+        newMemberName: String,
+        newNoteTitle: String,
+        newNoteText: String,
+        imageUri: Uri?,
+        selectedTheme: Int
+    ) {
         // memberId에 해당하는 아이템을 찾아 업데이트
         val member = groupList.find { it.memberId == memberId }
         member?.let {
@@ -114,9 +121,12 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
             it.noteTitle = newNoteTitle
             it.noteText = newNoteText
             //it.profilePictureUrl = imageUri
+            it.theme = selectedTheme
 
             // RecyclerView 갱신
-            groupListAdapter.notifyDataSetChanged()
+            val position = groupList.indexOf(it)
+            groupListAdapter.notifyItemChanged(position)
+//            groupListAdapter.notifyDataSetChanged()
         }
     }
 

@@ -142,8 +142,8 @@
             android:exported="false" />
         <activity android:name=".KioskFilterActivity"
             android:exported="false" />
-        <activity android:name=".KioskMapActivity"
-            android:exported="false" />
+<!--        <activity android:name=".KioskMapActivity"-->
+<!--            android:exported="false" />-->
     </application>
 
 </manifest>
