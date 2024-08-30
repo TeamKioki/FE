@@ -19,6 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kioki"
         tools:targetApi="31" >
+
+        <meta-data
+            android:name="com.naver.maps.map.fameqf3adq"
+            android:value="fameqf3adq" />
+
         <activity
             android:name=".tutorial.RealEndActivity"
             android:exported="false" />
