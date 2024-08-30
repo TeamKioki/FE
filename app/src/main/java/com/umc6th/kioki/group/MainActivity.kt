@@ -116,8 +116,15 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
         expandableList.setAdapter(expandableAdapter)
 
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnGroupClickListener { parent, v, groupPosition, id ->
-            /* todo : parent 클릭 이벤트 설정 */
-            false
+            when (groupPosition) {
+                0 -> {
+                    // 공지사항 클릭 시
+                    val intent = Intent(this, NoticeActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
 
         findViewById<ExpandableListView>(R.id.main_menu_el).setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
