@@ -32,8 +32,9 @@
             android:name=".evaluation.KioskEvaluationActivity"
             android:exported="false" />
 
+        <!-- 네이버 지도 API 키 설정 -->
         <meta-data
-            android:name="com.naver.maps.map.fameqf3adq"
+            android:name="com.naver.maps.map.CLIENT_ID"
             android:value="fameqf3adq" />
 
         <activity
