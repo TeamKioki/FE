@@ -11,6 +11,7 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
+import com.umc6th.kioki.R
 import com.umc6th.kioki.utils.TextPrefs
 
 class KioskEditDialog(

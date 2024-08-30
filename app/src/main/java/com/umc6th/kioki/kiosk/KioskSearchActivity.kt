@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityKiosksearchBinding
 
 class KioskSearchActivity : AppCompatActivity() {

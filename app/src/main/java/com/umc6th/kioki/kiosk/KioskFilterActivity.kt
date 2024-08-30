@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityKioskfilterBinding
 
 class KioskFilterActivity : AppCompatActivity() {

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.TextView
+import com.umc6th.kioki.R
 
 class KioskAllApplyDialog(
     context: Context

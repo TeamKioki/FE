@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.umc6th.kioki.R
 
 class KiohomeBrandlistRVAdapter(
     private val itemList: MutableList<com.umc6th.kioki.kiosk.Brand>,

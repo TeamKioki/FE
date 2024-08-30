@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityKioskhomeBinding
 import retrofit2.Call
 import retrofit2.Callback
