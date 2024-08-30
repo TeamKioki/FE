@@ -18,10 +18,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kioki"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".evaluation.KioskEvaluationListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".evaluation.KioskEvaluationFinishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".evaluation.KioskEvaluationExecuteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".evaluation.KioskEvaluationActivity"
+            android:exported="false" />
 
+        <!-- 네이버 지도 API 키 설정 -->
         <meta-data
-            android:name="com.naver.maps.map.fameqf3adq"
+            android:name="com.naver.maps.map.CLIENT_ID"
             android:value="fameqf3adq" />
 
         <activity
@@ -29,8 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".inquire.InquireActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".tutorial.tutorial.StepTwoTutorialActivity"
             android:excludeFromRecents="true"
@@ -82,8 +94,7 @@
             android:theme="@style/TransparentActivityTheme" />
         <activity
             android:name=".login.InputLoginCodeActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".tutorial.practice.finish.PracticeFinishActivity"
             android:exported="false" />
@@ -92,15 +103,13 @@
             android:exported="false" />
         <activity
             android:name=".onboarding.OnboardingActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".login.LoginActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".group.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -131,19 +140,24 @@
             android:theme="@style/TransparentActivityTheme" />
         <activity
             android:name=".tutorial.BurgerKingRealActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".unregister.UnregisterActivity"
             android:exported="true" />
-        <activity android:name=".KioskhomeActivity"
+        <activity
+            android:name=".unregister.UnregisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KioskhomeActivity"
             android:exported="false" />
-        <activity android:name=".KioskSearchActivity"
+        <activity
+            android:name=".KioskSearchActivity"
             android:exported="false" />
-        <activity android:name=".KioskFilterActivity"
+        <activity
+            android:name=".KioskFilterActivity"
             android:exported="false" />
-<!--        <activity android:name=".KioskMapActivity"-->
-<!--            android:exported="false" />-->
+
+        <activity
+            android:name=".KioskMapActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

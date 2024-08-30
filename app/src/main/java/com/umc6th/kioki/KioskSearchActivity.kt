@@ -37,7 +37,7 @@ class KioskSearchActivity : AppCompatActivity() {
         goFilter()
         initSpinner()
         goBack()
-        goMap()
+//        goMap()
     }
 
     // 샘플 브랜드 데이터 생성
@@ -64,12 +64,12 @@ class KioskSearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun goMap() {
-        binding.kiosearchMapBtn.setOnClickListener {
-            val intent = Intent(this, KioskMapActivity::class.java)
-            startActivity(intent)
-        }
-    }
+//    private fun goMap() {
+//        binding.kiosearchMapBtn.setOnClickListener {
+//            val intent = Intent(this, KioskMapActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
     private fun initSpinner() {
         ArrayAdapter.createFromResource(this, R.array.sort_array, android.R.layout.simple_spinner_item

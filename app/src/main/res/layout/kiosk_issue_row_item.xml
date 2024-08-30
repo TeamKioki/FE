@@ -11,19 +11,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp">
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp">
 
         <TextView
             android:id="@+id/issueContent"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/pretendard_regular"
             android:layout_height="wrap_content"
-            android:background="@{issue.isSelected ? @drawable/oval_primary_bg : @drawable/oval_gray_bg}"
+            android:background="@{issue.isSelected ? @drawable/oval_orange_bg : @drawable/oval_gray_bg}"
+            android:fontFamily="@font/pretendard_regular"
             android:paddingHorizontal="20dp"
             android:paddingVertical="8dp"
             android:text="@{issue.content}"
-            android:textSize="14sp"
             android:textColor="@color/black"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

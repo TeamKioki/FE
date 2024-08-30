@@ -92,6 +92,6 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.2")
 
     // 네이버 지도 SDK
-    implementation("com.naver.maps:map-sdk:3.16.2")
-    implementation ("com.google.android.gms:play-services-location:20.0.0")
+    implementation("com.naver.maps:map-sdk:3.19.1")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
 }

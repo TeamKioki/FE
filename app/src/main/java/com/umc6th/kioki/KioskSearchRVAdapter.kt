@@ -1,5 +1,6 @@
 package com.umc6th.kioki
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,19 @@ class KioskSearchRVAdapter(private val brandList: MutableList<BrandItem>) : Recy
                 binding.itemBookmarkBtn.visibility = View.GONE
                 binding.itemNobookmarkBtn.visibility = View.VISIBLE
             }
+
+//            // 아이템 클릭 이벤트 처리
+//            itemView.setOnClickListener {
+//                val context = itemView.context
+//                val intent = Intent(context, KioskEvaluationListActivity::class.java)
+//
+//                // 필요하다면 여기에 추가 데이터를 넣을 수 있음 (예: 브랜드 ID, 이름 등)
+//                intent.putExtra("brandName", brandItem.brandName)
+//                intent.putExtra("brandSpec", brandItem.brandSpec)
+//                intent.putExtra("brandLogoResId", brandItem.brandLogoResId)
+//
+//                context.startActivity(intent)
+//            }
         }
     }
 

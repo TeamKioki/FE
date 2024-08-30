@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umc6th.kioki.KioskSettingFragmentDialog
 import com.umc6th.kioki.databinding.ActivityNavAccountEditBinding
+import com.umc6th.kioki.evaluation.KioskEvaluationActivity
+import com.umc6th.kioki.evaluation.KioskEvaluationListActivity
 
 class NavAccountEditActivity : AppCompatActivity() {
     lateinit var binding : ActivityNavAccountEditBinding
@@ -14,6 +16,9 @@ class NavAccountEditActivity : AppCompatActivity() {
         binding = ActivityNavAccountEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.kiostEvaluationBtn.setOnClickListener {
+            startActivity(Intent(this, KioskEvaluationListActivity::class.java))
+        }
         binding.groupHeaderNavBackIv.setOnClickListener {
             finish()
         }
