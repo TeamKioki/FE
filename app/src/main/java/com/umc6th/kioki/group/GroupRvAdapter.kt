@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.R
+import com.umc6th.kioki.utils.TextPrefs
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,6 +61,12 @@ class GroupRvAdapter(
                 }
             }
 
+            val textColor = TextPrefs(itemView.context).getTextColor()
+            group_item_name_tv.setTextColor(textColor)
+            group_item_description1_tv.setTextColor(textColor)
+            group_item_description2_tv.setTextColor(textColor)
+
+
 //            group_item_delete_btn_iv.setOnClickListener {
 //                val position = adapterPosition
 //                if (position != RecyclerView.NO_POSITION) {
@@ -108,7 +115,6 @@ class GroupRvAdapter(
             holder.group_item_name_tv.context.setTheme(member.theme)
             holder.group_item_description1_tv.context.setTheme(member.theme)
             holder.group_item_description2_tv.context.setTheme(member.theme)
-
 
 
             // Uri로 이미지 설정

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.ActivityGroupHomeBinding
+import com.umc6th.kioki.utils.TextPrefs
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -128,6 +129,8 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
             groupListAdapter.notifyItemChanged(position)
 //            groupListAdapter.notifyDataSetChanged()
         }
+
+
     }
 
     private fun getAppTheme(textSize: Int) =

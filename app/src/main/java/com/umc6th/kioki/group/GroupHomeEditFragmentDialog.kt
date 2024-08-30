@@ -5,6 +5,7 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -13,6 +14,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,6 +37,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     private lateinit var apiService: GroupRetrofitInterface
     private lateinit var textPrefs: TextPrefs
     private var imageUri: Uri? = null
+    private var selectedColor: Int = Color.BLACK // 기본 색상
 
     var count: Int = 0
     var memberId: Int = 0
@@ -57,7 +60,11 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
 //        val textSize = pref.getTextSize()
 //        currentTheme = getAppTheme(textSize)
 //        requireActivity().setTheme(currentTheme)
+
+
+
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,7 +75,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
 
         if (savedInstanceState == null) {
             childFragmentManager.beginTransaction()
-                .add(R.id.edit_color_palette_fragmentContainer, GroupHomeColorPalette())
+                //.add(R.id.edit_color_palette_fragmentContainer, GroupHomeColorPalette())
                 .commitNow()
         }
 
@@ -184,6 +191,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 it.setTheme(selectedTheme)
                 //it.recreate()
             }
+            dismiss()
         }
 
 //        // 테마 변경에 따라 재설정
@@ -219,7 +227,48 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 }
             }
         }
+        val blackColorBtn: ImageView = binding.color1
+        val redColorBtn: ImageView = binding.color2
+        val yellowColorBtn: ImageView = binding.color3
+        val greenColorBtn: ImageView = binding.color4
+        val blueColorBtn: ImageView = binding.color5
+        val purpleColorBtn: ImageView = binding.color6
+        val whiteColorBtn: ImageView = binding.color7
+
+        val colorButtons = listOf<ImageView>(
+            blackColorBtn,
+            redColorBtn,
+            yellowColorBtn,
+            greenColorBtn,
+            blueColorBtn,
+            purpleColorBtn,
+            whiteColorBtn
+        )
+
+        colorButtons.forEach { button ->
+
+            button.setOnClickListener { view ->
+                selectedColor = when (view.id) {
+                    blackColorBtn.id -> Color.BLACK
+                    redColorBtn.id -> 0xFFFC002C.toInt()
+                    yellowColorBtn.id -> 0xFFF8BE35.toInt()
+                    greenColorBtn.id -> 0xFF00B7A1.toInt()
+                    blueColorBtn.id -> 0xFF006ED2.toInt()
+                    purpleColorBtn.id -> 0xFF9338B2.toInt()
+                    whiteColorBtn.id -> Color.WHITE
+                    else -> Color.BLACK // 기본 색상 (예: Black)
+                }
+                updateTextColor(selectedColor)
+            }
+        }
+
     }
+    private fun updateTextColor(color: Int) {
+        val memberName: TextView = binding.editMemberNameEt
+        memberName.setTextColor(color)
+        context?.let { TextPrefs(it).setTextColor(color) }
+    }
+
 
     private fun saveOriginalTextSizes(view: View) {
         if (view is TextView) {
