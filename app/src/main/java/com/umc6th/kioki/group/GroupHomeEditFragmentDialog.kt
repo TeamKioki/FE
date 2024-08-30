@@ -226,7 +226,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             // GroupHomeActivity를 재생성하여 새로운 테마 적용
             activity?.let {
                 it.setTheme(selectedTheme)
-                //it.recreate()
+                it.recreate()
             }
             dismiss()
         }

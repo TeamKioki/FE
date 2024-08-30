@@ -88,7 +88,6 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
     private fun setUpViewPager() {
         val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
         binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, filteredMembers)
-
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
     }
 
