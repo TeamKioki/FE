@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.umc6th.kioki.KioskhomeActivity
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainBinding
@@ -64,6 +65,11 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
             val intent = Intent(this, NoticeActivity::class.java)
             startActivity(intent)
         }
+        // RecyclerView.Adapter<ViewHolder>()
+        binding.mainNoticeVp.adapter = NoticePagerRvAdapter(DummyLists.notices)
+        // ViewPager의 Paging 방향은 Horizontal
+        binding.mainNoticeVp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        binding.mainNoticeCi.setViewPager(binding.mainNoticeVp)
     }
 
     private fun updateViewPager(members: List<GroupMember>) {

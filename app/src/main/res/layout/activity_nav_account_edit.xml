@@ -145,8 +145,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/account_edit_kiosk_review_rv"
-        android:layout_width="366dp"
-        android:layout_height="161dp"
+        android:layout_width="370dp"
+        android:layout_height="174dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout15"
@@ -161,7 +161,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="236dp"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

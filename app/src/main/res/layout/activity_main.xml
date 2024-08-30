@@ -37,46 +37,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/main_comment_container_iv"
-            android:layout_width="480dp"
-            android:layout_height="121dp"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/notice_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/main_bottom_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_user_name_tv"
-            app:srcCompat="@drawable/img_main_comment" />
+            app:layout_constraintTop_toBottomOf="@+id/main_user_name_tv">
 
-        <LinearLayout
-            android:id="@+id/main_comment_text_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="85dp"
-            android:layout_marginTop="35dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="@+id/main_comment_container_iv"
-            app:layout_constraintTop_toTopOf="@+id/main_comment_container_iv">
+            <ImageView
+                android:id="@+id/main_comment_container_iv"
+                android:layout_width="480dp"
+                android:layout_height="121dp"
 
-            <TextView
-                android:layout_width="226dp"
+                app:layout_constraintBottom_toBottomOf="@+id/notice_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/img_main_comment" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/main_notice_vp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[공지사항]"
-                android:textSize="13sp" />
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="170dp"
+                app:layout_constraintBottom_toBottomOf="@+id/main_notice_ci"
+                app:layout_constraintLeft_toLeftOf="@+id/notice_layout"
+                app:layout_constraintRight_toRightOf="@+id/notice_layout"
+                app:layout_constraintTop_toTopOf="@+id/notice_layout" />
 
-            <TextView
-                android:layout_width="226dp"
-                android:layout_height="wrap_content"
-                android:text="키오스크 신규 추가 목록 안내"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/main_notice_ci"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="168dp"
+                app:ci_drawable="@drawable/shape_main_orange_oval"
+                app:layout_constraintBottom_toBottomOf="@+id/notice_layout"
+                app:layout_constraintRight_toRightOf="@id/notice_layout"
+                app:layout_constraintStart_toStartOf="@id/notice_layout"
+                app:layout_constraintTop_toBottomOf="@id/main_notice_vp" />
 
-            <TextView
-                android:layout_width="226dp"
-                android:layout_height="wrap_content"
-                android:text="2024.08.02"
-                android:textSize="13sp" />
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_bottom_layout"
