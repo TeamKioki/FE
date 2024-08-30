@@ -153,9 +153,11 @@
         <activity
             android:name=".kiosk.KioskFilterActivity"
             android:exported="false" />
-
         <activity
             android:name=".kiosk.KioskMapActivity"
+            android:exported="false" />
+
+        <activity android:name=".kiosk.KioskMap2Activity"
             android:exported="false" />
 
     </application>
