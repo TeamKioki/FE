@@ -18,6 +18,7 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import com.naver.maps.map.util.MarkerIcons
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityKioskmapBinding
 
 class KioskMapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -35,7 +36,8 @@ class KioskMapActivity : AppCompatActivity(), OnMapReadyCallback {
     // onCreate에서 권한을 확인하며 위치 권한이 없을 경우 사용자에게 권한을 요청한다.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, com.umc6th.kioki.R.layout.activity_kioskmap)
+        binding = ActivityKioskmapBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         NaverMapSdk.getInstance(this).client =
             NaverMapSdk.NaverCloudPlatformClient("fameqf3adq")
