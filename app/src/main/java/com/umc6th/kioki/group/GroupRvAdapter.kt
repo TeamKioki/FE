@@ -118,9 +118,9 @@ class GroupRvAdapter(
             holder.group_item_description2_tv.context.setTheme(member.theme)
 
             // 텍스트 크기 및 색상 설정: 테마 적용 이후에 실행
-//            holder.group_item_name_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_name_tv.textSize)
-//            holder.group_item_description1_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_description1_tv.textSize)
-//            holder.group_item_description2_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_description2_tv.textSize)
+            holder.group_item_name_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_name_tv.textSize)
+            holder.group_item_description1_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_description1_tv.textSize)
+            holder.group_item_description2_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_description2_tv.textSize)
 
 //            // 텍스트 색상 적용
             holder.group_item_name_tv.setTextColor(member.textColor)

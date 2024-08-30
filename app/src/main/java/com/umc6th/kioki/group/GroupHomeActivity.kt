@@ -132,7 +132,6 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
 //            groupListAdapter.notifyDataSetChanged()
         }
 
-
     }
 
     private fun getAppTheme(textSize: Int) =

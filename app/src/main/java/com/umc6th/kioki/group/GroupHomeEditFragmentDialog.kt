@@ -190,6 +190,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 updateTextColor(selectedColor)
             }
         }
+
         // 수정 버튼 이벤트 핸들러
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
@@ -201,10 +202,20 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             Log.d("그룹", "memberId: ${memberId}")
             // 선택된 라디오 버튼 확인
             val selectedTheme = when (binding.editRadioGroup.checkedRadioButtonId) {
-                R.id.edit_radio_normal_rb -> R.style.Theme_App_Medium
-                R.id.edit_radio_big_rb -> R.style.Theme_App_Large
-                else -> R.style.Theme_App_Medium
+                R.id.edit_radio_normal_rb -> {
+                    pref.setTextSize(1)
+                    R.style.Theme_App_Medium
+                }
+                R.id.edit_radio_big_rb -> {
+                    pref.setTextSize(2)
+                    R.style.Theme_App_Large
+                }
+                else -> {
+                    pref.setTextSize(1) // 기본 크기
+                    R.style.Theme_App_Medium
+                }
             }
+
             // 테마를 저장
             val pref = DefaultPreferenceManager(requireContext())
             pref.setTextSize(
@@ -226,7 +237,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             // GroupHomeActivity를 재생성하여 새로운 테마 적용
             activity?.let {
                 it.setTheme(selectedTheme)
-                it.recreate()
+                //it.recreate()
             }
             dismiss()
         }
@@ -246,10 +257,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         binding.editRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.edit_radio_normal_rb -> {
-                    //TextPrefs(requireContext()).setTextSize(false)
-                    pref.setTextSize(1)
-//                    refreshDialog()
-                    //setAppTheme(R.style.Theme_App_Medium)
+                    pref.setTextSize(1) // 기본 크기
                     updateTextSize(1)
                 }
 
