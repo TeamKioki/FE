@@ -25,6 +25,7 @@ import androidx.fragment.app.DialogFragment
 import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.FragmentGroupHomeEditBinding
+import com.umc6th.kioki.utils.GroupTextPrefs
 import com.umc6th.kioki.utils.TextPrefs
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -37,7 +38,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     private lateinit var apiService: GroupRetrofitInterface
     private lateinit var textPrefs: TextPrefs
     private var imageUri: Uri? = null
-    private var selectedColor: Int = Color.BLACK // 기본 색상
+    var selectedColor: Int = Color.BLACK // 기본 색상
 
     var count: Int = 0
     var memberId: Int = 0
@@ -155,6 +156,40 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             }
 
         }
+        val blackColorBtn: ImageView = binding.color1
+        val redColorBtn: ImageView = binding.color2
+        val yellowColorBtn: ImageView = binding.color3
+        val greenColorBtn: ImageView = binding.color4
+        val blueColorBtn: ImageView = binding.color5
+        val purpleColorBtn: ImageView = binding.color6
+        val whiteColorBtn: ImageView = binding.color7
+
+        val colorButtons = listOf<ImageView>(
+            blackColorBtn,
+            redColorBtn,
+            yellowColorBtn,
+            greenColorBtn,
+            blueColorBtn,
+            purpleColorBtn,
+            whiteColorBtn
+        )
+
+        colorButtons.forEach { button ->
+
+            button.setOnClickListener { view ->
+                selectedColor = when (view.id) {
+                    blackColorBtn.id -> Color.BLACK
+                    redColorBtn.id -> 0xFFFC002C.toInt()
+                    yellowColorBtn.id -> 0xFFF8BE35.toInt()
+                    greenColorBtn.id -> 0xFF00B7A1.toInt()
+                    blueColorBtn.id -> 0xFF006ED2.toInt()
+                    purpleColorBtn.id -> 0xFF9338B2.toInt()
+                    whiteColorBtn.id -> Color.WHITE
+                    else -> Color.BLACK // 기본 색상 (예: Black)
+                }
+                updateTextColor(selectedColor)
+            }
+        }
         // 수정 버튼 이벤트 핸들러
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
@@ -180,9 +215,11 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                     else -> 1
                 }
             )
+
             // 전달하기 위해 인텐트 사용 (또는 다른 방법으로 업데이트 가능)
             val activity = activity as? GroupHomeActivity
-            activity?.updateMemberData(memberId, newMemberName, newNoteTitle, newNoteText, imageUri, selectedTheme)
+            activity?.updateMemberData(memberId, newMemberName, newNoteTitle, newNoteText, imageUri, selectedTheme,
+                selectedColor)
 
 
 
@@ -227,46 +264,14 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 }
             }
         }
-        val blackColorBtn: ImageView = binding.color1
-        val redColorBtn: ImageView = binding.color2
-        val yellowColorBtn: ImageView = binding.color3
-        val greenColorBtn: ImageView = binding.color4
-        val blueColorBtn: ImageView = binding.color5
-        val purpleColorBtn: ImageView = binding.color6
-        val whiteColorBtn: ImageView = binding.color7
 
-        val colorButtons = listOf<ImageView>(
-            blackColorBtn,
-            redColorBtn,
-            yellowColorBtn,
-            greenColorBtn,
-            blueColorBtn,
-            purpleColorBtn,
-            whiteColorBtn
-        )
-
-        colorButtons.forEach { button ->
-
-            button.setOnClickListener { view ->
-                selectedColor = when (view.id) {
-                    blackColorBtn.id -> Color.BLACK
-                    redColorBtn.id -> 0xFFFC002C.toInt()
-                    yellowColorBtn.id -> 0xFFF8BE35.toInt()
-                    greenColorBtn.id -> 0xFF00B7A1.toInt()
-                    blueColorBtn.id -> 0xFF006ED2.toInt()
-                    purpleColorBtn.id -> 0xFF9338B2.toInt()
-                    whiteColorBtn.id -> Color.WHITE
-                    else -> Color.BLACK // 기본 색상 (예: Black)
-                }
-                updateTextColor(selectedColor)
-            }
-        }
 
     }
+
     private fun updateTextColor(color: Int) {
         val memberName: TextView = binding.editMemberNameEt
         memberName.setTextColor(color)
-        context?.let { TextPrefs(it).setTextColor(color) }
+        //context?.let { GroupTextPrefs(it).setTextColor(color) }
     }
 
 

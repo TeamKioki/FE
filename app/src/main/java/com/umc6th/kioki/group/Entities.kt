@@ -1,5 +1,6 @@
 package com.umc6th.kioki.group
 
+import android.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.umc6th.kioki.R
@@ -15,7 +16,8 @@ data class MemberEntity(
     var noteTitle: String? = null,
     var noteText: String? = null,
     var isGroupMember: Boolean? = false,
-    var theme: Int = R.style.Theme_App_Medium // 기본 테마 추가
+    var theme: Int = R.style.Theme_App_Medium, // 기본 테마 추가
+    var textColor: Int = Color.BLACK
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }

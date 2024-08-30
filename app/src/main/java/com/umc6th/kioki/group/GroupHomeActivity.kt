@@ -113,7 +113,8 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
         newNoteTitle: String,
         newNoteText: String,
         imageUri: Uri?,
-        selectedTheme: Int
+        selectedTheme: Int,
+        selectedColor: Int
     ) {
         // memberId에 해당하는 아이템을 찾아 업데이트
         val member = groupList.find { it.memberId == memberId }
@@ -123,6 +124,7 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
             it.noteText = newNoteText
             //it.profilePictureUrl = imageUri
             it.theme = selectedTheme
+            it.textColor = selectedColor
 
             // RecyclerView 갱신
             val position = groupList.indexOf(it)
