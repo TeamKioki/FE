@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".KioskMapActivity">
+        tools:context=".kiosk.KioskMapActivity">
 
         <com.naver.maps.map.MapView
             android:id="@+id/kioskmap_map_vw"

@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -35,7 +35,7 @@ class KioskMapActivity : AppCompatActivity(), OnMapReadyCallback {
     // onCreate에서 권한을 확인하며 위치 권한이 없을 경우 사용자에게 권한을 요청한다.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_kioskmap)
+        binding = DataBindingUtil.setContentView(this, com.umc6th.kioki.R.layout.activity_kioskmap)
 
         NaverMapSdk.getInstance(this).client =
             NaverMapSdk.NaverCloudPlatformClient("fameqf3adq")
@@ -61,9 +61,9 @@ class KioskMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun initMapView() {
         val fm = supportFragmentManager
-        val mapFragment = fm.findFragmentById(R.id.kioskmap_map_vw) as MapFragment?
+        val mapFragment = fm.findFragmentById(com.umc6th.kioki.R.id.kioskmap_map_vw) as MapFragment?
             ?: MapFragment.newInstance().also {
-                fm.beginTransaction().add(R.id.kioskmap_map_vw, it).commit()
+                fm.beginTransaction().add(com.umc6th.kioki.R.id.kioskmap_map_vw, it).commit()
             }
 
         // fragment의 getMapAsync() 메서드로 OnMapReadyCallback 콜백을 등록하면 비동기로 NaverMap 객체를 얻을 수 있다.

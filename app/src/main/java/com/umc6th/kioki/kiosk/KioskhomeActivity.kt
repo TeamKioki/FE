@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -32,11 +32,23 @@ class KioskhomeActivity : AppCompatActivity() {
         setupEditMode()
 
         val brandList = mutableListOf(
-            Brand("버거킹", "햄버거 · 패스트푸드점", R.drawable.logo_burgerking.toString()),
-            Brand("롯데리아", "햄버거 · 패스트푸드점", R.drawable.logo_lotteria.toString()),
-            Brand("맘스터치", "햄버거 · 패스트푸드점", R.drawable.logo_momstouch.toString()),
-            Brand("KFC", "햄버거 · 패스트푸드점", R.drawable.logo_kfc.toString()),
-            Brand("서브웨이", "샌드위치", R.drawable.logo_subway.toString())
+            com.umc6th.kioki.kiosk.Brand(
+                "버거킹",
+                "햄버거 · 패스트푸드점",
+                R.drawable.logo_burgerking.toString()
+            ),
+            com.umc6th.kioki.kiosk.Brand(
+                "롯데리아",
+                "햄버거 · 패스트푸드점",
+                R.drawable.logo_lotteria.toString()
+            ),
+            com.umc6th.kioki.kiosk.Brand(
+                "맘스터치",
+                "햄버거 · 패스트푸드점",
+                R.drawable.logo_momstouch.toString()
+            ),
+            com.umc6th.kioki.kiosk.Brand("KFC", "햄버거 · 패스트푸드점", R.drawable.logo_kfc.toString()),
+            com.umc6th.kioki.kiosk.Brand("서브웨이", "샌드위치", R.drawable.logo_subway.toString())
         )
         setupRecyclerView(brandList)
 
@@ -102,7 +114,7 @@ class KioskhomeActivity : AppCompatActivity() {
 //        binding.kiohomeBrandlistRv.adapter = adapter
 //    }
 
-    private fun setupRecyclerView(brandList: MutableList<Brand>) {
+    private fun setupRecyclerView(brandList: MutableList<com.umc6th.kioki.kiosk.Brand>) {
         adapter = KiohomeBrandlistRVAdapter(brandList, ::onItemDeleted)
         binding.kiohomeBrandlistRv.layoutManager = GridLayoutManager(this, 3)
         binding.kiohomeBrandlistRv.adapter = adapter

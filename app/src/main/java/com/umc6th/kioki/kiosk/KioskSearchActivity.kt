@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.app.Activity
 import android.content.Intent
@@ -65,7 +65,7 @@ class KioskSearchActivity : AppCompatActivity() {
 
     private fun goMap() {
         binding.kiosearchMapBtn.setOnClickListener {
-            val intent = Intent(this, KioskMapActivity::class.java)
+            val intent = Intent(this, com.umc6th.kioki.kiosk.KioskMapActivity::class.java)
             startActivity(intent)
         }
     }

@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.app.Application
 import com.umc6th.kioki.utils.TokenPrefs

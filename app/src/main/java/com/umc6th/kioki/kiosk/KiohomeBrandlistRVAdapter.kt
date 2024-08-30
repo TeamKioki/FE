@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class KiohomeBrandlistRVAdapter(
-    private val itemList: MutableList<Brand>,
+    private val itemList: MutableList<com.umc6th.kioki.kiosk.Brand>,
     private val onDelete: (Int) -> Unit
 ) : RecyclerView.Adapter<KiohomeBrandlistRVAdapter.ViewHolder>() {
 
@@ -51,7 +51,7 @@ class KiohomeBrandlistRVAdapter(
         private val brandLogo: ImageView = itemView.findViewById(R.id.item_brandlogo_iv)
         val trashButton: ImageButton = itemView.findViewById(R.id.item_trash_btn)
 
-        fun bind(item: Brand) {
+        fun bind(item: com.umc6th.kioki.kiosk.Brand) {
             brandName.text = item.name
             brandLogo.setImageResource(item.logo.toInt())
 
