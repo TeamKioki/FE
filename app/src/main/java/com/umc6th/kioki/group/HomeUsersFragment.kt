@@ -31,6 +31,10 @@ class HomeUsersFragment : Fragment() {
         adapter = HomeUsersAdapter(emptyList())
         binding.homeRecyclerview.adapter = adapter
 
+        // members 리스트를 어댑터에 설정
+        if (::members.isInitialized) {
+            adapter.updateMembers(members)
+        }
         val choice =arguments?.getInt(MEMBER_ITEM)
 
         // 연결할 api 설정
@@ -46,12 +50,12 @@ class HomeUsersFragment : Fragment() {
 ////                else -> fetchMembersPaged(accessToken, choice)
 //            }
 //        }
-//        choice?.let {
-//            val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
-//            adapter.updateMembers(filteredMembers)
-//
-//            //HomeUsersAdapter(filteredMembers)
-//        }
+        choice?.let {
+            val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
+            adapter.updateMembers(filteredMembers)
+
+            //HomeUsersAdapter(filteredMembers)
+        }
         arguments?.let { args ->
             val startIndex = args.getInt(START_INDEX)
             val endIndex = args.getInt(END_INDEX)
@@ -60,27 +64,33 @@ class HomeUsersFragment : Fragment() {
         }
         return binding.root
     }
-
+    fun setMembers(members: List<MemberEntity>) {
+        this.members = members
+        if (::adapter.isInitialized) {
+            adapter.updateMembers(members)
+        }
+    }
     companion object {
         private const val MEMBER_ITEM = "member_item"
         private const val START_INDEX = "start_index"
         private const val END_INDEX = "end_index"
-//        @JvmStatic
-//        fun newInstance(member: MemberEntity) =
-//            HomeUsersFragment().apply {
-//                arguments = Bundle().apply {
-//                    member.memberId?.let { putInt(MEMBER_ITEM, it) }
-//                }
-//            }
-    @JvmStatic
-    fun newInstance(startIndex: Int, endIndex: Int): HomeUsersFragment {
-        return HomeUsersFragment().apply {
-            arguments = Bundle().apply {
-                putInt(START_INDEX, startIndex)
-                putInt(END_INDEX, endIndex)
-        }
-    }
-}
+        @JvmStatic
+        fun newInstance(member: MemberEntity) =
+            HomeUsersFragment().apply {
+                arguments = Bundle().apply {
+                    member.memberId?.let { putInt(MEMBER_ITEM, it) }
+                }
+            }
+//    @JvmStatic
+//    fun newInstance(startIndex: Int, endIndex: Int): HomeUsersFragment {
+//        return HomeUsersFragment().apply {
+//            arguments = Bundle().apply {
+//                putInt(START_INDEX, startIndex)
+//                putInt(END_INDEX, endIndex)
+//        }
+//    }
+
+
     }
 
 //    private fun fetchMembersPaged(token: String, page: Int) {

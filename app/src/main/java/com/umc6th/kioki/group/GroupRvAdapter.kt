@@ -1,6 +1,7 @@
 package com.umc6th.kioki.group
 
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.R
+import com.umc6th.kioki.utils.GroupTextPrefs
+import com.umc6th.kioki.utils.TextPrefs
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,6 +62,8 @@ class GroupRvAdapter(
                     listener.onItemClick(groupList[position])
                 }
             }
+
+
 //            group_item_delete_btn_iv.setOnClickListener {
 //                val position = adapterPosition
 //                if (position != RecyclerView.NO_POSITION) {
@@ -102,6 +107,30 @@ class GroupRvAdapter(
             holder.group_item_name_tv.text = member.nickname
             holder.group_item_description1_tv.text = member.noteTitle
             holder.group_item_description2_tv.text = member.noteText
+//            val prefs = GroupTextPrefs(holder.itemView.context)
+//            val textColor = prefs.getTextColor()
+
+            // TextPrefs를 사용하여 저장된 텍스트 색상 가져오기
+//            val textColor = TextPrefs(holder.itemView.context).getTextColor()
+            // 테마 적용: theme 값을 사용하여 텍스트뷰의 스타일을 동적으로 설정
+            holder.group_item_name_tv.context.setTheme(member.theme)
+            holder.group_item_description1_tv.context.setTheme(member.theme)
+            holder.group_item_description2_tv.context.setTheme(member.theme)
+
+            // 텍스트 크기 및 색상 설정: 테마 적용 이후에 실행
+            holder.group_item_name_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_name_tv.textSize)
+            holder.group_item_description1_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_description1_tv.textSize)
+            holder.group_item_description2_tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.group_item_description2_tv.textSize)
+
+//            // 텍스트 색상 적용
+            holder.group_item_name_tv.setTextColor(member.textColor)
+            holder.group_item_description1_tv.setTextColor(member.textColor)
+            holder.group_item_description2_tv.setTextColor(member.textColor)
+//
+//            // 테마 적용: theme 값을 사용하여 텍스트뷰의 스타일을 동적으로 설정
+//            holder.group_item_name_tv.context.setTheme(member.theme)
+//            holder.group_item_description1_tv.context.setTheme(member.theme)
+//            holder.group_item_description2_tv.context.setTheme(member.theme)
 
             // Uri로 이미지 설정
             member.profilePictureUrl?.let {

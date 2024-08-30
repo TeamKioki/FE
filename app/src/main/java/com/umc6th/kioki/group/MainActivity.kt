@@ -61,15 +61,12 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
         }
 
         // 공지사항
-        binding.mainCommentContainerIv.setOnClickListener {
-            val intent = Intent(this, NoticeActivity::class.java)
-            startActivity(intent)
-        }
         // RecyclerView.Adapter<ViewHolder>()
         binding.mainNoticeVp.adapter = NoticePagerRvAdapter(DummyLists.notices)
         // ViewPager의 Paging 방향은 Horizontal
         binding.mainNoticeVp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.mainNoticeCi.setViewPager(binding.mainNoticeVp)
+
     }
 
     private fun updateViewPager(members: List<GroupMember>) {
@@ -91,7 +88,6 @@ class MainActivity : AppCompatActivity(), OnGroupMemberChangeListener {
     private fun setUpViewPager() {
         val filteredMembers = MemberLists.members.filter { it.isGroupMember == true }
         binding.mainUsersVp.adapter = PagerFragmentStateAdapter(this, filteredMembers)
-
         binding.homeUsersIndicator.setViewPager(binding.mainUsersVp)
     }
 

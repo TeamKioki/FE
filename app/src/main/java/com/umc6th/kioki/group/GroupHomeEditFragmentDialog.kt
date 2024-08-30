@@ -5,16 +5,16 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.provider.MediaStore
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,6 +25,7 @@ import androidx.fragment.app.DialogFragment
 import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.FragmentGroupHomeEditBinding
+import com.umc6th.kioki.utils.GroupTextPrefs
 import com.umc6th.kioki.utils.TextPrefs
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -37,6 +38,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
     private lateinit var apiService: GroupRetrofitInterface
     private lateinit var textPrefs: TextPrefs
     private var imageUri: Uri? = null
+    var selectedColor: Int = Color.BLACK // 기본 색상
 
     var count: Int = 0
     var memberId: Int = 0
@@ -59,7 +61,11 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
 //        val textSize = pref.getTextSize()
 //        currentTheme = getAppTheme(textSize)
 //        requireActivity().setTheme(currentTheme)
+
+
+
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,7 +76,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
 
         if (savedInstanceState == null) {
             childFragmentManager.beginTransaction()
-                .add(R.id.edit_color_palette_fragmentContainer, GroupHomeColorPalette())
+                //.add(R.id.edit_color_palette_fragmentContainer, GroupHomeColorPalette())
                 .commitNow()
         }
 
@@ -150,6 +156,41 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             }
 
         }
+        val blackColorBtn: ImageView = binding.color1
+        val redColorBtn: ImageView = binding.color2
+        val yellowColorBtn: ImageView = binding.color3
+        val greenColorBtn: ImageView = binding.color4
+        val blueColorBtn: ImageView = binding.color5
+        val purpleColorBtn: ImageView = binding.color6
+        val whiteColorBtn: ImageView = binding.color7
+
+        val colorButtons = listOf<ImageView>(
+            blackColorBtn,
+            redColorBtn,
+            yellowColorBtn,
+            greenColorBtn,
+            blueColorBtn,
+            purpleColorBtn,
+            whiteColorBtn
+        )
+
+        colorButtons.forEach { button ->
+
+            button.setOnClickListener { view ->
+                selectedColor = when (view.id) {
+                    blackColorBtn.id -> Color.BLACK
+                    redColorBtn.id -> 0xFFFC002C.toInt()
+                    yellowColorBtn.id -> 0xFFF8BE35.toInt()
+                    greenColorBtn.id -> 0xFF00B7A1.toInt()
+                    blueColorBtn.id -> 0xFF006ED2.toInt()
+                    purpleColorBtn.id -> 0xFF9338B2.toInt()
+                    whiteColorBtn.id -> Color.WHITE
+                    else -> Color.BLACK // 기본 색상 (예: Black)
+                }
+                updateTextColor(selectedColor)
+            }
+        }
+
         // 수정 버튼 이벤트 핸들러
         binding.editModifyBtn.setOnClickListener {
             modifyMember(accessToken, memberId)
@@ -158,15 +199,21 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
             val newNoteTitle = binding.editInputTitleEt.text.toString()
             val newNoteText = binding.editInputContentEt.text.toString()
 
-            // 전달하기 위해 인텐트 사용 (또는 다른 방법으로 업데이트 가능)
-            val activity = activity as? GroupHomeActivity
-            activity?.updateMemberData(memberId, newMemberName, newNoteTitle, newNoteText, imageUri)
-
+            Log.d("그룹", "memberId: ${memberId}")
             // 선택된 라디오 버튼 확인
             val selectedTheme = when (binding.editRadioGroup.checkedRadioButtonId) {
-                R.id.edit_radio_normal_rb -> R.style.Theme_App_Medium
-                R.id.edit_radio_big_rb -> R.style.Theme_App_Large
-                else -> R.style.Theme_App_Medium
+                R.id.edit_radio_normal_rb -> {
+                    pref.setTextSize(1)
+                    R.style.Theme_App_Medium
+                }
+                R.id.edit_radio_big_rb -> {
+                    pref.setTextSize(2)
+                    R.style.Theme_App_Large
+                }
+                else -> {
+                    pref.setTextSize(1) // 기본 크기
+                    R.style.Theme_App_Medium
+                }
             }
 
             // 테마를 저장
@@ -180,11 +227,19 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 }
             )
 
+            // 전달하기 위해 인텐트 사용 (또는 다른 방법으로 업데이트 가능)
+            val activity = activity as? GroupHomeActivity
+            activity?.updateMemberData(memberId, newMemberName, newNoteTitle, newNoteText, imageUri, selectedTheme,
+                selectedColor)
+
+
+
             // GroupHomeActivity를 재생성하여 새로운 테마 적용
             activity?.let {
                 it.setTheme(selectedTheme)
-                it.recreate()
+                //it.recreate()
             }
+            dismiss()
         }
 
 //        // 테마 변경에 따라 재설정
@@ -202,10 +257,7 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
         binding.editRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.edit_radio_normal_rb -> {
-                    //TextPrefs(requireContext()).setTextSize(false)
-                    pref.setTextSize(1)
-//                    refreshDialog()
-                    //setAppTheme(R.style.Theme_App_Medium)
+                    pref.setTextSize(1) // 기본 크기
                     updateTextSize(1)
                 }
 
@@ -220,7 +272,16 @@ class GroupHomeEditFragmentDialog: DialogFragment() {
                 }
             }
         }
+
+
     }
+
+    private fun updateTextColor(color: Int) {
+        val memberName: TextView = binding.editMemberNameEt
+        memberName.setTextColor(color)
+        //context?.let { GroupTextPrefs(it).setTextColor(color) }
+    }
+
 
     private fun saveOriginalTextSizes(view: View) {
         if (view is TextView) {

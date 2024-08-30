@@ -165,7 +165,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/edit_text_color_txt_tv"
+            android:id="@+id/kioskedit_textcolor_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -176,13 +176,88 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/edit_color_palette_fragmentContainer"
-            android:layout_width="wrap_content"
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/edit_color_palette_fragmentContainer"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/edit_text_color_txt_tv" />-->
+        <LinearLayout
+            android:id="@+id/linearLayout18"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_color_txt_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/kioskedit_textcolor_tv">
+
+            <!-- 첫 번째 원 -->
+            <ImageView
+                android:id="@+id/color1"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="#000000" />
+
+            <!-- 두 번째 원 -->
+            <ImageView
+                android:id="@+id/color2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="#FC002C" />
+
+            <!-- 세 번째 원 -->
+            <ImageView
+                android:id="@+id/color3"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="#F8BE35" />
+
+            <!-- 네 번째 원 -->
+            <ImageView
+                android:id="@+id/color4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="#00B7A1" />
+
+            <!-- 다섯 번째 원 -->
+            <ImageView
+                android:id="@+id/color5"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="#006ED2" />
+
+            <!-- 여섯 번째 원 -->
+            <ImageView
+                android:id="@+id/color6"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="#9338B2" />
+
+
+            <ImageView
+                android:id="@+id/color7"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_shape" />
+
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/edit_modify_btn"
@@ -196,7 +271,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_color_palette_fragmentContainer" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout18" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

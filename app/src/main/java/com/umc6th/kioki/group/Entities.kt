@@ -1,7 +1,9 @@
 package com.umc6th.kioki.group
 
+import android.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.umc6th.kioki.R
 
 // group을 담을 데이터 클래스 -> 통신 시, 엔티티로 변경할 것
 
@@ -13,7 +15,9 @@ data class MemberEntity(
     var nickname: String? = null,
     var noteTitle: String? = null,
     var noteText: String? = null,
-    var isGroupMember: Boolean? = false
+    var isGroupMember: Boolean? = false,
+    var theme: Int = R.style.Theme_App_Medium, // 기본 테마 추가
+    var textColor: Int = Color.BLACK
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.umc6th.kioki.R
 import com.umc6th.kioki.data.client.RetrofitClient
 import com.umc6th.kioki.databinding.ActivityGroupHomeBinding
+import com.umc6th.kioki.utils.TextPrefs
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -106,7 +107,15 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
         //groupListAdapter.differ.submitList(groupList)
 
     }
-    fun updateMemberData(memberId: Int, newMemberName: String, newNoteTitle: String, newNoteText: String, imageUri: Uri?) {
+    fun updateMemberData(
+        memberId: Int,
+        newMemberName: String,
+        newNoteTitle: String,
+        newNoteText: String,
+        imageUri: Uri?,
+        selectedTheme: Int,
+        selectedColor: Int
+    ) {
         // memberId에 해당하는 아이템을 찾아 업데이트
         val member = groupList.find { it.memberId == memberId }
         member?.let {
@@ -114,10 +123,15 @@ class GroupHomeActivity: AppCompatActivity(), OnItemClickListener, OnGroupMember
             it.noteTitle = newNoteTitle
             it.noteText = newNoteText
             //it.profilePictureUrl = imageUri
+            it.theme = selectedTheme
+            it.textColor = selectedColor
 
             // RecyclerView 갱신
-            groupListAdapter.notifyDataSetChanged()
+            val position = groupList.indexOf(it)
+            groupListAdapter.notifyItemChanged(position)
+//            groupListAdapter.notifyDataSetChanged()
         }
+
     }
 
     private fun getAppTheme(textSize: Int) =
