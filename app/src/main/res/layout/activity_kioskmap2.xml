@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/iv_maphome"
+        android:src="@drawable/iv_mapbrand"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +51,19 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <com.naver.maps.map.MapView-->
-<!--        android:id="@+id/kioskmap_map_vw"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kioskmap_gopractice_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_orange"
+        android:text="키오스크 연습하기"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/pretendard_medium"
+        android:layout_marginHorizontal="15.5dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
