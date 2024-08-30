@@ -145,17 +145,17 @@
             android:name=".unregister.UnregisterActivity"
             android:exported="true" />
         <activity
-            android:name=".KioskhomeActivity"
+            android:name=".kiosk.KioskhomeActivity"
             android:exported="false" />
         <activity
-            android:name=".KioskSearchActivity"
+            android:name=".kiosk.KioskSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".KioskFilterActivity"
+            android:name=".kiosk.KioskFilterActivity"
             android:exported="false" />
 
         <activity
-            android:name=".KioskMapActivity"
+            android:name=".kiosk.KioskMapActivity"
             android:exported="false" />
 
     </application>

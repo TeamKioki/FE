@@ -1,6 +1,5 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
-import KioskMapActivity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityKiosksearchBinding
 
 class KioskSearchActivity : AppCompatActivity() {
@@ -37,7 +37,7 @@ class KioskSearchActivity : AppCompatActivity() {
         goFilter()
         initSpinner()
         goBack()
-//        goMap()
+        goMap()
     }
 
     // 샘플 브랜드 데이터 생성
@@ -64,12 +64,12 @@ class KioskSearchActivity : AppCompatActivity() {
         }
     }
 
-//    private fun goMap() {
-//        binding.kiosearchMapBtn.setOnClickListener {
-//            val intent = Intent(this, KioskMapActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
+    private fun goMap() {
+        binding.kiosearchMapBtn.setOnClickListener {
+            val intent = Intent(this, com.umc6th.kioki.kiosk.KioskMapActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun initSpinner() {
         ArrayAdapter.createFromResource(this, R.array.sort_array, android.R.layout.simple_spinner_item

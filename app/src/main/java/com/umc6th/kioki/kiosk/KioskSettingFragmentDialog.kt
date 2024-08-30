@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.FragmentAccountEditKioskSettingBinding
 import com.umc6th.kioki.group.DialogListener
 import com.umc6th.kioki.group.GroupHomeColorPalette

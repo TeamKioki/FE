@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

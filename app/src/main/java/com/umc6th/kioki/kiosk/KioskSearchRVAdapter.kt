@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc6th.kioki.databinding.ItemBrandBinding
+import com.umc6th.kioki.evaluation.KioskEvaluationActivity
 
 class KioskSearchRVAdapter(private val brandList: MutableList<BrandItem>) : RecyclerView.Adapter<KioskSearchRVAdapter.BrandViewHolder>() {
 
@@ -40,18 +41,18 @@ class KioskSearchRVAdapter(private val brandList: MutableList<BrandItem>) : Recy
                 binding.itemNobookmarkBtn.visibility = View.VISIBLE
             }
 
-//            // 아이템 클릭 이벤트 처리
-//            itemView.setOnClickListener {
-//                val context = itemView.context
-//                val intent = Intent(context, KioskEvaluationListActivity::class.java)
-//
-//                // 필요하다면 여기에 추가 데이터를 넣을 수 있음 (예: 브랜드 ID, 이름 등)
-//                intent.putExtra("brandName", brandItem.brandName)
-//                intent.putExtra("brandSpec", brandItem.brandSpec)
-//                intent.putExtra("brandLogoResId", brandItem.brandLogoResId)
-//
-//                context.startActivity(intent)
-//            }
+            // 아이템 클릭 이벤트 처리
+            itemView.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(context, KioskEvaluationActivity::class.java)
+
+                // 필요하다면 여기에 추가 데이터를 넣을 수 있음 (예: 브랜드 ID, 이름 등)
+                intent.putExtra("brandName", brandItem.brandName)
+                intent.putExtra("brandSpec", brandItem.brandSpec)
+                intent.putExtra("brandLogoResId", brandItem.brandLogoResId)
+
+                context.startActivity(intent)
+            }
         }
     }
 

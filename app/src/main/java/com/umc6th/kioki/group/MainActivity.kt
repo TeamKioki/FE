@@ -11,7 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.umc6th.kioki.KioskhomeActivity
+import com.umc6th.kioki.kiosk.KioskhomeActivity
 import com.umc6th.kioki.R
 import com.umc6th.kioki.databinding.ActivityMainBinding
 import com.umc6th.kioki.inquire.InquireActivity

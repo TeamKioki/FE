@@ -1,4 +1,4 @@
-package com.umc6th.kioki
+package com.umc6th.kioki.kiosk
 
 import android.app.Dialog
 import android.content.Context
@@ -11,6 +11,7 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
+import com.umc6th.kioki.R
 import com.umc6th.kioki.utils.TextPrefs
 
 class KioskEditDialog(

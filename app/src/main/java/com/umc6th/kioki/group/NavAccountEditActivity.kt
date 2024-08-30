@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.umc6th.kioki.KioskSettingFragmentDialog
+import com.umc6th.kioki.kiosk.KioskSettingFragmentDialog
 import com.umc6th.kioki.databinding.ActivityNavAccountEditBinding
 import com.umc6th.kioki.evaluation.KioskEvaluationActivity
 import com.umc6th.kioki.evaluation.KioskEvaluationListActivity
