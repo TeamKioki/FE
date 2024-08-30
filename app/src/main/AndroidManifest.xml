@@ -20,8 +20,9 @@
         android:theme="@style/Theme.Kioki"
         tools:targetApi="31" >
 
+        <!-- 네이버 지도 API 키 설정 -->
         <meta-data
-            android:name="com.naver.maps.map.fameqf3adq"
+            android:name="com.naver.maps.map.CLIENT_ID"
             android:value="fameqf3adq" />
 
         <activity
