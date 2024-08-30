@@ -11,18 +11,16 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        jcenter()
         maven {
             url = uri("https://jitpack.io")
-            url = uri("https://naver.jfrog.io/artifactory/maven/")
         }
-
-
+        maven("https://repository.map.naver.com/archive/maven")
     }
 }
 
