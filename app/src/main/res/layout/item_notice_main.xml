@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/main_notice_text_tv"
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:text="[공지사항]"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/main_notice_title_tv"
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:text="키오스크 신규 추가 목록 안내"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/main_notice_date_tv"
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:text="2024.08.02"
+        android:textSize="13sp" />
+
+</LinearLayout>
