@@ -1,5 +1,6 @@
 package com.umc6th.kioki
 
+import KioskMapActivity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle

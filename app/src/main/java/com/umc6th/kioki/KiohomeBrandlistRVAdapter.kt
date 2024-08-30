@@ -87,7 +87,22 @@ class KiohomeBrandlistRVAdapter(
             }
 
             trashButton.setOnClickListener {
-                onDelete(adapterPosition)
+                val context = itemView.context
+
+                val dialog = KioskDeleteDialog(
+                    context,
+                    item.name
+                )
+                dialog.setOnDismissListener {
+                    // Handle any logic after dialog is dismissed if needed
+                }
+
+                // 다이얼로그에서 "확인"을 눌렀을 때 삭제 수행
+                dialog.setOnConfirmListener {
+                    onDelete(adapterPosition)
+                }
+
+                dialog.show()
             }
         }
 

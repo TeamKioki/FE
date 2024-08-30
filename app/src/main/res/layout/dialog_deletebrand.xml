@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="313dp"
+    android:layout_height="185dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shape_group_home_edit_rounded_bg">
+
+    <LinearLayout
+        android:id="@+id/deletekiosk_title_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="'"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pretendard_semibold" />
+
+        <TextView
+            android:id="@+id/deletekiosk_brandname_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="롯데리아"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pretendard_semibold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="’을(를) 제거하시겠습니까?"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pretendard_semibold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/deletekiosk_semititle_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="삭제하면 해당 키오스크와 설정된\n키오스크 화면 내역은 모두 사라집니다."
+        android:textSize="15sp"
+        android:textColor="#474747"
+        android:fontFamily="@font/pretendard_medium"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deletekiosk_title_ll" />
+
+    <TextView
+        android:id="@+id/deletekiosk_cancel_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="취소"
+        android:textSize="18sp"
+        android:textColor="#666666"
+        android:fontFamily="@font/pretendard_regular"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toStartOf="@id/deletekiosk_semititle_tv"
+        app:layout_constraintTop_toBottomOf="@id/deletekiosk_semititle_tv" />
+
+    <TextView
+        android:id="@+id/deletekiosk_okay_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:textSize="18sp"
+        android:textColor="#FF5C00"
+        android:fontFamily="@font/pretendard_regular"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintEnd_toEndOf="@id/deletekiosk_semititle_tv"
+        app:layout_constraintTop_toBottomOf="@id/deletekiosk_semititle_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
